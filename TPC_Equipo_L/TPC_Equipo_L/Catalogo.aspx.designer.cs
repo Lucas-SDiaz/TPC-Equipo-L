@@ -11,7 +11,7 @@ namespace TPC_Equipo_L
 {
 
 
-    public partial class Default
+    public partial class Catalogo
     {
     }
 }
