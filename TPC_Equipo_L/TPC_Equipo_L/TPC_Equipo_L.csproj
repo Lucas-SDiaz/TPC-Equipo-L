@@ -70,6 +70,7 @@
     <Content Include="carritoCompra.aspx" />
     <Content Include="Catalogo.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="detalleProducto.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -94,6 +95,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="detalleProducto.aspx.cs">
+      <DependentUpon>detalleProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="detalleProducto.aspx.designer.cs">
+      <DependentUpon>detalleProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace dominio
 {
-        public class Producto
+    public class Producto
     {
         private int id;
         private string codProducto;
@@ -19,8 +19,6 @@ namespace dominio
 
 
         public int Id { get; set; }
-
-
         public string CodigoProducto { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
@@ -29,8 +27,9 @@ namespace dominio
         public List<Imagen> Imagenes { get; set; }
         public SqlMoney Precio { get; set; }
         public int Stock { get; set; }
+        public bool Estado { get; set; }
         public Producto() { }
-        public Producto(int Id, string CodigoArticulo, string Nombre, string Descripcion, Marca Marca, Categoria Categoria, SqlMoney Precio)
+        public Producto(int Id, string CodigoArticulo, string Nombre, string Descripcion, Marca Marca, Categoria Categoria, SqlMoney Precio,int stock, bool estado)
         {
             this.Id = Id;
             this.CodigoProducto = CodigoArticulo;
@@ -39,9 +38,11 @@ namespace dominio
             this.Marca = Marca;
             this.Categoria = Categoria;
             this.Precio = (SqlMoney)Precio;
+            this.Stock = stock;
+            this.Estado = estado;
         }
 
-        
+
         public override string ToString()
         {
             return "Codigo: " + codProducto + " Nombre: " + nombre + " Descripcion: " + descripcion + " Marca: " + Marca.ToString() + " Categoria :" + Categoria.ToString() + " Precio: " + precio;

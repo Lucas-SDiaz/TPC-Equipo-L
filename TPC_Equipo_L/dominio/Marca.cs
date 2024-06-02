@@ -9,16 +9,19 @@ namespace dominio
     public class Marca
     {
         public int Id { get; set; }
-        public string Descripcion { get; set; }
+        public string Nombre { get; set; }
+
+        public bool Estado {  get; set; }
         public Marca() { }
-        public Marca(int Id, string Descripcion)
+        public Marca(int Id, string Nombre, bool estado)
         {
             this.Id = Id;
-            this.Descripcion = Descripcion;
+            this.Nombre = Nombre;
+            Estado = estado;
         }
         public override string ToString()
         {
-            return Descripcion;
+            return Nombre;
         }
 
     }

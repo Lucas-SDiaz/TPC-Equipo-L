@@ -11,15 +11,17 @@ namespace dominio
     {
         public int Id { get; set; }
 
-        public string NombreProducto { get; set; }
+        public string CodigoProducto { get; set; }
 
         public string Url { get; set; }
+        public bool Estado {  get; set; }
         public Imagen() { }
-        public Imagen(int Id, string Url, string nombreArticulo)
+        public Imagen(int Id, string Url, string codigoArticulo,bool estado )
         {
             this.Id = Id;
             this.Url = Url;
-            NombreProducto = nombreArticulo;    
+            this.CodigoProducto = codigoArticulo;    
+            this.Estado = estado;
         }
         public override string ToString()
         {
