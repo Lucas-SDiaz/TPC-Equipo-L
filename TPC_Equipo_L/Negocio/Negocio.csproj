@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1B47D647-4512-4A5B-9759-1E7163CCA84A}</ProjectGuid>
+    <ProjectGuid>{6CC65DF7-29A3-4BE5-8869-9D8DC0507190}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>negocio</RootNamespace>
     <AssemblyName>negocio</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -42,11 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
+    <Compile Include="ProductoNegocio.cs" />
+    <Compile Include="CategoriaNegocio.cs" />
+    <Compile Include="ImagenNegocio.cs" />
+    <Compile Include="MarcaNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dominio\dominio.csproj">
-      <Project>{46f0e538-eda2-4754-93ef-e0200102ef07}</Project>
+      <Project>{4a2b99b2-e722-428e-9e9a-e0f9e0c4b3d6}</Project>
       <Name>dominio</Name>
     </ProjectReference>
   </ItemGroup>
