@@ -19,8 +19,8 @@
     <asp:Label ID="lblPrecioTotal" runat="server" CssClass="form-control" Text=""></asp:Label>
 
     <br />
-    <a href="/#" class="btn btn-secondary">Volver</a>
-    <a href="#" class="btn btn-primary" style="float: right;">Finalizar compra</a>
+    <a href="/#" class="btn btn-outline-dark">Volver</a>
+    <a href="#" class="btn btn-outline-success" style="float: right;">Finalizar compra</a>
 
 
 
