@@ -38,6 +38,15 @@ namespace negocio
             comando.CommandText = procedimiento;
         }
 
+        public SqlDataReader cargarControl(string consulta)
+        {
+            conexion.Open();
+            comando = new SqlCommand(consulta, conexion);
+
+            lector = comando.ExecuteReader();
+            return lector;
+        }
+
         public void ejecutarLectura()
         {
             try

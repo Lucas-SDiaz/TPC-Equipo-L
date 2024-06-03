@@ -10,6 +10,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using dominio;
 
 
@@ -55,6 +56,91 @@ namespace negocio
             }
 
 
+        }
+
+        public void cargarDDL(DropDownList list, string query, string text, string value)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            list.DataSource = datos.cargarControl(query);
+            list.DataTextField = text;
+            list.DataValueField = value;
+            list.DataBind();
+        }
+
+        public void cargarDDLMarcas(DropDownList list)
+        {
+            cargarDDL(list, "SELECT * FROM Marcas", "Nombre_M", "Cod_Marca");
+            list.Items.Insert(0, new ListItem("-Marcas-", "0"));
+        }
+
+        public void cargarDDLCategorias(DropDownList list)
+        {
+            cargarDDL(list, "SELECT * FROM Categorias", "Nombre_C", "Cod_Categoria");
+            list.Items.Insert(0, new ListItem("-Categorias-", "0"));
+        }
+
+        public void agregar(Producto pro)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("spAgregarProducto");
+                datos.setearParametros("@Cod_Categoria_P", pro.Categoria.Cod_Categoria);
+                datos.setearParametros("@Cod_Marca_P", pro.Marca.Cod_Marca);
+                datos.setearParametros("@Nombre_P", pro.Nombre);
+                datos.setearParametros("@Descripcion_P", pro.Descripcion);
+                datos.setearParametros("@PUnitario_P", pro.Precio);
+                datos.setearParametros("@Stock_P", pro.Stock);
+                datos.setearParametros("@Estado_P", true);
+
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
+
+
+
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public string buscarProd(Producto producto)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("spListarProductos");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    producto.CodigoProducto = (string)datos.Lector["Cod_Producto"];
+                }
+                datos.cerrarConexion();
+                return producto.CodigoProducto;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void agregarImagen(string cod, string url) 
+        {
+            AccesoDatos datos = new AccesoDatos();
+            {
+                datos.setearProcedimiento("spAgregarImagen");
+                datos.setearParametros("@Cod_Producto", cod);
+                datos.setearParametros("@ImagenURL" , url);
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
+            }
         }
 
         /*

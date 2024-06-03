@@ -39,6 +39,7 @@ namespace negocio
             }
 
         }
+
         public void agregar(Categoria categoria)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -79,6 +80,28 @@ namespace negocio
             }
 
         }*/
+
+        public void agregar(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                if(categoria != null)
+                {
+                    datos.setearProcedimiento("spAgregarCategoria");
+                    datos.setearParametros("@Nombre_C", categoria.Nombre);
+                    datos.setearParametros("@ImgURL_C", categoria.ImagenURL);
+                    datos.setearParametros("@Estado_C", true);
+                    datos.ejecutarAccion();
+                    datos.cerrarConexion();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
     }
 }

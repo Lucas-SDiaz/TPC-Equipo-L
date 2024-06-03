@@ -76,5 +76,28 @@ namespace negocio
             }
 
         }*/
+
+        public void agregar(Marca marca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                if (marca != null)
+                {
+                    datos.setearProcedimiento("spAgregarMarca");
+                    datos.setearParametros("@Nombre_M", marca.Nombre);
+                    datos.setearParametros("@ImgURL_M", marca.ImagenURL);
+                    datos.setearParametros("@Estado_M", true);
+                    datos.ejecutarAccion();
+                    datos.cerrarConexion();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }

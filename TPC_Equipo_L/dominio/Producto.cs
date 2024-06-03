@@ -24,12 +24,14 @@ namespace dominio
         public string Descripcion { get; set; }
         public Marca Marca { get; set; }
         public Categoria Categoria { get; set; }
+        public Imagen Imagen { get; set; }
+
         public List<Imagen> Imagenes { get; set; }
         public SqlMoney Precio { get; set; }
         public int Stock { get; set; }
         public bool Estado { get; set; }
         public Producto() { }
-        public Producto(int Id, string CodigoArticulo, string Nombre, string Descripcion, Marca Marca, Categoria Categoria, SqlMoney Precio,int stock, bool estado)
+        public Producto(int Id, string CodigoArticulo, string Nombre, string Descripcion, Marca Marca, Categoria Categoria, Imagen imagen, SqlMoney Precio,int stock, bool estado)
         {
             this.Id = Id;
             this.CodigoProducto = CodigoArticulo;
@@ -37,6 +39,7 @@ namespace dominio
             this.Descripcion = Descripcion;
             this.Marca = Marca;
             this.Categoria = Categoria;
+            this.Imagen = imagen;
             this.Precio = (SqlMoney)Precio;
             this.Stock = stock;
             this.Estado = estado;
