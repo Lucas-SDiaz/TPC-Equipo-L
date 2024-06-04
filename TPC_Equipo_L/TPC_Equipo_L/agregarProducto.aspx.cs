@@ -31,7 +31,7 @@ namespace TPC_Equipo_L
                 producto.Categoria = new Categoria();
                 producto.Marca = new Marca();
                 producto.Imagen = new Imagen();
-                if (producto != null && ddlCategoria.SelectedValue != null && ddlMarca.SelectedValue != null && txtNombre.Text.Trim() != string.Empty && txtDescripcion.Text.Trim() != string.Empty && txtPrecio.Text.Trim() != string.Empty && txtStock.Text.Trim() != string.Empty)
+                if (producto != null && ddlCategoria.SelectedValue != null && ddlMarca.SelectedValue != null && txtNombre.Text.Trim() != string.Empty && txtDescripcion.Text.Trim() != string.Empty && txtPrecio.Text.Trim() != string.Empty && txtStock.Text.Trim() != string.Empty && txtImagen.Text.Trim() != string.Empty)
                 {
                     producto.Categoria.Cod_Categoria = ddlCategoria.SelectedValue;
                     producto.Marca.Cod_Marca = ddlMarca.SelectedValue;
