@@ -40,7 +40,7 @@ namespace negocio
                     aux.Categoria.Nombre = (string)datos.Lector["Nombre_C"];
                     aux.Marca.Cod_Marca = (string)datos.Lector["Cod_Marca"];
                     aux.Marca.Nombre = (string)datos.Lector["Nombre_M"];
-                    aux.Imagen.Url = (string)datos.Lector["ImagenURL"];
+                    //aux.Imagen.Url = (string)datos.Lector["ImagenURL"];
                     aux.Precio = (decimal)datos.Lector["PUnitario_P"];
                     aux.Stock = (int)datos.Lector["Stock_P"];
                     lista.Add(aux);
@@ -102,6 +102,51 @@ namespace negocio
 
 
 
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public void modificar(Producto pro)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                if (pro != null)
+                {
+                    datos.setearProcedimiento("spActualizarProducto");
+                    datos.setearParametros("@Cod_Categoria_P", pro.Categoria);
+                    datos.setearParametros("@Nombre_P", pro.Nombre);
+                    datos.setearParametros("@Descripcion_P", true);
+                    datos.setearParametros("@PUnitario_P", pro.Precio);
+                    datos.setearParametros("@Stock_P", pro.Stock);
+                    datos.setearParametros("@Estado_P", pro.Estado);
+                    datos.ejecutarAccion();
+                    datos.cerrarConexion();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public string buscarImagen(Producto producto)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("spListarImagenes");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    producto.Imagen.Url = (string)datos.Lector["ImagenURL"];
+                }
+                datos.cerrarConexion();
+                return producto.Imagen.Url;
 
             }
             catch (Exception)

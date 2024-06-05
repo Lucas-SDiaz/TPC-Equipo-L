@@ -13,7 +13,7 @@ namespace TPC_Equipo_L
         protected void Page_Load(object sender, EventArgs e)
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
-            Session.Add("listaCategoria", negocio.listarConSP());
+            Session.Add("listaCategoria", negocio.listarConSp());
             dgvCategoria.DataSource = Session["listaCategoria"];
             dgvCategoria.DataBind();
         }

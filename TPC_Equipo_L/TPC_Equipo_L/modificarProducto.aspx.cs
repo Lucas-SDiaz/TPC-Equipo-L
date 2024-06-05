@@ -31,7 +31,7 @@ namespace TPC_Equipo_L
                     txtDescripcion.Text = selected.Descripcion;
                     txtPrecio.Text = selected.Precio.ToString();
                     txtStock.Text = selected.Stock.ToString();
-                    txtImagen.Text = negocio.buscarImagen(selected);
+                    //txtImagen.Text = negocio.buscarImagen(selected);
                     ddlCategoria.SelectedValue = selected.Categoria.Cod_Categoria;
                     ddlMarca.SelectedValue = selected.Marca.Cod_Marca;
                 }

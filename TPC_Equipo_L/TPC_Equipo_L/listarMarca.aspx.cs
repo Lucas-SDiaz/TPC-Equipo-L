@@ -13,7 +13,7 @@ namespace TPC_Equipo_L
         protected void Page_Load(object sender, EventArgs e)
         {
             MarcaNegocio negocio = new MarcaNegocio();
-            Session.Add("listaMarca", negocio.listarConSP());
+            Session.Add("listaMarca", negocio.listarConSp());
             dgvMarca.DataSource = Session["listaMarca"];
             dgvMarca.DataBind();
         }
