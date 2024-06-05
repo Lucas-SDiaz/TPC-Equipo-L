@@ -25,17 +25,17 @@ namespace TPC_Equipo_L
                     codP = Request.QueryString["codP"].ToString();
                     List<Producto> temp = (List<Producto>)Session["listaProductos"];
                     Producto selected = temp.Find(x => x.CodigoProducto == codP);
+                    selected.Imagen = new Imagen();
+                    selected.CodigoProducto = codP;
                     txtNombre.Text = selected.Nombre;
                     txtDescripcion.Text = selected.Descripcion;
                     txtPrecio.Text = selected.Precio.ToString();
                     txtStock.Text = selected.Stock.ToString();
-                    txtImagen.Text = selected.Imagen.Url.ToString();
+                    txtImagen.Text = negocio.buscarImagen(selected);
                     ddlCategoria.SelectedValue = selected.Categoria.Cod_Categoria;
                     ddlMarca.SelectedValue = selected.Marca.Cod_Marca;
                 }
             }
-
-
 
         }
 
@@ -52,6 +52,7 @@ namespace TPC_Equipo_L
 
                 if (producto != null && ddlCategoria.SelectedValue != null && ddlMarca.SelectedValue != null && txtNombre.Text.Trim() != string.Empty && txtDescripcion.Text.Trim() != string.Empty && txtPrecio.Text.Trim() != string.Empty && txtStock.Text.Trim() != string.Empty && txtImagen.Text.Trim() != string.Empty)
                 {
+                    producto.CodigoProducto = Request.QueryString["codP"].ToString();
                     producto.Categoria.Cod_Categoria = ddlCategoria.SelectedValue;
                     producto.Marca.Cod_Marca = ddlMarca.SelectedValue;
                     producto.Nombre = txtNombre.Text.Trim();
@@ -60,7 +61,7 @@ namespace TPC_Equipo_L
                     producto.Stock = Convert.ToInt32(txtStock.Text.Trim());
                     producto.Imagen.Url = txtImagen.Text.Trim();
 
-                    negocio.agregar(producto);
+                    negocio.modificar(producto);
                     producto.CodigoProducto = negocio.buscarProd(producto);
                     negocio.agregarImagen(producto.CodigoProducto, producto.Imagen.Url);
 

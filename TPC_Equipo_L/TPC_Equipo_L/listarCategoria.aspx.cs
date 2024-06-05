@@ -1,4 +1,5 @@
-﻿using System;
+﻿using negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,17 @@ namespace TPC_Equipo_L
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            Session.Add("listaCategoria", negocio.listarConSP());
+            dgvCategoria.DataSource = Session["listaCategoria"];
+            dgvCategoria.DataBind();
         }
+
+        protected void dgvCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var codC = dgvCategoria.SelectedDataKey.Value.ToString();
+            Response.Redirect("modificarCategoria.aspx?codC=" + codC);
+        }
+
     }
 }

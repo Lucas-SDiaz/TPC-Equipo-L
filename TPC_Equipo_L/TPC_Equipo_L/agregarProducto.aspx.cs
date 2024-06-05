@@ -14,7 +14,7 @@ namespace TPC_Equipo_L
         protected void Page_Load(object sender, EventArgs e)
         {
             ProductoNegocio negocio = new ProductoNegocio();
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
                 negocio.cargarDDLMarcas(ddlMarca);
@@ -31,6 +31,7 @@ namespace TPC_Equipo_L
                 producto.Categoria = new Categoria();
                 producto.Marca = new Marca();
                 producto.Imagen = new Imagen();
+
                 if (producto != null && ddlCategoria.SelectedValue != null && ddlMarca.SelectedValue != null && txtNombre.Text.Trim() != string.Empty && txtDescripcion.Text.Trim() != string.Empty && txtPrecio.Text.Trim() != string.Empty && txtStock.Text.Trim() != string.Empty && txtImagen.Text.Trim() != string.Empty)
                 {
                     producto.Categoria.Cod_Categoria = ddlCategoria.SelectedValue;
@@ -62,6 +63,8 @@ namespace TPC_Equipo_L
                     lblMensaje.Text = "Tiene que llenar todos los campos";
                     lblMensaje.CssClass = "alert alert-danger";
                 }
+
+
             }
             catch (Exception)
             {

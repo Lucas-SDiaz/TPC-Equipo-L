@@ -32,7 +32,7 @@
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         <li><a class="dropdown-item" href="agregarProducto.aspx">Agregar</a></li>
                                         <li><a class="dropdown-item" href="listarProducto.aspx">Listar</a></li>
-                                        <li><a class="dropdown-item" href="modificarProducto.aspx">Modificar</a></li>
+                                        <%--<li><a class="dropdown-item" href="modificarProducto.aspx">Modificar</a></li>--%>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -41,7 +41,7 @@
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         <li><a class="dropdown-item" href="agregarCategoria.aspx">Agregar</a></li>
                                         <li><a class="dropdown-item" href="listarCategoria.aspx">Listar</a></li>
-                                        <li><a class="dropdown-item" href="modificarCategoria.aspx">Modificar</a></li>
+                                        <%--<li><a class="dropdown-item" href="modificarCategoria.aspx">Modificar</a></li>--%>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -50,7 +50,7 @@
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         <li><a class="dropdown-item" href="agregarMarca.aspx">Agregar</a></li>
                                         <li><a class="dropdown-item" href="listarMarca.aspx">Listar</a></li>
-                                        <li><a class="dropdown-item" href="modificarMarca.aspx">Modificar</a></li>
+                                        <%--<li><a class="dropdown-item" href="modificarMarca.aspx">Modificar</a></li>--%>
                                     </ul>
                                 </li>
                             </ul>

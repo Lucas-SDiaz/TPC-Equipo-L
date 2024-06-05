@@ -26,7 +26,4 @@
     <div class="text-end p-4">
         <asp:Label Text="" ID="lblMensaje" runat="server" />
     </div>
-
-
-
 </asp:Content>

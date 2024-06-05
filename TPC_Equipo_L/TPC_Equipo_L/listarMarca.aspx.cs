@@ -1,4 +1,5 @@
-﻿using System;
+﻿using negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,16 @@ namespace TPC_Equipo_L
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            MarcaNegocio negocio = new MarcaNegocio();
+            Session.Add("listaMarca", negocio.listarConSP());
+            dgvMarca.DataSource = Session["listaMarca"];
+            dgvMarca.DataBind();
+        }
 
+        protected void dgvMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var codM = dgvMarca.SelectedDataKey.Value.ToString();
+            Response.Redirect("modificarMarca.aspx?codM=" + codM);
         }
     }
 }
