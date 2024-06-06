@@ -15,6 +15,15 @@ namespace TPC_Equipo_L
     {
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
         /// txtNombre control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace TPC_Equipo_L
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
+
+        /// <summary>
+        /// txtInvNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtInvNombre;
 
         /// <summary>
         /// txtDescripcion control.
@@ -33,6 +51,15 @@ namespace TPC_Equipo_L
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
 
         /// <summary>
+        /// txtInvDescripcion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtInvDescripcion;
+
+        /// <summary>
         /// txtPrecio control.
         /// </summary>
         /// <remarks>
@@ -40,6 +67,15 @@ namespace TPC_Equipo_L
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrecio;
+
+        /// <summary>
+        /// txtInvPrecio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtInvPrecio;
 
         /// <summary>
         /// txtStock control.
@@ -51,6 +87,15 @@ namespace TPC_Equipo_L
         protected global::System.Web.UI.WebControls.TextBox txtStock;
 
         /// <summary>
+        /// txtInvStock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtInvStock;
+
+        /// <summary>
         /// txtImagen control.
         /// </summary>
         /// <remarks>
@@ -58,6 +103,15 @@ namespace TPC_Equipo_L
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtImagen;
+
+        /// <summary>
+        /// txtInvImagen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtInvImagen;
 
         /// <summary>
         /// ddlCategoria control.

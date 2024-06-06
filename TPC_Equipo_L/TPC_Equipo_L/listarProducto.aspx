@@ -10,7 +10,7 @@
     <h2 class="text-center p-2">Listado Productos</h2>
 
     <div class=" container-fluid mx-auto p-2" style="width: 75%;">
-        <asp:GridView ID="dgvProductos" DataKeyNames="CodigoProducto" CssClass="table table-dark table-bordered" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged" AutoGenerateColumns="false" runat="server">
+        <asp:GridView ID="dgvProductos" DataKeyNames="CodigoProducto" CssClass="table table-dark table-bordered" OnRowDeleting="dgvProductos_RowDeleting" OnSelectedIndexChanged="dgvProductos_SelectedIndexChanged" OnPageIndexChanging="dgvProductos_PageIndexChanging" AutoGenerateColumns="false" AllowPaging="true" PageSize="5" runat="server">
             <Columns>
                 <asp:BoundField HeaderText="Categoria" DataField="Categoria.Cod_Categoria" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" />
                 <asp:BoundField HeaderText="Marca" DataField="Marca.Cod_Marca" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" HeaderStyle-BackColor="DarkGray"/>

@@ -24,5 +24,16 @@ namespace TPC_Equipo_L
             var codP = dgvProductos.SelectedDataKey.Value.ToString();
             Response.Redirect("modificarProducto.aspx?codP=" + codP);
         }
+
+        protected void dgvProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvProductos.PageIndex = e.NewPageIndex;
+            dgvProductos.DataBind();
+        }
+
+        protected void dgvProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            Console.WriteLine("Hola");
+        }
     }
 }
