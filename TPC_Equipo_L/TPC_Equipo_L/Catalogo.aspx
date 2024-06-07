@@ -4,6 +4,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <style>
+        .img-thumbnail {
+            width: 100%;
+            height: 300px;
+        }
+
+        .custom-card-size {
+            width: 250px; /* Tamaño fijo para la tarjeta */
+            height: 600px; /* Ajusta el tamaño según tus necesidades */
+        }
+    </style>
+
     <figure class="text-center">
         <h1>CATALOGO</h1>
     </figure>
@@ -21,7 +33,7 @@
             <div class="card custom-card-size">
                 <% if(!(lista.Count == 0))
                    { %>
-                       <img src="<%:lista[0] %>" class="img-thumbnail" onerror="this.src='https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg';" />
+                       <img src="<%:lista[0] %>" class="img-thumbnail"  onerror="this.src='https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg';" />
                 <% } %>
                 <div class="card-body">
                     <h5 class="card-title" style="color: black; text-align: center;"><b><%: producto.Nombre %></b> </h5>
@@ -32,7 +44,7 @@
 
                         <a href="detalleProducto.aspx?id=<%: producto.CodigoProducto %>" class="btn btn-outline-dark">Ver detalle</a>
 
-                        <a href="carritoCompra.aspx?id=<%: producto.CodigoProducto %>" class="btn btn-outline-success">Agregar al carrito</a>
+                        <a href="carritoCompra.aspx?id=<%: producto.CodigoProducto %>"  class="btn btn-outline-success">Agregar al carrito</a>
                     </div>
                 </div>
             </div>
