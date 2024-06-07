@@ -43,7 +43,7 @@ namespace TPC_Equipo_L
                     lblMensaje.Text = "Tiene que seleccionar una Marca";
                     lblMensaje.CssClass = "alert alert-danger";
                 }
-                else if(producto != null && ddlCategoria.SelectedValue != null && ddlMarca.SelectedValue != null && txtNombre.Text.Trim() != string.Empty && txtDescripcion.Text.Trim() != string.Empty && txtPrecio.Text.Trim() != string.Empty && txtStock.Text.Trim() != string.Empty && txtImagen.Text.Trim() != string.Empty)
+                else if (producto != null && ddlCategoria.SelectedValue != null && ddlMarca.SelectedValue != null && txtNombre.Text.Trim() != string.Empty && txtDescripcion.Text.Trim() != string.Empty && txtPrecio.Text.Trim() != string.Empty && txtStock.Text.Trim() != string.Empty && txtImagen.Text.Trim() != string.Empty)
                 {
                     producto.Categoria.Cod_Categoria = ddlCategoria.SelectedValue;
                     producto.Marca.Cod_Marca = ddlMarca.SelectedValue;
@@ -149,7 +149,7 @@ namespace TPC_Equipo_L
                 txtInvStock.CssClass = "";
             }
         }
-
+        public static string url { get; set; }
         protected void txtImagen_TextChanged(object sender, EventArgs e)
         {
             if (txtImagen.Text.Trim() == string.Empty)
@@ -164,6 +164,7 @@ namespace TPC_Equipo_L
                 txtInvImagen.Text = "";
                 txtInvImagen.CssClass = "";
             }
+            url = txtImagen.Text;
         }
 
     }
