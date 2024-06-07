@@ -8,8 +8,8 @@ using dominio;
 
 namespace negocio
 {
-        public class ImagenNegocio
-        {
+    public class ImagenNegocio
+    {
         /*
         public List<Imagen> listar()
         {
@@ -45,25 +45,27 @@ namespace negocio
             }
 
         }
-        private Articulo articulo = null;
-        public List<string> listarImgPorArticulo(Articulo articulo)
+        */
+        private Producto producto = null;
+        public List<string> listarImgPorArticulo(Producto producto)
         {
-            this.articulo = articulo;
+            this.producto = producto;
             AccesoDatos datos = new AccesoDatos();
             List<string> lista = new List<string>();
 
             try
             {
 
-                datos.setearConsulta("select IMAGENES.ImagenUrl from IMAGENES WHERE IMAGENES.IdArticulo = " + articulo.Id);
+                datos.setearProcedimiento("spListarImagenes");
+                datos.setearParametros("@Cod_Producto", producto.CodigoProducto);
                 datos.ejecutarLectura();
 
 
 
                 while (datos.Lector.Read())
                 {
-                    if (!(datos.Lector["ImagenUrl"] is DBNull))
-                        lista.Add((string)datos.Lector["ImagenUrl"]);
+                    if (!(datos.Lector["ImagenURL"] is DBNull))
+                        lista.Add((string)datos.Lector["ImagenURL"]);
                 }
                 return lista;
             }
@@ -75,54 +77,55 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+            /*
 
-        }
 
-
-        public string searchId(string codArt)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
+            public string searchId(string codArt)
             {
-                string Id;
-                datos.setearConsulta("SELECT A.Id FROM ARTICULOS AS A WHERE A.Codigo = '" + codArt + "'");
-                datos.ejecutarLectura();
-                if (datos.Lector.Read())
+                AccesoDatos datos = new AccesoDatos();
+                try
                 {
-                    Id = datos.Lector["Id"].ToString();
+                    string Id;
+                    datos.setearConsulta("SELECT A.Id FROM ARTICULOS AS A WHERE A.Codigo = '" + codArt + "'");
+                    datos.ejecutarLectura();
+                    if (datos.Lector.Read())
+                    {
+                        Id = datos.Lector["Id"].ToString();
+                    }
+                    else
+                    {
+                        Id = "0";
+                    }
+                    return Id;  
                 }
-                else
+                catch (Exception ex)
                 {
-                    Id = "0";
+                    throw ex;
                 }
-                return Id;  
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally { datos.cerrarConexion();}
+                finally { datos.cerrarConexion();}
 
+            }
+            public void agregar(Imagen imagen)
+            {
+                AccesoDatos datos = new AccesoDatos();
+                try
+                {
+                    datos.setearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @Imagen)");
+                    datos.setearParametros("@idArticulo", imagen.Id);
+                    datos.setearParametros("@Imagen", imagen.Url);
+                    datos.ejecutarAccion();
+                }
+                catch (Exception Ex)
+                {
+
+                    throw Ex;
+                }
+                finally 
+                { 
+                    datos.cerrarConexion(); 
+                }
+            }*/
         }
-        public void agregar(Imagen imagen)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setearConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArticulo, @Imagen)");
-                datos.setearParametros("@idArticulo", imagen.Id);
-                datos.setearParametros("@Imagen", imagen.Url);
-                datos.ejecutarAccion();
-            }
-            catch (Exception Ex)
-            {
-
-                throw Ex;
-            }
-            finally 
-            { 
-                datos.cerrarConexion(); 
-            }
-        }*/
     }
 }
+

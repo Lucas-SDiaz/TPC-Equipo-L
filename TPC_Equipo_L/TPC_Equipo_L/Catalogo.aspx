@@ -11,13 +11,18 @@
     <div class="row row-cols-1 row-cols-md-4 g-4">
 
         <%  
+            negocio.ImagenNegocio negocio = new negocio.ImagenNegocio();
             List<string> lista = new List<string>();
             foreach (dominio.Producto producto in ListaProductos)
             {
-
+                lista = negocio.listarImgPorArticulo(producto);
         %>
         <div class="col">
             <div class="card custom-card-size">
+                <% if(!(lista.Count == 0))
+                   { %>
+                       <img src="<%:lista[0] %>" class="img-thumbnail" onerror="this.src='https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg';" />
+                <% } %>
                 <div class="card-body">
                     <h5 class="card-title" style="color: black; text-align: center;"><b><%: producto.Nombre %></b> </h5>
                     <p class="card-text" style="color: black; text-align: center;"><%: producto.Marca %></p>
