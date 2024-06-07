@@ -16,19 +16,19 @@ namespace TPC_Equipo_L
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
-             * List<Producto> carrito;
+           
+             List<Producto> carrito;
             carrito = Session["carrito"] != null ? (List<Producto>)Session["carrito"] : new List<Producto>();
             Session.Add("carrito", carrito);
-            int id = -1;
+            string id;
             if (!IsPostBack)
             {
                 if (Request.QueryString["id"] != null)
                 {
-                    id = int.Parse(Request.QueryString["id"]);
+                    id = Request.QueryString["id"].ToString();
                     List<Producto> listaOriginal = (List<Producto>)Session["listaProductos"];
-                    Producto seleccionado = listaOriginal.Find(x => x.Id == id);
-                    if (!carrito.Exists(a => a.Id == seleccionado.Id))
+                    Producto seleccionado = listaOriginal.Find(x => x.CodigoProducto == id);
+                    if (!carrito.Exists(a => a.CodigoProducto == seleccionado.CodigoProducto))
                     {
                         carrito.Add(seleccionado);
                     }
@@ -50,28 +50,28 @@ namespace TPC_Equipo_L
                 lblPrecioTotal.Text = "Precio Total: $" + precioTotal.ToString();
             }
 
-            */
+        
         }
         protected void dgvCarrito_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
+           
             var id = dgvCarrito.SelectedDataKey.Value.ToString();
 
             List<Producto> carrito;
             carrito = (List<Producto>)Session["carrito"];
             Session.Add("carrito", carrito);
-            Producto seleccionado = carrito.Find(x => x.Id == int.Parse(id));
+            Producto seleccionado = carrito.Find(x => x.CodigoProducto == id);
             carrito.Remove(seleccionado);
             dgvCarrito.DataSource = carrito;
             dgvCarrito.DataBind();
-            sqlm precioTotal = 0;
+            SqlMoney precioTotal = 0;
             foreach (Producto producto in carrito)
             {
                 precioTotal += producto.Precio;
             }
 
             lblPrecioTotal.Text = "Precio Total: $" + precioTotal.ToString();
-       */
+    
         }
     }
 }
