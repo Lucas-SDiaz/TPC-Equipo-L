@@ -3,6 +3,7 @@ using negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,6 +12,8 @@ namespace TPC_Equipo_L
 {
     public partial class modificarCategoria : System.Web.UI.Page
     {
+        public string url { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string codC;
@@ -25,7 +28,7 @@ namespace TPC_Equipo_L
                     Categoria selected = temp.Find(x => x.Cod_Categoria == codC);
                     txtNombre.Text = selected.Nombre;
                     txtImagen.Text = selected.ImagenURL;
-
+                    url = selected.ImagenURL;
                 }
             }
         }

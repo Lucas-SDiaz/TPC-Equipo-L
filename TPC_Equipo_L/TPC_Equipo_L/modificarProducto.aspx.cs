@@ -24,6 +24,7 @@ namespace TPC_Equipo_L
                     negocio.cargarDDLCategorias(ddlCategoria);
                     codP = Request.QueryString["codP"].ToString();
                     List<Producto> temp = (List<Producto>)Session["listaProductos"];
+                    List<Imagen> tImagen = (List<Imagen>)Session["listaImagenes"]; 
                     Producto selected = temp.Find(x => x.CodigoProducto == codP);
                     selected.Imagen = new Imagen();
                     selected.CodigoProducto = codP;
@@ -31,7 +32,8 @@ namespace TPC_Equipo_L
                     txtDescripcion.Text = selected.Descripcion;
                     txtPrecio.Text = selected.Precio.ToString();
                     txtStock.Text = selected.Stock.ToString();
-                    //txtImagen.Text = negocio.buscarImagen(selected);
+                    //txtImagen.Text = negocio.buscarImagenes(selected);
+                    url = txtImagen.Text;
                     ddlCategoria.SelectedValue = selected.Categoria.Cod_Categoria;
                     ddlMarca.SelectedValue = selected.Marca.Cod_Marca;
                 }
@@ -60,10 +62,10 @@ namespace TPC_Equipo_L
                     producto.Precio = Convert.ToDecimal(txtPrecio.Text.Trim());
                     producto.Stock = Convert.ToInt32(txtStock.Text.Trim());
                     producto.Imagen.Url = txtImagen.Text.Trim();
+                    producto.Estado = true;
 
                     negocio.modificar(producto);
-                    producto.CodigoProducto = negocio.buscarProd(producto);
-                    negocio.agregarImagen(producto.CodigoProducto, producto.Imagen.Url);
+                    negocio.modificarImagen(producto);
 
                     lblMensaje.Text = "Se modificó el producto exitosamente.";
                     lblMensaje.CssClass = "alert alert-success";
@@ -93,5 +95,88 @@ namespace TPC_Equipo_L
             }
 
         }
+
+        protected void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNombre.Text.Trim() == string.Empty)
+            {
+                txtNombre.CssClass = "form-control is-invalid";
+                txtInvNombre.Text = "¡Tiene que definir un Nombre!";
+                txtInvNombre.CssClass = "invalid-feedback";
+            }
+            else
+            {
+                txtNombre.CssClass = "form-control is-valid";
+                txtInvNombre.Text = "";
+                txtInvNombre.CssClass = "";
+            }
+        }
+
+        protected void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDescripcion.Text.Trim() == string.Empty)
+            {
+                txtDescripcion.CssClass = "form-control is-invalid";
+                txtInvDescripcion.Text = "¡Tiene que definir una Descripción!";
+                txtInvDescripcion.CssClass = "invalid-feedback";
+            }
+            else
+            {
+                txtDescripcion.CssClass = "form-control is-valid";
+                txtInvDescripcion.Text = "";
+                txtInvDescripcion.CssClass = "";
+            }
+        }
+
+        protected void txtPrecio_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPrecio.Text.Trim() == string.Empty)
+            {
+                txtPrecio.CssClass = "form-control is-invalid";
+                txtInvPrecio.Text = "¡Tiene que definir un Precio numérico!";
+                txtInvPrecio.CssClass = "invalid-feedback";
+            }
+            else
+            {
+                txtPrecio.CssClass = "form-control is-valid";
+                txtInvPrecio.Text = "";
+                txtInvPrecio.CssClass = "";
+            }
+        }
+
+        protected void txtStock_TextChanged(object sender, EventArgs e)
+        {
+            if (txtStock.Text.Trim() == string.Empty)
+            {
+                txtStock.CssClass = "form-control is-invalid";
+                txtInvStock.Text = "¡Tiene que definir un Stock!";
+                txtInvStock.CssClass = "invalid-feedback";
+            }
+            else
+            {
+                txtStock.CssClass = "form-control is-valid";
+                txtInvStock.Text = "";
+                txtInvStock.CssClass = "";
+            }
+        }
+        public static string url { get; set; }
+        protected void txtImagen_TextChanged(object sender, EventArgs e)
+        {
+            if (txtImagen.Text.Trim() == string.Empty)
+            {
+                txtImagen.CssClass = "form-control is-invalid";
+                txtInvImagen.Text = "¡Tiene que definir una Imagen!";
+                txtInvImagen.CssClass = "invalid-feedback";
+            }
+            else
+            {
+                txtImagen.CssClass = "form-control is-valid";
+                txtInvImagen.Text = "";
+                txtInvImagen.CssClass = "";
+            }
+            url = txtImagen.Text;
+        }
+
+
     }
 }
