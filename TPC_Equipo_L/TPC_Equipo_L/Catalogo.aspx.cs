@@ -20,7 +20,7 @@ namespace TPC_Equipo_L
                 ListaProductos = (List<Producto>)Session["ListaProductos"];
                 ListaProductosCategoria = (List<Producto>) Session["ListaProductosCategoria"];
             }
-            else if(IsPostBack)
+            else if(!IsPostBack)
             {
                 ProductoNegocio negocio = new ProductoNegocio();
                 ListaProductos = negocio.listarConSp();

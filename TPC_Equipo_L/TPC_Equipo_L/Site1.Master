@@ -17,7 +17,7 @@
 
             <nav class="navbar navbar-expand-lg" style="background-color: #99bbc2;">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">SUPERMERCADO L</a>
+                    <a class="navbar-brand" href="Default.aspx">SUPERMERCADO L</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -30,21 +30,33 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="Catalogo.aspx">Catalogo</a>
                             </li>
-                           
+
 
                         </ul>
 
                         <form class="d-flex" role="search">
-                            <input class="bd-search" type="search" placeholder="Buscar Productos..." aria-label="Search" >
+                            <input class="bd-search" type="search" placeholder="Buscar Productos..." aria-label="Search">
                             <%--<button class="btn btn-outline-light" type="submit">Buscar</button>--%>
                         </form>
 
                         <%--agregar iconos de inicio de sesion--%>
 
-                         <li class="nav-item"><a class="nav-link" href="carritoCompra.aspx" style="float: right">
-     <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
-     </svg></a></li>
+
+                        <div class="nav-item m-2">
+                            <a class="nav-link" href="carritoCompra.aspx" style="float: right">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="nav-item m-2">
+                            <a class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover" href="Login.aspx">Iniciar Sesión</a>
+                        </div>
+                        <div class="nav-item m-2">
+                            <a class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover" href="Register.aspx">Registrate</a>
+                        </div>
+
 
                     </div>
                 </div>
@@ -73,13 +85,13 @@
 
 
 <style>
-        .bd-search {
+    .bd-search {
         position: absolute;
         top: .875rem;
         left: 50%;
         width: 600px;
         margin-left: -300px;
-/*        text-align:center;
-*/}
-          
+        /*        text-align:center;
+*/
+    }
 </style>

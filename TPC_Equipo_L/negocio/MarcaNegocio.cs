@@ -136,6 +136,7 @@ namespace negocio
                 if (marca != null)
                 {
                     datos.setearProcedimiento("spActualizarMarca");
+                    datos.setearParametros("@Cod_Marca", marca.Cod_Marca);
                     datos.setearParametros("@Nombre_M", marca.Nombre);
                     datos.setearParametros("@ImgURL_M", marca.ImagenURL);
                     datos.setearParametros("@Estado_M", true);

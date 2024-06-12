@@ -11,7 +11,7 @@ namespace TPC_Equipo_L
 {
 
 
-    public partial class Site1
+    public partial class LogReg
     {
 
         /// <summary>

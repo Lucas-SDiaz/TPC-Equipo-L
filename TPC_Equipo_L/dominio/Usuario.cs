@@ -15,6 +15,7 @@ namespace dominio
         public string Correo { get; set; }
         public string Contrasenia { get; set; }
         public string Direccion { get; set; }
+        public Provincia Provincia { get; set; }
         public Localidad Localidad { get; set; }
         public string ImagenURL { get; set; }
         public bool Estado { get; set; }
@@ -22,7 +23,7 @@ namespace dominio
         //Constructor
         public Usuario() { }
         //Constructor con Parámetros
-        public Usuario(string cod_Usuario, string nombreUsuario, string nombre, string apellido, string correo, string contrasenia, string direccion, Localidad localidad, string imagenURL, bool estado)
+        public Usuario(string cod_Usuario, string nombreUsuario, string nombre, string apellido, string correo, string contrasenia, string direccion, Localidad localidad, Provincia provincia, string imagenURL, bool estado)
         {
             Cod_Usuario = cod_Usuario;
             NombreUsuario = nombreUsuario;
@@ -32,6 +33,7 @@ namespace dominio
             Contrasenia = contrasenia;
             Direccion = direccion;
             Localidad = localidad;
+            Provincia = provincia;
             ImagenURL = imagenURL;
             Estado = estado;
         }

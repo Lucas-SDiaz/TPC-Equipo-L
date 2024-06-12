@@ -144,9 +144,10 @@ namespace negocio
                 if (categoria != null)
                 {
                     datos.setearProcedimiento("spActualizarCategoria");
-                    datos.setearParametros("@@Nombre_C", categoria.Nombre);
-                    datos.setearParametros("@@ImgURL_C", categoria.ImagenURL);
-                    datos.setearParametros("@@Estado_C", true);
+                    datos.setearParametros("@Cod_Categoria", categoria.Cod_Categoria);
+                    datos.setearParametros("@Nombre_C", categoria.Nombre);
+                    datos.setearParametros("@ImgURL_C", categoria.ImagenURL);
+                    datos.setearParametros("@Estado_C", true);
                     datos.ejecutarAccion();
                     datos.cerrarConexion();
                 }
