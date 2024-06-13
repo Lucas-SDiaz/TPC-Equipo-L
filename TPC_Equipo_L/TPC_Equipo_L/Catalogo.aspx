@@ -41,10 +41,13 @@
                     <p class="card-text" style="color: black; text-align: center;"><%:"Stock: " + producto.Stock %></p>
                     <p class="card-text" style="color: black; text-align: center;"><%:"$" + producto.Precio %></p>
                     <div class="d-grid gap-2">
-
-                        <a href="detalleProducto.aspx?id=<%: producto.CodigoProducto %>" class="btn btn-outline-dark">Ver detalle</a>
-
-                        <a href="carritoCompra.aspx?id=<%: producto.CodigoProducto %>"  class="btn btn-outline-success">Agregar al carrito</a>
+                        <a href="detalleProducto.aspx?id=<%: producto.CodigoProducto %>" class="btn btn-outline-success">Ver detalle</a>
+                        <a href="carritoCompra.aspx?id=<%: producto.CodigoProducto %>"  class="btn btn-success">Agregar al carrito</a>
+                        <div class="input-group">
+                        <asp:Button class="btn btn-success" runat="server" type="button" Text="-"/>
+                        <asp:TextBox ID="productQuantity" runat="server" CssClass="form-control text-center" Text="1" ReadOnly="true" />
+                        <asp:Button class="btn btn-success" runat="server" type="button" Text="+"/> 
+                        </div>
                     </div>
                 </div>
             </div>
