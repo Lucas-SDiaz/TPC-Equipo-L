@@ -50,14 +50,27 @@
                             </a>
                         </div>
 
-                        <div class="nav-item m-2">
-                            <a class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover" href="Login.aspx">Iniciar Sesión</a>
-                        </div>
-                        <div class="nav-item m-2">
-                            <a class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover" href="Register.aspx">Registrate</a>
-                        </div>
+                        <%if (Session["usuario"] != null)
+                          { %>
+
+                                <div class="nav-item m-2">
+                                    <asp:Label ID="lblMensaje" runat="server"/>
+                                </div>
+                                <div class="nav-item">
+                                    <asp:Button Text="Cerrar Sesión" CssClass="btn btn-outline-danger" OnClick="btnCerrarSession_Click" ID="btnCerrarSession" runat="server"/>
+                                </div>
 
 
+                       <% }
+                            else
+                            { %>
+                                <div class="nav-item m-2">
+                                    <a class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover" href="Login.aspx">Iniciar Sesión</a>
+                                </div>
+                                <div class="nav-item m-2">
+                                    <a class="link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover" href="Register.aspx">Registrate</a>
+                                </div>
+                            <% } %>
                     </div>
                 </div>
             </nav>
