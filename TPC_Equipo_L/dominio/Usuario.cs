@@ -23,18 +23,18 @@ namespace dominio
         //Constructor
         public Usuario() { }
         //Constructor con Parámetros
-        public Usuario(string cod_Usuario, string nombreUsuario, string nombre, string apellido, string correo, string contrasenia, string direccion, Localidad localidad, Provincia provincia, string imagenURL, bool estado)
+        public Usuario(/*string cod_Usuario,string nombreUsuario, string nombre, string apellido, */string correo, string contrasenia/*, string direccion, Localidad localidad, Provincia provincia, string imagenURL,*/, bool estado)
         {
-            Cod_Usuario = cod_Usuario;
-            NombreUsuario = nombreUsuario;
-            Nombre = nombre;
-            Apellido = apellido;
+            //Cod_Usuario = cod_Usuario;
+            //NombreUsuario = nombreUsuario;
+            //Nombre = nombre;
+            //Apellido = apellido;
             Correo = correo;
             Contrasenia = contrasenia;
-            Direccion = direccion;
-            Localidad = localidad;
-            Provincia = provincia;
-            ImagenURL = imagenURL;
+            //Direccion = direccion;
+            //Localidad = localidad;
+            //Provincia = provincia;
+            //ImagenURL = imagenURL;
             Estado = estado;
         }
 

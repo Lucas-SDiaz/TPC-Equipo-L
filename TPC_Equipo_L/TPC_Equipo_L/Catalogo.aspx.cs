@@ -18,13 +18,15 @@ namespace TPC_Equipo_L
             if (Session["ListaProductos"] != null || Session["ListaProductosCategoria"] != null)
             {
                 ListaProductos = (List<Producto>)Session["ListaProductos"];
-                ListaProductosCategoria = (List<Producto>) Session["ListaProductosCategoria"];
+                ListaProductosCategoria = (List<Producto>)Session["ListaProductosCategoria"];
             }
-            else if(!IsPostBack)
+            else if (!IsPostBack)
             {
                 ProductoNegocio negocio = new ProductoNegocio();
                 ListaProductos = negocio.listarConSp();
                 Session.Add("ListaProductos", ListaProductos);
+                repRepetidor.DataSource = ListaProductos;
+                repRepetidor.DataBind();
             }
             else
             {
@@ -34,5 +36,28 @@ namespace TPC_Equipo_L
                 Session.Add("ListaProductosCategoria", ListaProductos);
             }
         }
+
+        protected void Unnamed_Command(object sender, CommandEventArgs e)
+        {
+            var boton = (Button)sender;
+            Producto prod = new Producto();
+            var item = (RepeaterItem)boton.NamingContainer;
+            var txtCantidad = (TextBox)item.FindControl("txtCantidad");
+
+            if (txtCantidad != null)
+            {
+                int cant = int.Parse(txtCantidad.Text);
+                if (e.CommandName == "Quitar" && cant > 1)
+                {
+                    txtCantidad.Text = (cant - 1).ToString();
+                }
+                else if (e.CommandName == "Agregar")
+                {
+                    txtCantidad.Text = (cant + 1).ToString();
+                }
+            }
+
+        }
+
     }
 }
