@@ -36,9 +36,10 @@ namespace TPC_Equipo_L
                     }
                     else
                     {
-                        //Solucionado problema de referencia con ScriptManager.
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('El producto ya está en el carrito.\\nPuede eliminar el producto si desea modificar su cantidad');", true);
-                    }
+                        Producto productoEnCarrito = carrito.Find(p => p.CodigoProducto == seleccionado.CodigoProducto);
+                        productoEnCarrito.Cantidad += cant;
+
+                     }
                 }
 
                 dgvCarrito.DataSource = carrito;
