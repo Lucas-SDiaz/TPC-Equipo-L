@@ -15,26 +15,28 @@ namespace TPC_Equipo_L
         public List<Producto> ListaProductosCategoria { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["ListaProductos"] != null || Session["ListaProductosCategoria"] != null)
+
+           
+
+            if (Request.QueryString["Cat"] != null)
             {
-                ListaProductos = (List<Producto>)Session["ListaProductos"];
-                ListaProductosCategoria = (List<Producto>)Session["ListaProductosCategoria"];
+                string cat = Request.QueryString["Cat"].ToString();
+
+                ProductoNegocio negocio = new ProductoNegocio();
+                ListaProductos = negocio.listarCategorias(cat);
+                Session.Add("ListaProductosCategoria", ListaProductos);
+                repRepetidor.DataSource = ListaProductos;
+                repRepetidor.DataBind();
             }
-            else if (!IsPostBack)
-            {
+            else {
                 ProductoNegocio negocio = new ProductoNegocio();
                 ListaProductos = negocio.listarConSp();
                 Session.Add("ListaProductos", ListaProductos);
                 repRepetidor.DataSource = ListaProductos;
                 repRepetidor.DataBind();
             }
-            else
-            {
-                string cat = Request.QueryString["Cat"].ToString();
-                ProductoNegocio negocio = new ProductoNegocio();
-                ListaProductos = negocio.listarCategorias(cat);
-                Session.Add("ListaProductosCategoria", ListaProductos);
-            }
+
+         
         }
 
         protected void Unnamed_Command(object sender, CommandEventArgs e)
