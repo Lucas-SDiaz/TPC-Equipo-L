@@ -47,7 +47,7 @@ namespace negocio
         }
         */
         private Producto producto = null;
-        public List<string> listarImgPorArticulo(Producto producto)
+        public List<string> listarImgPorProducto(Producto producto)
         {
             this.producto = producto;
             AccesoDatos datos = new AccesoDatos();

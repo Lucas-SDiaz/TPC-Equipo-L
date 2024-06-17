@@ -15,13 +15,13 @@
         {
             if (lblId.Text == producto.CodigoProducto.ToString())
             {
-                //lista = negocio.listarImgPorproducto(producto);
+                lista = negocio.listarImgPorProducto(producto);
     %>
 
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <%--<img src="<%:lista[0] %>" class="rounded mx-auto d-block custom-carousel-img-size" alt="..." onerror="this.src='https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg'">--%>
+               <img src="<%:lista[0] %>" class="rounded mx-auto d-block custom-carousel-img-size" alt="..." onerror="this.src='https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg'">
             </div>
             <%  
                 int c = lista.Count();
@@ -29,7 +29,7 @@
                 {
             %>
             <div class="carousel-item">
-                <%--<img src="<%:lista[i] %>" class="rounded mx-auto d-block custom-carousel-img-size" alt="..." onerror="this.src='https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg'">--%>
+                <img src="<%:lista[i] %>" class="rounded mx-auto d-block custom-carousel-img-size" alt="..." onerror="this.src='https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg'">
             </div>
             <% 
                 }
@@ -73,4 +73,12 @@
             }
         }
     %><a href="catalogo.aspx" class="btn btn-outline-dark">Volver</a>
+
+
+      <style>
+        .custom-carousel-img-size {
+            width: auto; 
+            height: 300px;
+        }
+    </style>
 </asp:Content>
