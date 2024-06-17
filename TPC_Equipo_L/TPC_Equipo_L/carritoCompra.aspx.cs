@@ -70,7 +70,7 @@ namespace TPC_Equipo_L
             SqlMoney precioTotal = 0;
             foreach (Producto producto in carrito)
             {
-                precioTotal += producto.Precio;
+                precioTotal += producto.Precio * producto.Cantidad;
             }
 
             lblPrecioTotal.Text = "Precio Total: $" + precioTotal.ToString();
