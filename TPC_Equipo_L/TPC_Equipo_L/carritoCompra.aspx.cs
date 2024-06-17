@@ -82,15 +82,18 @@ namespace TPC_Equipo_L
             Button btn = (Button)sender;
             int rowIndex = int.Parse(btn.CommandArgument);
 
-            TextBox txtCantidad = (TextBox)dgvCarrito.Rows[rowIndex].FindControl("txtCantidad");
-            int cantidad = int.Parse(txtCantidad.Text);
+            List<Producto> carrito = (List<Producto>)Session["carrito"];
+            Producto producto = carrito[rowIndex];
 
-            if (cantidad > 1)
+            if (producto.Cantidad > 1)
             {
-                cantidad--;
-                txtCantidad.Text = cantidad.ToString();
-            }
+                producto.Cantidad--;
+                Session["carrito"] = carrito; 
+                dgvCarrito.DataSource = carrito;
+                dgvCarrito.DataBind();
 
+                RecalcularPrecioTotal(carrito);
+            }
         }
 
         protected void SumarCantidad_Click(object sender, EventArgs e)
@@ -98,12 +101,26 @@ namespace TPC_Equipo_L
             Button btn = (Button)sender;
             int rowIndex = int.Parse(btn.CommandArgument);
 
-            TextBox txtCantidad = (TextBox)dgvCarrito.Rows[rowIndex].FindControl("txtCantidad");
-            int cantidad = int.Parse(txtCantidad.Text);
+            List<Producto> carrito = (List<Producto>)Session["carrito"];
+            Producto producto = carrito[rowIndex];
 
-            cantidad++;
-            txtCantidad.Text = cantidad.ToString();
+            producto.Cantidad++;
+            Session["carrito"] = carrito; 
+            dgvCarrito.DataSource = carrito;
+            dgvCarrito.DataBind();
+
+            RecalcularPrecioTotal(carrito);
         }
 
+        private void RecalcularPrecioTotal(List<Producto> carrito)
+        {
+            SqlMoney precioTotal = 0;
+            foreach (Producto producto in carrito)
+            {
+                precioTotal += (producto.Precio) * (producto.Cantidad);
+            }
+
+            lblPrecioTotal.Text = "Precio Total: $" + precioTotal.ToString();
+        }
     }
 }
