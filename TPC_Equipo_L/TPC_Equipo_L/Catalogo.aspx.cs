@@ -16,8 +16,8 @@ namespace TPC_Equipo_L
         protected void Page_Load(object sender, EventArgs e)
         {
 
-           
 
+            if (!IsPostBack) { 
             if (Request.QueryString["Cat"] != null)
             {
                 string cat = Request.QueryString["Cat"].ToString();
@@ -35,8 +35,9 @@ namespace TPC_Equipo_L
                 repRepetidor.DataSource = ListaProductos;
                 repRepetidor.DataBind();
             }
+            }
 
-         
+
         }
 
         protected void Unnamed_Command(object sender, CommandEventArgs e)
