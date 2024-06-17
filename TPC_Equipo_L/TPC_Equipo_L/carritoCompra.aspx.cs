@@ -26,8 +26,10 @@ namespace TPC_Equipo_L
                 if (Request.QueryString["id"] != null)
                 {
                     id = Request.QueryString["id"].ToString();
+                    int cant = int.Parse((string)Session["cantidad"]);
                     List<Producto> listaOriginal = (List<Producto>)Session["listaProductos"];
                     Producto seleccionado = listaOriginal.Find(x => x.CodigoProducto == id);
+                    seleccionado.Cantidad = cant;
                     if (!carrito.Exists(a => a.CodigoProducto == seleccionado.CodigoProducto))
                     {
                         carrito.Add(seleccionado);
@@ -35,7 +37,7 @@ namespace TPC_Equipo_L
                     else
                     {
                         //Solucionado problema de referencia con ScriptManager.
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('El artículo ya está en el carrito. Realice una nueva compra o aguarde una actualizacion de sistema. Disculpe las molestias');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('El producto ya está en el carrito.\\nPuede eliminar el producto si desea modificar su cantidad');", true);
                     }
                 }
 

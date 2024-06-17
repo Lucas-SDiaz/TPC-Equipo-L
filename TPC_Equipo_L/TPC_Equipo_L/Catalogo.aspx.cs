@@ -34,7 +34,8 @@ namespace TPC_Equipo_L
                 Session.Add("ListaProductos", ListaProductos);
                 repRepetidor.DataSource = ListaProductos;
                 repRepetidor.DataBind();
-            }
+                Session.Add("cantidad", "1");
+                }
             }
 
 
@@ -58,8 +59,10 @@ namespace TPC_Equipo_L
                 {
                     txtCantidad.Text = (cant + 1).ToString();
                 }
+                Session.Add("cantidad", txtCantidad.Text);
             }
-
+            
+            
         }
 
     }

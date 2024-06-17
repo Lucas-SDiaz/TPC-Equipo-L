@@ -21,6 +21,7 @@
             <asp:BoundField HeaderText="Marca" DataField="Marca.Cod_Marca" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" HeaderStyle-BackColor="DarkGray" />
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
             <asp:BoundField HeaderText="Descripción" DataField="Descripcion" />
+            <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
             <asp:BoundField HeaderText="Precio" DataField="Precio" />
             <asp:BoundField HeaderText="Categoria" DataField="Categoria.Nombre" />
             <asp:BoundField HeaderText="Marca" DataField="Marca.Nombre" />

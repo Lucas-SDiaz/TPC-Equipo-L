@@ -16,6 +16,7 @@ namespace dominio
         private string descripcion;
         private SqlMoney precio;
         private int stock;
+        private int cantidad;
 
 
         public int Id { get; set; }
@@ -30,6 +31,7 @@ namespace dominio
         public SqlMoney Precio { get; set; }
         public int Stock { get; set; }
         public bool Estado { get; set; }
+        public int Cantidad { get; set; }
         public Producto() { }
         public Producto(int Id, string CodigoArticulo, string Nombre, string Descripcion, Marca Marca, Categoria Categoria, Imagen imagen, SqlMoney Precio,int stock, bool estado)
         {
