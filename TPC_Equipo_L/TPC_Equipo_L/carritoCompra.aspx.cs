@@ -47,7 +47,7 @@ namespace TPC_Equipo_L
                 SqlMoney precioTotal = 0;
                 foreach (Producto producto in carrito)
                 {
-                    precioTotal += (producto.Precio);
+                    precioTotal += (producto.Precio)* (producto.Cantidad);
                 }
 
                 lblPrecioTotal.Text = "Precio Total: $" + precioTotal.ToString();
@@ -76,5 +76,34 @@ namespace TPC_Equipo_L
             lblPrecioTotal.Text = "Precio Total: $" + precioTotal.ToString();
     
         }
+
+        protected void RestarCantidad_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int rowIndex = int.Parse(btn.CommandArgument);
+
+            TextBox txtCantidad = (TextBox)dgvCarrito.Rows[rowIndex].FindControl("txtCantidad");
+            int cantidad = int.Parse(txtCantidad.Text);
+
+            if (cantidad > 1)
+            {
+                cantidad--;
+                txtCantidad.Text = cantidad.ToString();
+            }
+
+        }
+
+        protected void SumarCantidad_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int rowIndex = int.Parse(btn.CommandArgument);
+
+            TextBox txtCantidad = (TextBox)dgvCarrito.Rows[rowIndex].FindControl("txtCantidad");
+            int cantidad = int.Parse(txtCantidad.Text);
+
+            cantidad++;
+            txtCantidad.Text = cantidad.ToString();
+        }
+
     }
 }
