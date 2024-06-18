@@ -30,8 +30,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title" style="color: black; text-align: center;"><b><%#Eval("Nombre")%></b></h5>
                                     <p class="card-text" style="color: black; text-align: center;"><%#Eval("Marca")%></p>
-                                    <p class="card-text" style="color: black; text-align: center;"><%#Eval("Stock")%></p>
-                                    <p class="card-text" style="color: black; text-align: center;"><%#Eval("Precio")%></p>
+                                    <p class="card-text" style="color: black; text-align: center;">Stock: <%#Eval("Stock")%></p>
+                                    <p class="card-text" style="color: black; text-align: center;">Precio: $ <%#Eval("Precio")%></p>
                                     <div class="d-grid gap-2">
                                     <a href="detalleProducto.aspx?id=<%#Eval("CodigoProducto")%>" class="btn btn-outline-success">Ver detalle</a>
                                         <div class="input-group">                                        
