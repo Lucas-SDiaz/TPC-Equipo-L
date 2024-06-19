@@ -123,6 +123,7 @@ namespace negocio
             list.Items.Insert(0, new ListItem("-Categorias-", "0"));
         }
 
+        
         public void agregar(Producto pro)
         {
             AccesoDatos datos = new AccesoDatos();

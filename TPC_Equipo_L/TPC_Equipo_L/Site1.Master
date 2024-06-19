@@ -44,7 +44,7 @@
                      
                             <div class="nav-item m-2">
                                 <a class="nav-link" href="carritoCompra.aspx" style="float: right">
-                                    <span class="badge text-bg-danger "><span id="spanMensaje"><%  int cantProd = 0;
+                                    <span class="badge text-bg-danger"><span id="spanMensaje"><%  int cantProd = 0;
                                                                                                  if (Session["carrito"] != null) {
                                                                                                      List<dominio.Producto> carrito = (List<dominio.Producto>)Session["carrito"];
                                                                                                      Session.Add("carrito", carrito);
