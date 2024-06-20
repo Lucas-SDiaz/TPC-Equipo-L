@@ -33,7 +33,23 @@ namespace TPC_Equipo_L
 
         protected void dgvProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            Console.WriteLine("Hola");
+            ProductoNegocio negocio = new ProductoNegocio();
+            try
+            {
+                var codP = dgvProductos.DataKeys[e.RowIndex].Value.ToString();
+                if (negocio.eliminar(codP))
+                {
+                    lblMensaje.Text = "¡Se Eliminó correctamente!";
+                    lblMensaje.CssClass = "alert alert-success";
+                    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "redirectJS",
+                    "setTimeout(function() { window.location.replace('listarProducto.aspx') }, 3000);", true);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

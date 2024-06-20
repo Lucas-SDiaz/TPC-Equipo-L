@@ -23,5 +23,26 @@ namespace TPC_Equipo_L
             var codM = dgvMarca.SelectedDataKey.Value.ToString();
             Response.Redirect("modificarMarca.aspx?codM=" + codM);
         }
+
+        protected void dgvMarca_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            MarcaNegocio negocio = new MarcaNegocio();
+            try
+            {
+                var codP = dgvMarca.DataKeys[e.RowIndex].Value.ToString();
+                if (negocio.eliminar(codP))
+                {
+                    lblMensaje.Text = "¡Se Eliminó correctamente!";
+                    lblMensaje.CssClass = "alert alert-success";
+                    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "redirectJS",
+                    "setTimeout(function() { window.location.replace('listarMarca.aspx') }, 3000);", true);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

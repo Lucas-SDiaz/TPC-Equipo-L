@@ -123,7 +123,6 @@ namespace negocio
             list.Items.Insert(0, new ListItem("-Categorias-", "0"));
         }
 
-        
         public void agregar(Producto pro)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -254,18 +253,18 @@ namespace negocio
             }
         }
 
-        public void agregarImagen(string cod, string url) 
+        public void agregarImagen(string cod, string url)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearProcedimiento("spAgregarImagen");
                 datos.setearParametros("@Cod_Producto", cod);
-                datos.setearParametros("@ImagenURL" , url);
+                datos.setearParametros("@ImagenURL", url);
                 datos.ejecutarAccion();
                 datos.cerrarConexion();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
             }
@@ -273,6 +272,23 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public bool eliminar(string cod)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("spEliminarProducto");
+                datos.setearParametros("@Cod_Producto", cod);
+                datos.ejecutarAccion();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally { datos.cerrarConexion(); }
         }
     }
 }

@@ -24,5 +24,25 @@ namespace TPC_Equipo_L
             Response.Redirect("modificarCategoria.aspx?codC=" + codC);
         }
 
+        protected void dgvCategoria_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            try
+            {
+                var codP = dgvCategoria.DataKeys[e.RowIndex].Value.ToString();
+                if (negocio.eliminar(codP))
+                {
+                    lblMensaje.Text = "¡Se Eliminó correctamente!";
+                    lblMensaje.CssClass = "alert alert-success";
+                    ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "redirectJS",
+                    "setTimeout(function() { window.location.replace('listarCategoria.aspx') }, 3000);", true);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

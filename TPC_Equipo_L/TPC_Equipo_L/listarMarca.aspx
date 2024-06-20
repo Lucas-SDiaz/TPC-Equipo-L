@@ -12,7 +12,7 @@
     <h2 class="text-center p-2">Listado Marcas</h2>
 
     <div class=" container-fluid mx-auto p-2" style="width: 50%;">
-        <asp:GridView ID="dgvMarca" DataKeyNames="Cod_Marca" CssClass="table table-dark table-bordered" OnSelectedIndexChanged="dgvMarca_SelectedIndexChanged" AutoGenerateColumns="false" runat="server">
+        <asp:GridView ID="dgvMarca" DataKeyNames="Cod_Marca" CssClass="table table-dark table-bordered" OnSelectedIndexChanged="dgvMarca_SelectedIndexChanged" OnRowDeleting="dgvMarca_RowDeleting" AutoGenerateColumns="false" runat="server">
             <Columns>
                 <asp:BoundField HeaderText="Marca" DataField="Cod_Marca" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" />
                 <asp:BoundField HeaderText="Marca" DataField="Nombre" HeaderStyle-BackColor="DarkGray" />
@@ -21,5 +21,7 @@
             </Columns>
         </asp:GridView>
     </div>
+
+    <asp:Label ID="lblMensaje" Text="" runat="server" />
 
 </asp:Content>

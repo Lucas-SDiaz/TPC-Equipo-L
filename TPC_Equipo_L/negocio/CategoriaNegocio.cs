@@ -43,77 +43,6 @@ namespace negocio
             }
 
         }
-        /*
-        public List<Categoria> listar()
-        {
-            List<Categoria> lista = new List<Categoria>();
-            AccesoDatos datos = new AccesoDatos();
-
-            try
-            {
-                datos.setearConsulta("Select Id, Descripcion from CATEGORIAS");
-                datos.ejecutarLectura();
-
-                while (datos.Lector.Read())
-                {
-                    Categoria aux = new Categoria();
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    lista.Add(aux);
-                }
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-
-        }
-
-        public void agregar(Categoria categoria)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                datos.setearConsulta("INSERT INTO CATEGORIAS (Descripcion) VALUES (@descripcion)");
-                datos.setearParametros("@descripcion", categoria.Descripcion);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-        public void eliminar(int id)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-
-                datos.setearConsulta("DELETE FROM CATEGORIAS WHERE Id = @id");
-                datos.setearParametros("@id", id);
-                datos.ejecutarAccion();
-            }
-            catch (Exception Ex)
-            {
-
-                throw Ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-
-        }*/
 
         public void agregar(Categoria categoria)
         {
@@ -157,7 +86,22 @@ namespace negocio
 
                 throw;
             }
-
+        }
+        public bool eliminar(string cod)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("spEliminarCategoria");
+                datos.setearParametros("@Cod_Categoria", cod);
+                datos.ejecutarAccion();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally { datos.cerrarConexion(); }
         }
     }
 }
