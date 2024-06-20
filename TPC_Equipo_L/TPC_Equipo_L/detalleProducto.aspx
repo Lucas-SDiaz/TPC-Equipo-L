@@ -21,7 +21,7 @@
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-               <img src="<%:lista[0] %>" class="rounded mx-auto d-block custom-carousel-img-size" alt="..." onerror="this.src='https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg'">
+                <img src="<%:lista[0] %>" class="rounded mx-auto d-block custom-carousel-img-size" alt="..." onerror="this.src='https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg'">
             </div>
             <%  
                 int c = lista.Count();
@@ -62,7 +62,7 @@
         <br />
     </div>
     <div class="d-grid gap-2 d-md-block">
-        <a href="carritoCompra.aspx?id=<%: producto.CodigoProducto %>" class="btn btn-outline-success" >
+        <a href="carritoCompra.aspx?id=<%: producto.CodigoProducto %>" class="btn btn-outline-success">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
             </svg>Agregar al carrito</a>
@@ -75,9 +75,9 @@
     %><a href="catalogo.aspx" class="btn btn-outline-dark">Volver</a>
 
 
-      <style>
+    <style>
         .custom-carousel-img-size {
-            width: auto; 
+            width: auto;
             height: 300px;
         }
     </style>

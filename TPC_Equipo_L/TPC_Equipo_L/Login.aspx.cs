@@ -42,5 +42,9 @@ namespace TPC_Equipo_L
                 Response.Redirect("Error.aspx");
             }
         }
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
     }
 }

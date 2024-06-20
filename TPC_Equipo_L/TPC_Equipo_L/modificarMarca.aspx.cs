@@ -32,7 +32,7 @@ namespace TPC_Equipo_L
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
-            Marca marca= new Marca();
+            Marca marca = new Marca();
             MarcaNegocio negocio = new MarcaNegocio();
 
             if (txtNombre.Text.Trim() != string.Empty && txtImagen.Text.Trim() != string.Empty)
@@ -56,6 +56,10 @@ namespace TPC_Equipo_L
                 lblMensaje.Text = "Tiene que llenar todos los campos.";
                 lblMensaje.CssClass = "alert alert-success";
             }
+        }
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("listarMarca.aspx");
         }
     }
 }

@@ -24,7 +24,7 @@ namespace TPC_Equipo_L
                     negocio.cargarDDLCategorias(ddlCategoria);
                     codP = Request.QueryString["codP"].ToString();
                     List<Producto> temp = (List<Producto>)Session["listaProductos"];
-                    List<Imagen> tImagen = (List<Imagen>)Session["listaImagenes"]; 
+                    List<Imagen> tImagen = (List<Imagen>)Session["listaImagenes"];
                     Producto selected = temp.Find(x => x.CodigoProducto == codP);
                     selected.Imagen = new Imagen();
                     selected.CodigoProducto = codP;
@@ -177,6 +177,9 @@ namespace TPC_Equipo_L
             url = txtImagen.Text;
         }
 
-
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("listarProducto.aspx");
+        }
     }
 }

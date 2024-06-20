@@ -60,6 +60,10 @@ namespace TPC_Equipo_L
                 lblMensaje.CssClass = "alert alert-success";
             }
         }
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("listarCategoria.aspx");
+        }
 
     }
 }

@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="modificarMarca.aspx.cs" Inherits="TPC_Equipo_L.modificarMarca" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-        <h1 class="text-center">Modificar Marca</h1>
+    <h1 class="text-center">Modificar Marca</h1>
 
     <div class="mx-auto p-2" style="width: 600px">
         <div class="card" style="width: 38rem;">
@@ -17,6 +18,7 @@
                     <asp:TextBox ID="txtImagen" CssClass="form-control" runat="server" />
                 </div>
                 <div class="mb-2 text-center p-2">
+                    <asp:Button Text="Volver" ID="btnVolver" CssClass="btn btn-outline-secondary" OnClick="btnVolver_Click" runat="server" />
                     <asp:Button Text="Modificar" ID="btnModificar" OnClick="btnModificar_Click" CssClass="btn btn-outline-success" runat="server" />
                 </div>
             </div>

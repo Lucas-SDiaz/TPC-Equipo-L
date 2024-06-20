@@ -17,6 +17,7 @@
                     <asp:TextBox type="password" CssClass="form-control" ID="txtPass" placeholder="Contraseña" runat="server" />
                 </div>
                 <div class="text-end">
+                    <asp:Button Text="Volver" ID="btnVolver" CssClass="btn btn-outline-secondary" OnClick="btnVolver_Click" runat="server" />
                     <asp:Button ID="btnIniciar" OnClick="btnIniciar_Click" CssClass="btn btn-outline-primary" Text="Iniciar" runat="server" />
                 </div>
             </div>

@@ -65,6 +65,7 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     <div class="mb-2 text-center">
+        <asp:Button Text="Volver" ID="btnVolver" CssClass="btn btn-outline-secondary" OnClick="btnVolver_Click" runat="server" />
         <asp:Button Text="Modificar" ID="btnModificar" OnClick="btnModificar_Click" CssClass="btn btn-outline-success" runat="server" />
     </div>
 

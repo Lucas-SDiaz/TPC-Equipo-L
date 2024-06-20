@@ -20,7 +20,7 @@
                     <div class="row align-items-start">
                         <div class="col">
                             <asp:Label ID="Label1" CssClass="fs-5" Text="Provincia" runat="server" />
-                            <asp:DropDownList AutoPostBack="true" CssClass="btn btn-outline-dark dropdown-toggle dropdown-toggle-split" ID="ddlProvincia" runat="server" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged"/>
+                            <asp:DropDownList AutoPostBack="true" CssClass="btn btn-outline-dark dropdown-toggle dropdown-toggle-split" ID="ddlProvincia" runat="server" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged" />
                         </div>
                         <div class="col">
                             <asp:Label ID="Label2" CssClass="fs-5" Text="Localidad" runat="server" />
@@ -51,6 +51,7 @@
                 </div>
 
                 <div class="text-end">
+                    <asp:Button Text="Volver" ID="btnVolver" CssClass="btn btn-outline-secondary" OnClick="btnVolver_Click" runat="server" />
                     <asp:Button ID="btnRegistrar" CssClass="btn btn-outline-primary" Text="Registrar" runat="server" OnClick="btnRegistrar_Click" />
                 </div>
             </div>

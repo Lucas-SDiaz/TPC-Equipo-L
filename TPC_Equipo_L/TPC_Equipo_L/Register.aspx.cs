@@ -17,9 +17,9 @@ namespace TPC_Equipo_L
             UsuarioNegocio negocio = new UsuarioNegocio();
             if (!IsPostBack)
             {
-                ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;                
+                ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
                 negocio.cargarDDLProvincias(ddlProvincia);
-                
+
             }
         }
 
@@ -37,7 +37,7 @@ namespace TPC_Equipo_L
 
 
 
-           
+
         }
 
         protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,5 +50,10 @@ namespace TPC_Equipo_L
             ddlLocalidad.Items.Insert(0, new ListItem("-Localidades-", "0"));
 
         }
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
     }
+
 }
