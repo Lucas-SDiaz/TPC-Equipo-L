@@ -13,9 +13,9 @@
             display: none;
         }
     </style>
-            <asp:ScriptManager runat="server" ID="ScriptManager"></asp:ScriptManager>
+            <%--<asp:ScriptManager runat="server" ID="ScriptManager"></asp:ScriptManager>
             <asp:UpdatePanel runat="server">
-                <ContentTemplate>
+                <ContentTemplate>--%>
                     <asp:GridView runat="server" ID="dgvCarrito" CssClass="table table-info table-borderless table-striped" AutoGenerateColumns="false" DataKeyNames="CodigoProducto" OnSelectedIndexChanged="dgvCarrito_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField HeaderText="Categoria" DataField="Categoria.Cod_Categoria" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" />
@@ -41,6 +41,6 @@
                 <br />
             <a href="Catalogo.aspx" class="btn btn-outline-dark">Volver</a>
             <a href="#" class="btn btn-outline-success" style="float: right;">Finalizar compra</a>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+       <%-- </ContentTemplate>
+    </asp:UpdatePanel>--%>
 </asp:Content>
