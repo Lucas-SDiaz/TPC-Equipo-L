@@ -41,31 +41,30 @@ namespace negocio
             }
         }
 
-        // public void registrarUsuario(Usuario usuario)
-        //{
-        //    AccesoDatos datos = new AccesoDatos();
-        //    try
-        //    {
-        //        datos.setearConsulta();
-        //        datos.setearParametros();
-        //        datos.setearParametros();
-        //        datos.setearParametros();
-        //        datos.setearParametros();
-        //        datos.setearParametros();
-        //        datos.setearParametros();
-        //        datos.ejecutarAccion();
-        //        datos.cerrarConexion();
-        //    }
-        //    catch (Exception)
-        //    {
+        public string registrarUsuario(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("spRegister");
+                datos.setearParametros("@Correo_U", usuario.Correo);
+                datos.setearParametros("@Contrasenia_U", usuario.Contrasenia);
+                datos.setearParametros("@Nombre_U", usuario.Nombre);
+                datos.setearParametros("@Apellido_U", usuario.Apellido);
+                datos.setearParametros("@TipoUser_U", 1);
+                datos.setearParametros("Estado_U", true);
+                return datos.ejecutarAccionScalar();
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
-        //    finally 
-        //    { 
-        //        datos.cerrarConexion();
-        //    }
-        //}
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void cargarDDL(DropDownList list, string query, string text, string value)
         {
             AccesoDatos datos = new AccesoDatos();

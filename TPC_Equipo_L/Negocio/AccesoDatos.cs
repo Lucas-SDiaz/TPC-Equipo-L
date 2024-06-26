@@ -14,14 +14,14 @@ namespace negocio
         private SqlCommand comando;
         private SqlDataReader lector;
 
-        public SqlDataReader Lector 
-        { 
-            get 
-            { 
-                return lector; 
-            } 
+        public SqlDataReader Lector
+        {
+            get
+            {
+                return lector;
+            }
         }
-        public AccesoDatos() 
+        public AccesoDatos()
         {
             conexion = new SqlConnection("server=.\\SQLEXPRESS; database=supermercado; integrated security=true");
             comando = new SqlCommand();
@@ -60,11 +60,11 @@ namespace negocio
 
                 throw ex;
             }
-       
+
         }
         public void cerrarConexion()
         {
-            if(lector != null)
+            if (lector != null)
             {
                 lector.Close();
                 conexion.Close();
@@ -83,7 +83,21 @@ namespace negocio
 
                 throw ex;
             }
-            
+
+        }
+        public string ejecutarAccionScalar()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                return comando.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         public void setearParametros(string nombre, object valor)
         {
