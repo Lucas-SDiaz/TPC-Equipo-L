@@ -12,7 +12,7 @@
         }
         .custom-card-size {
             width: 250px;
-            height: 600px;
+            height: 300px;
         }
     </style>
 
@@ -26,7 +26,8 @@
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
                         <div class="col">
-                            <div class="card custom-card-size">
+                            <div class="card">
+                                <img src="<%#Eval("Imagen.Url")%>" class="img-thumbnail" alt="Alternate Text" />
                                 <div class="card-body">
                                     <h5 class="card-title" style="color: black; text-align: center;"><b><%#Eval("Nombre")%></b></h5>
                                     <p class="card-text" style="color: black; text-align: center;"><%#Eval("Marca")%></p>
