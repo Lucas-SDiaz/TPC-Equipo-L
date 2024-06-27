@@ -71,7 +71,7 @@ namespace TPC_Equipo_L
                 }
                 else if(txtEmail.Text == txtEmailRep.Text && txtPass.Text == txtPassRep.Text)
                 {
-                    nuevo.Cod_Usuario = negocio.registrarUsuario(nuevo);
+                    //nuevo.Cod_Usuario = negocio.registrarUsuario(nuevo);
                     emailService.armarCorreo(nuevo.Correo,"Bienvenido a Supermercado", nuevo);
                     emailService.enviarMail();
                     Session["usuario"] = nuevo;

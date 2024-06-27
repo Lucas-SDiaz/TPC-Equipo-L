@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace dominio
 {
+    public enum TipoUsuario
+    {
+        NORMAL = 1,
+        ADMIN = 2
+    }
     public class Usuario
     {
         public string Cod_Usuario { get; set; }
@@ -19,22 +24,30 @@ namespace dominio
         public Localidad Localidad { get; set; }
         public string ImagenURL { get; set; }
         public bool Estado { get; set; }
+        public TipoUsuario TipoUsuario { get; set; }
 
         //Constructor
         public Usuario() { }
         //Constructor con Parámetros
-        public Usuario(/*string cod_Usuario,string nombreUsuario, string nombre, string apellido, */string correo, string contrasenia/*, string direccion, Localidad localidad, Provincia provincia, string imagenURL,*/, bool estado)
+        public Usuario(/*string nombreUsuario, */string cod_Usuario, string nombre, string apellido, string correo, string contrasenia/*, string direccion, Localidad localidad, Provincia provincia, string imagenURL,*/, bool estado, bool admin)
         {
-            //Cod_Usuario = cod_Usuario;
+            Cod_Usuario = cod_Usuario;
             //NombreUsuario = nombreUsuario;
-            //Nombre = nombre;
-            //Apellido = apellido;
+            Nombre = nombre;
+            Apellido = apellido;
             Correo = correo;
             Contrasenia = contrasenia;
             //Direccion = direccion;
             //Localidad = localidad;
             //Provincia = provincia;
             //ImagenURL = imagenURL;
+            Estado = estado;
+            TipoUsuario = admin ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
+        }        
+        public Usuario(string correo, string contrasenia, bool estado)
+        {
+            Correo = correo;
+            Contrasenia = contrasenia;
             Estado = estado;
         }
 

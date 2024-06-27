@@ -16,10 +16,10 @@ namespace negocio
         public EmailService()
         {
             server = new SmtpClient();
-            server.Credentials = new NetworkCredential("api", "********d085");
+            server.Credentials = new NetworkCredential("supermercadoprog3@gmail.com", "gyorzobhuiopygmy");
             server.EnableSsl = true;
             server.Port = 587;
-            server.Host = "live.smtp.mailtrap.io";
+            server.Host = "smtp.gmail.com";
         }
         public void armarCorreo(string emailDestino, string asunto, Usuario usuario)
         {
@@ -29,9 +29,12 @@ namespace negocio
             email.Subject = asunto;
             email.IsBodyHtml = true;
             //email.Body = cuerpo;
-            email.Body = "<h1>Bienvenido " + usuario.Nombre + "</h1> <br />" + 
+            email.Body = "<h1>😎 Bienvenido " + usuario.Nombre + " " + usuario.Apellido + " 😎</h1> <br />" + 
                          "<br />" + 
-                         "<p>¡Gracias por darte de alta en nuestro supermercado!</p>";
+                         "<h3>¡Gracias por darte de alta en nuestro supermercado!</h3> <br />" +
+                         "<br />" +
+                         "<p>Esperamos que disfrutes de nuestro E-commerce.</p> <br />" + 
+                         "<p>Atte: SUPERMERCADO PROG 3 🛍</p>";
         }
         public void enviarMail()
         {
