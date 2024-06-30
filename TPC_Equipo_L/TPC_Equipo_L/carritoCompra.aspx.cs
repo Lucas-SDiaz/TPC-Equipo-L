@@ -17,7 +17,7 @@ namespace TPC_Equipo_L
         protected void Page_Load(object sender, EventArgs e)
         {
            
-             List<Producto> carrito;
+            List<Producto> carrito;
             carrito = Session["carrito"] != null ? (List<Producto>)Session["carrito"] : new List<Producto>();
             Session.Add("carrito", carrito);
             string id;

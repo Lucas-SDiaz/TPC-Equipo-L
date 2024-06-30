@@ -40,7 +40,7 @@
                 <asp:Label ID="lblPrecioTotal" runat="server" CssClass="form-control"  style="text-align: right;" BorderColor="black"   BackColor="#d5e8eb"></asp:Label>
                 <br />
             <a href="Catalogo.aspx" class="btn btn-outline-dark">Volver</a>
-            <a href="#" class="btn btn-outline-success" style="float: right;">Finalizar compra</a>
+            <a href="FinalizarCompra.aspx" class="btn btn-outline-success" style="float: right;">Finalizar compra</a>
        <%-- </ContentTemplate>
     </asp:UpdatePanel>--%>
 </asp:Content>
