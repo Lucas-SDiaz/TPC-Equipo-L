@@ -13,27 +13,12 @@
     <form id="form1" runat="server">
         <div>
 
-            <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+            <nav class="navbar navbar-dark bg-dark">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <a class="navbar-brand" href="#">Admin</a>
-
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="pagina1.aspx">Enlace 1</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="pagina2.aspx">Enlace 2</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="pagina3.aspx">Enlace 3</a>
-                            </li>
-                        </ul>
-                    </div>
-
                     <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Admin</h5>
