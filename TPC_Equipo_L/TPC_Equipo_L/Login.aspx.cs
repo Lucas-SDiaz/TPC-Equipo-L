@@ -28,7 +28,7 @@ namespace TPC_Equipo_L
                     Session.Add("Usuario", usuario);
                     if (Session["Usuario"] != null && ((dominio.Usuario)Session["Usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)
                     {
-                        Response.Redirect("MainMenuAdmin.aspx", false);
+                        Response.Redirect("Dashboard.aspx", false);
                     }
                     else
                     {
