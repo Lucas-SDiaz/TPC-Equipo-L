@@ -79,12 +79,9 @@
 
                             </div>
                         </div>
+
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <div class="text-end m-2">
-                    <asp:Button Text="Volver" ID="btnVolver" CssClass="btn btn-outline-secondary" OnClick="btnVolver_Click" runat="server" />
-                    <asp:Button ID="btnRegistrar" CssClass="btn btn-outline-primary" Text="Registrar" runat="server" OnClick="btnRegistrar_Click" />
-                </div>
             </div>
         </div>
     </div>
@@ -92,5 +89,64 @@
         <asp:Label ID="lblMensaje" Text="" runat="server" />
 
     </div>
+    <div class="container-fluid" style="max-width: 50%;">
+    <div class="card mb-2">
+        <div class="card-body">
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <div class="container overflow-hidden text-center">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="p-3">
+                                    <asp:Label ID="lblCalle" CssClass="fs-5" Text="Calle" runat="server" />
+                                    <asp:TextBox ID="txtCalle" CssClass="form-control" placeholder="Calle" runat="server" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3">
+                                    <asp:Label ID="lblNro" CssClass="fs-5" Text="Numero" runat="server" />
+                                    <asp:TextBox ID="txtNro" CssClass="form-control" placeholder="Nro" runat="server" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3">
+                                    <asp:Label ID="lblCP" CssClass="fs-5" Text="Codigo Postal" runat="server" />
+                                    <asp:TextBox  CssClass="form-control" ID="txtCP" placeholder="CP" runat="server" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3">
+                                    <asp:Label ID="lblProvincia" CssClass="fs-5" Text="Provincia" runat="server" />
+                                    <asp:DropDownList AutoPostBack="true" CssClass="btn btn-outline-dark dropdown-toggle dropdown-toggle-split" ID="ddlProvincia" runat="server" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged"/>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-3">
+                                    <asp:Label ID="lblLocalidad" CssClass="fs-5" Text="Localidad" runat="server" />
+                                    <asp:DropDownList CssClass="btn btn-outline-dark dropdown-toggle dropdown-toggle-split" ID="ddlLocalidad" runat="server" />
+                                </div>
+                                <asp:Label ID="Label5" runat="server" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            <div class="text-end m-2">
+                <asp:Button Text="Volver" ID="Button1" CssClass="btn btn-outline-secondary" OnClick="btnVolver_Click" runat="server" />
+                <asp:Button ID="Button2" CssClass="btn btn-outline-primary" Text="Registrar" runat="server" OnClick="btnRegistrar_Click" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-end p-4">
+    <asp:Label ID="Label9" Text="" runat="server" />
+
+</div>
 
 </asp:Content>

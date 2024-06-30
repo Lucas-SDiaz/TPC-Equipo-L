@@ -25,8 +25,15 @@ namespace TPC_Equipo_L
                 usuario = new Usuario(txtEmail.Text.Trim(), txtPass.Text.Trim(), false);
                 if (negocio.Logear(usuario))
                 {
-                    Session.Add("usuario", usuario);
-                    Response.Redirect("Default.aspx", false);
+                    Session.Add("Usuario", usuario);
+                    if (Session["Usuario"] != null && ((dominio.Usuario)Session["Usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)
+                    {
+                        Response.Redirect("MainMenuAdmin.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("Default.aspx", false);
+                    }
                 }
                 else
                 {

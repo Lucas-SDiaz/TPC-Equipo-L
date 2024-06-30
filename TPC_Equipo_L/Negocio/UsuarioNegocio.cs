@@ -25,7 +25,7 @@ namespace negocio
                 {
                     usuario.Cod_Usuario = (string)datos.Lector["Cod_Usuario"];
                     usuario.Nombre = (string)datos.Lector["Nombre_U"];
-                    //usuario.TipoUsuario = (int)(datos.Lector["TipoUser_U"]) == 2 ? TipoUsuario.Admin : TipoUsuario.Normal;
+                    usuario.TipoUsuario = (int)(datos.Lector["TipoUser_U"]) == 2 ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
                     return true;
                 }
                 return false;
@@ -79,23 +79,28 @@ namespace negocio
             list.Items.Insert(0, new ListItem("-Provincias-", "0"));
         }
 
-
-        public List<string> listarLocalidades(int prov)
+       
+        public List<Localidad> listarLocalidades(int prov)
         {
             List<string> lista = new List<string>();
             AccesoDatos datos = new AccesoDatos();
+            List<Localidad> localidades = new List<Localidad>();
             try
             {
-                datos.setearConsulta("SELECT L.Localidad FROM Localidades L WHERE L.ID_Provincia = @ID_Provincia");
+                datos.setearConsulta("SELECT L.Localidad, L.ID FROM Localidades L WHERE L.ID_Provincia = @ID_Provincia");
                 datos.setearParametros("@ID_Provincia", prov);
                 datos.ejecutarLectura();
                 while(datos.Lector.Read())
                 {
-                    string localidad = (string)datos.Lector["Localidad"];
-                    lista.Add(localidad);
+                    string loc = (string)datos.Lector["Localidad"];
+                    int id = (int)datos.Lector["ID"];
+                    Localidad localidad = new Localidad();
+                    localidad.Nombre = loc;
+                    localidad.Id = id;
+                    localidades.Add(localidad);
                 }
 
-                return lista;
+                return localidades;
             }
             catch (Exception ex)
             {

@@ -26,7 +26,7 @@ namespace dominio
         //Override ToString
         public override string ToString()
         {
-            return "Id: " + Id + "Provincia: " + Provincia + "Nombre: " + Nombre;
+            return Nombre;
         }
     }
 }

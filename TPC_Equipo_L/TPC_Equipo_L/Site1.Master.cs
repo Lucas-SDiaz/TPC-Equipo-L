@@ -22,7 +22,9 @@ namespace TPC_Equipo_L
 
         protected void btnCerrarSession_Click(object sender, EventArgs e)
         {
-            Session["usuario"] = null;
+            //Session["usuario"] = null;
+            Session.Clear();
+            Response.Redirect("Default.aspx");
         }
     }
 }

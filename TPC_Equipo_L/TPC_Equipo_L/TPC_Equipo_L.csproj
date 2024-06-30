@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Error.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MainMenuAdmin.aspx" />
     <Content Include="modificarMarca.aspx" />
     <Content Include="modificarProducto.aspx" />
     <Content Include="agregarCategoria.aspx" />
@@ -109,6 +110,13 @@
     </Compile>
     <Compile Include="LogReg.Master.designer.cs">
       <DependentUpon>LogReg.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenuAdmin.aspx.cs">
+      <DependentUpon>MainMenuAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMenuAdmin.aspx.designer.cs">
+      <DependentUpon>MainMenuAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="modificarMarca.aspx.cs">
       <DependentUpon>modificarMarca.aspx</DependentUpon>

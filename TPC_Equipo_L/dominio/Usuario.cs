@@ -19,7 +19,7 @@ namespace dominio
         public string Apellido { get; set; }
         public string Correo { get; set; }
         public string Contrasenia { get; set; }
-        public string Direccion { get; set; }
+        public Direccion Direccion { get; set; }
         public Provincia Provincia { get; set; }
         public Localidad Localidad { get; set; }
         public string ImagenURL { get; set; }
@@ -54,7 +54,7 @@ namespace dominio
         //Override ToString
         public override string ToString()
         {
-            return "Código: " + Cod_Usuario + "Nombre Usuario: " + NombreUsuario + "Nombre: " + Nombre + "Apellido: " + Apellido + "Correo: " + Correo + "Contrasenia: " + Contrasenia + "Dirección: " + Direccion + "Localidad: " + Localidad + "Imagen URL: " + ImagenURL + "Estado: " + Estado;
+            return "Código: " + Cod_Usuario + /*"Nombre Usuario: " + NombreUsuario + */"Nombre: " + Nombre + "Apellido: " + Apellido + "Correo: " + Correo + "Contrasenia: " + Contrasenia + "Dirección: " + Direccion + "Localidad: " + Localidad + /*"Imagen URL: " + ImagenURL + */"Estado: " + Estado + "TipoUsuario: " + TipoUsuario;
         }
     }
 }
