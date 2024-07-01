@@ -12,7 +12,7 @@ namespace dominio
         public string Cod_Marca { get; set; }
         public string Nombre { get; set; }
         public string ImagenURL { get; set; }
-        public bool Estado {  get; set; }
+        public bool Estado { get; set; }
         public Marca() { }
         public Marca(int Id, string Nombre, bool estado, string imagenURL, string cod_Marca)
         {

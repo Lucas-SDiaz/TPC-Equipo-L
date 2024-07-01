@@ -12,12 +12,18 @@ namespace TPC_Equipo_L
     public partial class Default : System.Web.UI.Page
     {
         public List<Categoria> listaCategoria { get; set; }
+        public List<Marca> listaMarca { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
             listaCategoria = negocio.listarConSp();
             repCategorias.DataSource = listaCategoria;
             repCategorias.DataBind();
+
+            MarcaNegocio negocio1 = new MarcaNegocio();
+            listaMarca = negocio1.listarConSp();
+            repMarcas.DataSource = listaMarca;
+            repMarcas.DataBind();
         }
     }
 }

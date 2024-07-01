@@ -94,8 +94,8 @@
                 </div>
             </nav>
 
-            <div class="container">
-                <hr />
+            <div class="container-fluid">
+                <%--<hr />--%>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
                 <hr />
