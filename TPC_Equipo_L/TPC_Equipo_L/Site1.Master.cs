@@ -26,5 +26,10 @@ namespace TPC_Equipo_L
             Session.Clear();
             Response.Redirect("Default.aspx");
         }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
