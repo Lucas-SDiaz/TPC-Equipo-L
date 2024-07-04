@@ -62,49 +62,80 @@
                     </p>
                 </div>
             </div>
-            <div class="row">
-                <%if (Session["metodoPago"].ToString() == "Transferencia Bancaria"){
-                %>
-                    <div class="col-md-6">
-                        <div class="card card-custom">
-                            <div class="card-body">
-                                <h5 class="card-title">Datos bancarios</h5>
-                                <p class="card-text">
-                                    CBU: 6465465465464654646546<br />
-                                    Banco: BBVA Banco Frances<br />
-                                    Alias: supermercado.programacion.III<br />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-               <% }
-                   else if (Session["metodoPago"].ToString() == "Coordino al retirar")
-                   {%>                            
-                       <div class="col-md-6">
-                           <div class="card card-custom">
-                               <div class="card-body">
-                                   <h5 class="card-title">Datos de contacto!</h5>
-                                   <p class="card-text">
-                                       Whatsapp: 2246438721<br />
-                                       Instagram: @Supermercado<br />
-                                       <br />
-                                   </p>
+            <%if (Session["metodoPago"].ToString() == "Coordinar con vendedor" && Session["metodoEntrega"].ToString() == "Coordinar con vendedor")
+                {%>
+              <div class="card card-horizontal">
+                  <div class="card-body">
+                      <h5 class="card-title">Datos de contacto</h5>
+                      <p class="card-text">
+                          Whatsapp: 2246438721<br />
+                          Instagram: @Supermercado<br />
+                      </p>
+                  </div>
+              </div>
+            <%}
+                else
+                { %>              
+                  <div class="row">
+                      <%if (Session["metodoEntrega"].ToString() == "Retirar en local")
+                          { %>
+                           <div class="col-md-6">
+                               <div class="card card-custom">
+                                   <div class="card-body">
+                                       <h5 class="card-title">Dirección de retiro</h5>
+                                       <p class="card-text">
+                                           Dirección: Calle Falsa 123<br />
+                                           Ciudad: Springfield<br />
+                                           Código Postal: 12345<br />
+                                       </p>
+                                   </div>
                                </div>
                            </div>
-                       </div>              
-                 <%}%>
-                <div class="col-md-6">
-                    <div class="card card-custom">
-                        <div class="card-body">
-                            <h5 class="card-title">Dirección de retiro</h5>
-                            <p class="card-text">
-                                Dirección: Calle Falsa 123<br />
-                                Ciudad: Springfield<br />
-                                Código Postal: 12345<br />
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                      <%}
+                          else if (Session["metodoEntrega"].ToString() == "Coordinar con vendedor")
+                          {%>
+                             <div class="col-md-6">
+                               <div class="card card-custom">
+                                   <div class="card-body">
+                                       <h5 class="card-title">Coordinar envio</h5>
+                                       <p class="card-text">
+                                           Whatsapp: 2246438721<br />
+                                           <br />
+                                       </p>
+                                   </div>
+                               </div>
+                           </div>              
+                      <%} %>
+                      <%if (Session["metodoPago"].ToString() == "Transferencia Bancaria")
+                          {
+                      %>    <div class="col-md-6">
+                                <div class="card card-custom">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Datos bancarios</h5>
+                                        <p class="card-text">
+                                            CBU: 6465465465464654646546<br />
+                                            Banco: BBVA Banco Frances<br />
+                                            Alias: supermercado.programacion.III<br />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                     <% }
+                         else if (Session["metodoPago"].ToString() == "Coordinar con vendedor")
+                         {%>                            
+                            <div class="col-md-6">
+                                <div class="card card-custom">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Coordinar metodo de pago</h5>
+                                        <p class="card-text">
+                                            Whatsapp: 2246438721<br />
+                                            <br />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>              
+                       <%}
+                }%>    
             </div>
         </div>
         <div class="button-container">

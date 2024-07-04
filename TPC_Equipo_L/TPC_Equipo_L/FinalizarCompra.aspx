@@ -16,7 +16,6 @@
         }
     </style>
 <h2> Descripcion de su compra</h2><br />
-<asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
     <asp:GridView runat="server" ID="dgvFinalizarCompra" CssClass="table table-borderless table-striped rounded-gridview" AutoGenerateColumns="false">
         <Columns>                    
             <asp:BoundField HeaderText="Producto" DataField="Nombre" />
@@ -33,10 +32,10 @@
     <div class="row">
         <div class="col-sm-6 mb-3 mb-sm-0">
             <div class="card" style="width: 80%;">
-                <h3 style="text-align: center"> Metodo de enterga </h3>
+                <h3 style="text-align: center"> Metodo de entrega </h3>
                 <asp:RadioButtonList ID="rblDeliveryMethod" runat="server" CssClass="form-check">
-                    <asp:ListItem Text="Coordinar con vendedor" Value="Coordinar con vendedor"></asp:ListItem>
                     <asp:ListItem Text="Retirar en local" Value="Retirar en local" Selected="True"></asp:ListItem>
+                    <asp:ListItem Text="Coordinar con vendedor" Value="Coordinar con vendedor"></asp:ListItem>
                 </asp:RadioButtonList>
             </div>
         </div>
@@ -44,8 +43,8 @@
             <div class="card" style="width: 80%;">                
                 <h3 style="text-align: center"> Metodo de Pago </h3>
                 <asp:RadioButtonList ID="rblPaymentMethod" runat="server" CssClass="form-check">
-                    <asp:ListItem Text="Transferencia Bancaria" Value="Transferencia Bancaria"></asp:ListItem>
-                    <asp:ListItem Text="Coordino al retirar" Value="Coordino al retirar" Selected="True"></asp:ListItem>
+                    <asp:ListItem Text="Transferencia Bancaria" Value="Transferencia Bancaria" Selected="True"></asp:ListItem>
+                    <asp:ListItem Text="Coordinar con vendedor" Value="Coordinar con vendedor"></asp:ListItem>
                 </asp:RadioButtonList>
                 </div>
             </div>

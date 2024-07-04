@@ -21,7 +21,6 @@
     </figure>
 
     <br />
-    <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
     <div class="container-xxl">
         <div class="row row-cols-1 row-cols-md-4 g-4">
             <asp:Repeater runat="server" ID="repRepetidor">
