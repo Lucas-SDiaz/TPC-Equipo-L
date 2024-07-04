@@ -9,7 +9,7 @@
         .header {
             background-color: green;
             color: white;
-            padding: 40px 20px; /* Ajustar el padding para extender la cabecera hacia abajo */
+            padding: 40px 20px; 
             text-align: center;
         }
         .card-container {
@@ -17,16 +17,16 @@
         }
         .card-custom {
             margin: 10px;
-            border-radius: 15px; /* Esquinas redondeadas */
-            height: 200px; /* Altura ajustada */
-            border: 2px solid black; /* Borde en negrita */
+            border-radius: 15px; 
+            height: 200px; 
+            border: 2px solid black; 
         }
         .card-horizontal {
             margin: 10px;
-            border-radius: 15px; /* Esquinas redondeadas */
-            height: 200px; /* Altura ajustada */
-            width: 100%; /* Ancho completo */
-            border: 2px solid black; /* Borde en negrita */
+            border-radius: 15px; 
+            height: 200px;
+            width: 100%; 
+            border: 2px solid black;
         }
         .button-container {
             text-align: center;
@@ -36,7 +36,6 @@
 </head>
 <body>
     <form id="form2" runat="server">
-        <!-- Cabecera -->
         <div class="header">
             <h1>Felicitaciones! Ya realizaste tu compra! 😎🎉</h1>
         </div>
@@ -69,11 +68,10 @@
                     <div class="col-md-6">
                         <div class="card card-custom">
                             <div class="card-body">
-                                <h5 class="card-title">Detalles del Pedido</h5>
+                                <h5 class="card-title">Datos bancarios</h5>
                                 <p class="card-text">
-                                    <!-- Aquí puedes agregar controles ASP.NET o etiquetas HTML para mostrar detalles del pedido -->
                                     CBU: 6465465465464654646546<br />
-                                    Banco: Frances<br />
+                                    Banco: BBVA Banco Frances<br />
                                     Alias: supermercado.programacion.III<br />
                                 </p>
                             </div>
@@ -85,24 +83,21 @@
                        <div class="col-md-6">
                            <div class="card card-custom">
                                <div class="card-body">
-                                   <h5 class="card-title">Detalles del Pedido</h5>
+                                   <h5 class="card-title">Datos de contacto!</h5>
                                    <p class="card-text">
-                                       <!-- Aquí puedes agregar controles ASP.NET o etiquetas HTML para mostrar detalles del pedido -->
-                                       Nro de contacto whatsapp: 2246438721<br />
-                                       <br />
+                                       Whatsapp: 2246438721<br />
+                                       Instagram: @Supermercado<br />
                                        <br />
                                    </p>
                                </div>
                            </div>
                        </div>              
                  <%}%>
-                <!-- Segunda Tarjeta Vertical -->
                 <div class="col-md-6">
                     <div class="card card-custom">
                         <div class="card-body">
-                            <h5 class="card-title">Información de Entrega</h5>
+                            <h5 class="card-title">Dirección de retiro</h5>
                             <p class="card-text">
-                                <!-- Aquí puedes agregar controles ASP.NET o etiquetas HTML para mostrar información de entrega -->
                                 Dirección: Calle Falsa 123<br />
                                 Ciudad: Springfield<br />
                                 Código Postal: 12345<br />
