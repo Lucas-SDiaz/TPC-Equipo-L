@@ -252,6 +252,11 @@ namespace negocio
                 throw;
             }
         }
+        public void ModificarStock(Producto producto, int cantidad)
+        {
+            producto.Stock -= cantidad;
+            modificar(producto);
+        }
 
         public void agregarImagen(string cod, string url)
         {

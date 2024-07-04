@@ -7,55 +7,54 @@
             border-radius: 10px; 
             overflow: hidden;
         }
+        .card {
+            margin-bottom: 100px; 
+            padding: 30px; 
+        }
+        .form-check {
+            margin-bottom: 5px; 
+        }
     </style>
 <h2> Descripcion de su compra</h2><br />
 <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
-    <asp:GridView runat="server" ID="dgvFinalizarCompra" CssClass="table table-borderless table-striped rounded-gridview" AutoGenerateColumns="false" DataKeyNames="CodigoProducto" OnSelectedIndexChanged="dgvFinalizarCompra_SelectedIndexChanged">
+    <asp:GridView runat="server" ID="dgvFinalizarCompra" CssClass="table table-borderless table-striped rounded-gridview" AutoGenerateColumns="false">
         <Columns>                    
             <asp:BoundField HeaderText="Producto" DataField="Nombre" />
-            <asp:BoundField HeaderText="Precio" DataField="Precio" />
             <asp:BoundField HeaderText="Cantidad" DataField="Cantidad"/>
-            <asp:CommandField ShowSelectButton="true" SelectText="Eliminar" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" HeaderText="" ControlStyle-CssClass="btn btn-outline-danger btn-sm" />
+            <asp:TemplateField HeaderText="Precio">
+            <ItemTemplate>
+                <%# "$ "  + Eval("Precio") %>
+            </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
+    <asp:Label ID="lblPrecioFinal" runat="server" CssClass="form-control"  style="text-align: right;" BorderColor="black"   BackColor="#d5e8eb"></asp:Label>
     <br />
     <div class="row">
         <div class="col-sm-6 mb-3 mb-sm-0">
-            <div class="card">
+            <div class="card" style="width: 80%;">
                 <h3 style="text-align: center"> Metodo de enterga </h3>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                    Coordinar con vendedor  
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
-                    Retirar en local
-                    </label><br/><br />
-                </div>
+                <asp:RadioButtonList ID="rblDeliveryMethod" runat="server" CssClass="form-check">
+                    <asp:ListItem Text="Coordinar con vendedor" Value="Coordinar con vendedor"></asp:ListItem>
+                    <asp:ListItem Text="Retirar en local" Value="Retirar en local" Selected="True"></asp:ListItem>
+                </asp:RadioButtonList>
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="card">                
+            <div class="card" style="width: 80%;">                
                 <h3 style="text-align: center"> Metodo de Pago </h3>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                    <label class="form-check-label" for="flexRadioDefault1">
-                    Transferencia Bancaria 
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
-                    Coordino al retirar
-                    </label><br /><br />
-                </div>
+                <asp:RadioButtonList ID="rblPaymentMethod" runat="server" CssClass="form-check">
+                    <asp:ListItem Text="Transferencia Bancaria" Value="Transferencia Bancaria"></asp:ListItem>
+                    <asp:ListItem Text="Coordino al retirar" Value="Coordino al retirar" Selected="True"></asp:ListItem>
+                </asp:RadioButtonList>
                 </div>
             </div>
-        </div><br />
-    <asp:Label ID="lblPrecioFinal" runat="server" CssClass="form-control"  style="text-align: right;" BorderColor="black"   BackColor="#d5e8eb"></asp:Label>
+        </div>
+    <br />
+
+    <a href="carritoCompra.aspx" class="btn btn-outline-dark">Volver</a>
+    <asp:Button ID="btnFinalizarCompra" runat="server" CssClass="btn btn-success" Text="Finalizar Compra" OnClick="btnFinalizarCompra_Click"/>
+    <br />
 </asp:Content>
           
 
