@@ -13,5 +13,11 @@ namespace TPC_Equipo_L
         {
 
         }
+
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Default.aspx", false);
+        }
     }
 }

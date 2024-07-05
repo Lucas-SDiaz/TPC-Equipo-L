@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace TPC_Equipo_L
 {
-    public partial class Dashboard : System.Web.UI.Page
+    public partial class PerfilAdmin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

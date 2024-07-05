@@ -87,6 +87,7 @@
     <Content Include="listarProducto.aspx" />
     <Content Include="modificarCategoria.aspx" />
     <Content Include="Perfil.aspx" />
+    <Content Include="PerfilAdmin.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Web.config" />
     <Content Include="CompraExitosa.aspx" />
@@ -241,6 +242,13 @@
     </Compile>
     <Compile Include="Perfil.aspx.designer.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PerfilAdmin.aspx.cs">
+      <DependentUpon>PerfilAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PerfilAdmin.aspx.designer.cs">
+      <DependentUpon>PerfilAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
