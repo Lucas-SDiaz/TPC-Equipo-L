@@ -339,5 +339,45 @@ namespace negocio
             }
             finally { datos.cerrarConexion(); }
         }
+        public List<Producto> Buscador(string name)
+        {
+            List<Producto> lista = new List<Producto>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT pro.Cod_Producto, pro.Nombre_P, pro.Descripcion_P, pro.PUnitario_P, pro.Stock_P, cat.Nombre_C, mar.Nombre_M FROM Productos AS pro INNER JOIN Categorias AS cat ON pro.Cod_Categoria_P = cat.Cod_Categoria INNER JOIN Marcas AS mar ON pro.Cod_Marcas_P = mar.Cod_Marca WHERE Nombre_P LIKE '%" + name + "%'");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Producto aux = new Producto();
+                    aux.Marca = new Marca();
+                    aux.Categoria = new Categoria();
+                    aux.Imagen = new Imagen();
+                    aux.CodigoProducto = (string)datos.Lector["Cod_Producto"];
+                    aux.Nombre = (string)datos.Lector["Nombre_P"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion_P"];
+                    //aux.Categoria.Cod_Categoria = (string)datos.Lector["Cod_Categoria_P"];
+                    aux.Categoria.Nombre = (string)datos.Lector["Nombre_C"];
+                    //aux.Marca.Cod_Marca = (string)datos.Lector["Cod_Marca_P"];
+                    aux.Marca.Nombre = (string)datos.Lector["Nombre_M"];
+                    //aux.Imagen.Url = (string)datos.Lector["ImagenURL"];
+                    aux.Precio = (decimal)datos.Lector["PUnitario_P"];
+                    aux.Stock = (int)datos.Lector["Stock_P"];
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

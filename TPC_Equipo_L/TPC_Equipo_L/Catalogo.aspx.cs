@@ -19,7 +19,15 @@ namespace TPC_Equipo_L
 
             if (!IsPostBack)
             {
-                if (Request.QueryString["Cat"] != null)
+                if (Session["Busqueda"] != null && Session["Busqueda"].ToString() != string.Empty)
+                {
+                    ProductoNegocio negocio = new ProductoNegocio();
+                    ListaProductos = negocio.Buscador(Session["Busqueda"].ToString());
+                    Session.Add("ListaProductos", ListaProductos);
+                    repRepetidor.DataSource = ListaProductos;
+                    repRepetidor.DataBind();
+                }
+                else if (Request.QueryString["Cat"] != null)
                 {
                     string cat = Request.QueryString["Cat"].ToString();
 

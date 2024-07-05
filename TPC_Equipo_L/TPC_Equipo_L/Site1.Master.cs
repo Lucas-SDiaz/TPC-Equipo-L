@@ -29,7 +29,8 @@ namespace TPC_Equipo_L
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            Session["Busqueda"] = txtBuscar.Text.Trim();
+            Response.Redirect("Catalogo.aspx", false);
         }
 
         
