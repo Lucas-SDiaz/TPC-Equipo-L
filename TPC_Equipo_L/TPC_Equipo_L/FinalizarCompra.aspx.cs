@@ -59,6 +59,7 @@ namespace TPC_Equipo_L
             venta.MontoFinal = precioTotal;
             negocio.agregar(venta, usuario);
 
+            Session["carrito"] = null;
             Response.Redirect("CompraExitosa.aspx");
         }
     }
