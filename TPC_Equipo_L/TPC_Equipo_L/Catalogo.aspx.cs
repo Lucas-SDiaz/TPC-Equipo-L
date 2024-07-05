@@ -28,13 +28,24 @@ namespace TPC_Equipo_L
                 repRepetidor.DataSource = ListaProductos;
                 repRepetidor.DataBind();
             }
-            else {
-                ProductoNegocio negocio = new ProductoNegocio();
-                ListaProductos = negocio.listarConSp();
-                Session.Add("ListaProductos", ListaProductos);
-                repRepetidor.DataSource = ListaProductos;
-                repRepetidor.DataBind();
-                Session.Add("cantidad", "1");
+            else if (Request.QueryString["Mar"] != null) {
+                    string mar = Request.QueryString["Mar"].ToString();
+
+                    ProductoNegocio negocio = new ProductoNegocio();
+                    ListaProductos = negocio.listarMarcas(mar);
+                    Session.Add("ListaProductosMarca", ListaProductos);
+                    repRepetidor.DataSource = ListaProductos;
+                    repRepetidor.DataBind();
+                }
+                else
+                {
+                    ProductoNegocio negocio = new ProductoNegocio();
+                    ListaProductos = negocio.listarConSp();
+                    Session.Add("ListaProductos", ListaProductos);
+                    repRepetidor.DataSource = ListaProductos;
+                    repRepetidor.DataBind();
+                    Session.Add("cantidad", "1");
+
                 }
             }
 
