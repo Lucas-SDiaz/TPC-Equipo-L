@@ -31,6 +31,7 @@ namespace TPC_Equipo_L
         {
             Session["Busqueda"] = txtBuscar.Text.Trim();
             Response.Redirect("Catalogo.aspx", false);
+            txtBuscar.Text = string.Empty;
         }
 
         

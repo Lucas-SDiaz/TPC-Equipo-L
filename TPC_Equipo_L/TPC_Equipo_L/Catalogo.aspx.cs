@@ -26,6 +26,7 @@ namespace TPC_Equipo_L
                     Session.Add("ListaProductos", ListaProductos);
                     repRepetidor.DataSource = ListaProductos;
                     repRepetidor.DataBind();
+                    Session["Busqueda"] = null;
                 }
                 else if (Request.QueryString["Cat"] != null)
                 {
