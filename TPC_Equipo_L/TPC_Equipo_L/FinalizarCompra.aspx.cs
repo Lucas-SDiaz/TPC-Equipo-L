@@ -14,11 +14,6 @@ namespace TPC_Equipo_L
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["Usuario"] == null)
-            //{
-            //    Session.Add("error", "Para continuar debe iniciar sesión");
-            //    Response.Redirect("Error.aspx", false);
-            //}
             List<Producto> carrito;
             carrito = Session["carrito"] != null ? (List<Producto>)Session["carrito"] : new List<Producto>();
             Session.Add("carrito", carrito);
@@ -30,7 +25,8 @@ namespace TPC_Equipo_L
             {
                 precioTotal += (producto.Precio) * (producto.Cantidad);
             }
-            lblPrecioFinal.Text = "Precio Total: $" + precioTotal.ToString();  
+            lblPrecioFinal.Text = "Precio Total: $" + precioTotal.ToString();
+            Session["precioTotal"] = precioTotal;
         }
 
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
@@ -38,19 +34,30 @@ namespace TPC_Equipo_L
 
             EmailService emailService = new EmailService();
             Usuario usuario = (Usuario)Session["usuario"];
+            VentaNegocio negocio = new VentaNegocio();
             string metodoEntrega = rblDeliveryMethod.SelectedValue;
             string metodoPago = rblPaymentMethod.SelectedValue;
             Session["metodoEntrega"] = metodoEntrega;
-            Session["metodoPago"] = metodoPago;     
-            if(metodoEntrega== "Retiro en el local")
+            Session["metodoPago"] = metodoPago;
+            if (metodoEntrega == "Retirar en local")
             {
                 emailService.armarCorreoRetiro(usuario.Correo, "Felicitaciones por tu compra", usuario);
                 emailService.enviarMail();
             }
-            else {
+            else
+            {
                 emailService.armarCorreoEnvio(usuario.Correo, "Felicitaciones por tu compra", usuario);
                 emailService.enviarMail();
             }
+            Venta venta = new Venta();
+            venta.FechaVenta = DateTime.Now;
+            venta.Usuario = usuario;
+            //momentaneo
+            venta.Localidad = 1;
+
+            SqlMoney precioTotal = (SqlMoney)Session["precioTotal"];
+            venta.MontoFinal = precioTotal;
+            negocio.agregar(venta, usuario);
 
             Response.Redirect("CompraExitosa.aspx");
         }

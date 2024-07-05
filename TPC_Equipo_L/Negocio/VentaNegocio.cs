@@ -11,33 +11,33 @@ namespace negocio
     {
         public VentaNegocio() { }
 
-        //public void agregar(Venta venta,Usuario usuario)
-        //{
-        //    AccesoDatos datos = new AccesoDatos();
+        public void agregar(Venta venta, Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
 
-        //    try
-        //    {
-        //        datos.setearProcedimiento("InsertarVenta");
-        //        datos.setearParametros("@Fecha_V",venta.FechaVenta);
-        //        datos.setearParametros("@User", usuario.Correo);
-        //        datos.setearParametros("@Pass", usuario.Contrasenia);
-        //        datos.setearParametros("@Cod_Localidad_V", venta.Localidad);
-        //        datos.setearParametros("@MontoFinal_V", venta.MontoFinal);
+            try
+            {
+                datos.setearProcedimiento("InsertarVenta");
+                datos.setearParametros("@Fecha_V", venta.FechaVenta);
+                datos.setearParametros("@User", usuario.Correo);
+                datos.setearParametros("@Pass", usuario.Contrasenia);
+                datos.setearParametros("@Cod_Localidad_V", venta.Localidad);
+                datos.setearParametros("@MontoFinal_V", venta.MontoFinal);
 
-        //        datos.ejecutarAccion();
-        //        datos.cerrarConexion();
-
-
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
 
 
 
-        //    }
-        //    catch (Exception)
-        //    {
 
-        //        throw;
-        //    }
-        //}
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
     }
 }

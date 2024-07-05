@@ -13,15 +13,15 @@ namespace dominio
         public int Cod_Venta { get; set; }
         public DateTime FechaVenta { get; set; }
         public Usuario Usuario { get; set; }
-        public Localidad Localidad { get; set; }
+        public int Localidad { get; set; }
         public SqlMoney MontoFinal { get; set; }
 
         //Constructor
         public Venta() { }
         //Constructor con Parámetros
-        public Venta(int cod_Venta, DateTime fechaVenta, Usuario usuario, Localidad localidad, SqlMoney montoFinal)
+        public Venta(/*int cod_Venta,*/ DateTime fechaVenta, Usuario usuario, int localidad, SqlMoney montoFinal)
         {
-            Cod_Venta = cod_Venta;
+            //Cod_Venta = cod_Venta;
             FechaVenta = fechaVenta;
             Usuario = usuario;
             Localidad = localidad;

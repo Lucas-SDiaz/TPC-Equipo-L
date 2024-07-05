@@ -8,13 +8,13 @@ namespace dominio
 {
     public class Provincia
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Nombre { get; set; }
 
         //Constructor
         public Provincia() { }
         //Constructor con Parámetros
-        public Provincia(string id, string nombre)
+        public Provincia(int id, string nombre)
         {
             Id = id;
             Nombre = nombre;

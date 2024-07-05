@@ -41,7 +41,7 @@ namespace TPC_Equipo_L
             direccion.Nro = txtNro.Text;
             direccion.CP = txtCP.Text;
             prov.Nombre = ddlProvincia.SelectedItem.ToString();
-            prov.Id = ddlProvincia.Text;
+            prov.Id = int.Parse(ddlProvincia.Text);
             localidad.Nombre = ddlLocalidad.Text.ToString();
             localidad.Id = ddlLocalidad.SelectedIndex; 
             nuevo.Provincia = prov;
