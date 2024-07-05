@@ -1,4 +1,5 @@
 ﻿using dominio;
+using negocio;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -34,10 +35,23 @@ namespace TPC_Equipo_L
 
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
+
+            EmailService emailService = new EmailService();
+            Usuario usuario = (Usuario)Session["usuario"];
             string metodoEntrega = rblDeliveryMethod.SelectedValue;
             string metodoPago = rblPaymentMethod.SelectedValue;
             Session["metodoEntrega"] = metodoEntrega;
-            Session["metodoPago"] = metodoPago;           
+            Session["metodoPago"] = metodoPago;     
+            if(metodoEntrega== "Retiro en el local")
+            {
+                emailService.armarCorreoRetiro(usuario.Correo, "Felicitaciones por tu compra", usuario);
+                emailService.enviarMail();
+            }
+            else {
+                emailService.armarCorreoEnvio(usuario.Correo, "Felicitaciones por tu compra", usuario);
+                emailService.enviarMail();
+            }
+
             Response.Redirect("CompraExitosa.aspx");
         }
     }

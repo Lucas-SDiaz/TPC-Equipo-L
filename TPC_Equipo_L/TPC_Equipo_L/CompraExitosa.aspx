@@ -81,7 +81,7 @@
                 else
                 { %>
             <div class="row">
-                <%if (Session["metodoEntrega"].ToString() == "Retirar en local")
+                <%if (Session["metodoEntrega"].ToString() == "Retiro en el local")
                     { %>
                 <div class="col-md-6">
                     <div class="card card-custom">
@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 <%}
-                    else if (Session["metodoEntrega"].ToString() == "Coordinar con vendedor")
+                    else if (Session["metodoEntrega"].ToString() == "Envio a domicilio")
                     {%>
                 <div class="col-md-6">
                     <div class="card card-custom">
@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <% }
-                    else if (Session["metodoPago"].ToString() == "Coordinar con vendedor")
+                    else if (Session["metodoPago"].ToString() == "Efectivo")
                     {%>
                 <div class="col-md-6">
                     <div class="card card-custom">

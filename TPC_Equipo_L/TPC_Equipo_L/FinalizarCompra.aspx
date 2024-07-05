@@ -64,8 +64,8 @@
             <div class="cardb" style="width: 80%;">
                 <h3 style="text-align: center">Metodo de entrega </h3>
                 <asp:RadioButtonList ID="rblDeliveryMethod" runat="server" CssClass="form-check">
-                    <asp:ListItem Text="Retirar en local" Value="Retirar en local" Selected="True"></asp:ListItem>
-                    <asp:ListItem Text="Coordinar con vendedor" Value="Coordinar con vendedor"></asp:ListItem>
+                    <asp:ListItem Text="Retiro en el local" Value="Retirar en local" Selected="True"></asp:ListItem>
+                    <asp:ListItem Text="Envio a domicilio" Value="Coordinar con vendedor"></asp:ListItem>
                 </asp:RadioButtonList>
             </div>
         </div>
@@ -74,7 +74,7 @@
                 <h3 style="text-align: center">Metodo de Pago </h3>
                 <asp:RadioButtonList ID="rblPaymentMethod" runat="server" CssClass="form-check">
                     <asp:ListItem Text="Transferencia Bancaria" Value="Transferencia Bancaria" Selected="True"></asp:ListItem>
-                    <asp:ListItem Text="Efectivo (Coordinar con vendedor)" Value="Coordinar con vendedor"></asp:ListItem>
+                    <asp:ListItem Text="Efectivo" Value="Coordinar con vendedor"></asp:ListItem>
                 </asp:RadioButtonList>
             </div>
         </div>
