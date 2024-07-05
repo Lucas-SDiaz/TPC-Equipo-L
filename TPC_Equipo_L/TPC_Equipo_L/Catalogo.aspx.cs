@@ -17,18 +17,20 @@ namespace TPC_Equipo_L
         {
 
 
-            if (!IsPostBack) { 
-            if (Request.QueryString["Cat"] != null)
+            if (!IsPostBack)
             {
-                string cat = Request.QueryString["Cat"].ToString();
+                if (Request.QueryString["Cat"] != null)
+                {
+                    string cat = Request.QueryString["Cat"].ToString();
 
-                ProductoNegocio negocio = new ProductoNegocio();
-                ListaProductos = negocio.listarCategorias(cat);
-                Session.Add("ListaProductosCategoria", ListaProductos);
-                repRepetidor.DataSource = ListaProductos;
-                repRepetidor.DataBind();
-            }
-            else if (Request.QueryString["Mar"] != null) {
+                    ProductoNegocio negocio = new ProductoNegocio();
+                    ListaProductos = negocio.listarCategorias(cat);
+                    Session.Add("ListaProductosCategoria", ListaProductos);
+                    repRepetidor.DataSource = ListaProductos;
+                    repRepetidor.DataBind();
+                }
+                else if (Request.QueryString["Mar"] != null)
+                {
                     string mar = Request.QueryString["Mar"].ToString();
 
                     ProductoNegocio negocio = new ProductoNegocio();
@@ -72,8 +74,8 @@ namespace TPC_Equipo_L
                 }
                 Session.Add("cantidad", txtCantidad.Text);
             }
-            
-            
+
+
         }
 
     }
