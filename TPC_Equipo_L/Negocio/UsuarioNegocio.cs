@@ -112,5 +112,67 @@ namespace negocio
             }
         }
 
+        public Usuario BuscarUsuario(string cod)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Usuario usuario = new Usuario();
+            usuario.Localidad = new Localidad();
+            usuario.Direccion = new Direccion();
+            usuario.Provincia = new Provincia();
+            try
+            {
+                datos.setearConsulta("SELECT * FROM USUARIOS WHERE Cod_Usuario = @Cod_Usuario");
+                datos.setearParametros("@Cod_Usuario", cod);
+                datos.ejecutarLectura();
+                while(datos.Lector.Read())
+                {
+                    usuario.Cod_Usuario = cod;
+                    //usuario.NombreUsuario = (string)datos.Lector["NombreUsuario_U"];
+                    usuario.Nombre = (string)datos.Lector["Nombre_U"];
+                    usuario.Apellido = (string)datos.Lector["Apellido_U"];
+                    usuario.Correo = (string)datos.Lector["Correo_U"];
+                    usuario.Contrasenia = (string)datos.Lector["Contrasenia_U"];
+                    //usuario.Direccion.Calle = (string)datos.Lector["Direccion_U"];
+                    //usuario.Localidad.Id = (int)datos.Lector["Cod_Localidad_U"];
+                    //usuario.ImagenURL = (string)datos.Lector["ImgURL_U"];
+                    usuario.Estado = true;
+                }
+                return usuario;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void ModificarUsuario(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                if(usuario != null)
+                {
+                    datos.setearProcedimiento("spActualizarUsuario");
+                    datos.setearParametros("@Cod_Usuario", usuario.Cod_Usuario);
+                    datos.setearParametros("@NombreUsuario_U", usuario.NombreUsuario);
+                    datos.setearParametros("@Nombre_U", usuario.Nombre);
+                    datos.setearParametros("@Apellido_U", usuario.Apellido);
+                    datos.setearParametros("@Correo_U", usuario.Correo);
+                    datos.setearParametros("@Contrasenia_U", usuario.Contrasenia);
+                    datos.setearParametros("@Direccion_U", usuario.Direccion.Calle);
+                    datos.setearParametros("@Cod_Localidad_U", usuario.Localidad.Id);
+                    datos.setearParametros("@ImgURL_U", usuario.ImagenURL);
+                    datos.setearParametros("@Estado_U", usuario.Estado);
+                    datos.setearParametros("@TipoUser_U", usuario.TipoUsuario);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using dominio;
+using negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,18 @@ namespace TPC_Equipo_L
             {
                 Session.Add("error", "Error! Usted No tiene permisos para acceder");
                 Response.Redirect("Error.aspx", false);
+            }
+            else
+            {
+                Usuario usuario = (Usuario)Session["Usuario"];
+                UsuarioNegocio negocio = new UsuarioNegocio();
+                string cod = usuario.Cod_Usuario;
+                usuario = negocio.BuscarUsuario(cod);
+                txtEmail.Text = usuario.Correo;
+                txtPass.Text = usuario.Contrasenia;
+                txtNombre.Text = usuario.Nombre;
+                txtApellido.Text = usuario.Apellido;
+                
             }
         }
     }

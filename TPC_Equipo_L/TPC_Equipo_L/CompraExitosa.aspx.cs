@@ -19,6 +19,7 @@ namespace TPC_Equipo_L
         {
             List<Producto> carrito;
             carrito = (List<Producto>)Session["carrito"];
+            Session["carrito"] = null;
             Response.Redirect("Default.aspx");
         }
     }
