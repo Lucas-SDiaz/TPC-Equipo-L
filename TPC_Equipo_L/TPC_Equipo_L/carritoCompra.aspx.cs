@@ -26,7 +26,16 @@ namespace TPC_Equipo_L
                 if (Request.QueryString["id"] != null)
                 {
                     id = Request.QueryString["id"].ToString();
-                    int cant = int.Parse((string)Session["cantidad"]);
+                    int cant;
+                    if ((string)Session["cantidad"] == null)
+                    {
+                        cant = 1;
+                    }
+                    else
+                    {
+                        cant = int.Parse((string)Session["cantidad"]);
+                    }
+                   
                     List<Producto> listaOriginal = (List<Producto>)Session["listaProductos"];
                     Producto seleccionado = listaOriginal.Find(x => x.CodigoProducto == id);
                     seleccionado.Cantidad = cant;

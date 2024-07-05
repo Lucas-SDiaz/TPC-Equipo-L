@@ -12,7 +12,7 @@ namespace TPC_Equipo_L
     public partial class Catalogo : System.Web.UI.Page
     {
         public List<Producto> ListaProductos { get; set; }
-        public List<Producto> ListaProductosCategoria { get; set; }
+        //public List<Producto> ListaProductosCategoria { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -25,7 +25,7 @@ namespace TPC_Equipo_L
 
                     ProductoNegocio negocio = new ProductoNegocio();
                     ListaProductos = negocio.listarCategorias(cat);
-                    Session.Add("ListaProductosCategoria", ListaProductos);
+                    Session.Add("ListaProductos", ListaProductos);
                     repRepetidor.DataSource = ListaProductos;
                     repRepetidor.DataBind();
                 }
@@ -35,7 +35,7 @@ namespace TPC_Equipo_L
 
                     ProductoNegocio negocio = new ProductoNegocio();
                     ListaProductos = negocio.listarMarcas(mar);
-                    Session.Add("ListaProductosMarca", ListaProductos);
+                    Session.Add("ListaProductos", ListaProductos);
                     repRepetidor.DataSource = ListaProductos;
                     repRepetidor.DataBind();
                 }
@@ -77,6 +77,29 @@ namespace TPC_Equipo_L
 
 
         }
+        protected void repRepetidor_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+               
+                dominio.Producto producto = (dominio.Producto)e.Item.DataItem;
+
+                 negocio.ImagenNegocio negocioImagen = new negocio.ImagenNegocio();
+                List<string> listaImagenes = negocioImagen.listarImgPorProducto(producto);
+
+                Image imgProducto = (Image)e.Item.FindControl("imgProducto");
+
+                if (listaImagenes != null && listaImagenes.Count > 0)
+                {
+                    imgProducto.ImageUrl = listaImagenes[0];
+                }
+                else
+                {
+                    imgProducto.ImageUrl = "https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg";
+                }
+            }
+        }
+
 
     }
 }

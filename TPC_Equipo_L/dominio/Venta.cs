@@ -10,11 +10,11 @@ namespace dominio
     public class Venta
     {
         //Atributos
-        private int Cod_Venta { get; set; }
-        private DateTime FechaVenta { get; set; }
-        private Usuario Usuario { get; set; }
-        private Localidad Localidad { get; set; }
-        private SqlMoney MontoFinal { get; set; }
+        public int Cod_Venta { get; set; }
+        public DateTime FechaVenta { get; set; }
+        public Usuario Usuario { get; set; }
+        public Localidad Localidad { get; set; }
+        public SqlMoney MontoFinal { get; set; }
 
         //Constructor
         public Venta() { }
