@@ -70,6 +70,7 @@
     <Content Include="Error.aspx" />
     <Content Include="FinalizarCompra.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="misCompras.aspx" />
     <Content Include="modificarMarca.aspx" />
     <Content Include="modificarProducto.aspx" />
     <Content Include="agregarCategoria.aspx" />
@@ -118,6 +119,13 @@
     </Compile>
     <Compile Include="LogReg.Master.designer.cs">
       <DependentUpon>LogReg.Master</DependentUpon>
+    </Compile>
+    <Compile Include="misCompras.aspx.cs">
+      <DependentUpon>misCompras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="misCompras.aspx.designer.cs">
+      <DependentUpon>misCompras.aspx</DependentUpon>
     </Compile>
     <Compile Include="modificarMarca.aspx.cs">
       <DependentUpon>modificarMarca.aspx</DependentUpon>

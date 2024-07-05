@@ -30,11 +30,13 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="Catalogo.aspx">Catalogo</a>
                             </li>
-
+                            <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="misCompras.aspx">Mis Compras</a>
+</li>
 
                         </ul>
 
-<%--                        <form class="d-flex" role="search">
+                        <%--                        <form class="d-flex" role="search">
                             <input class="bd-search" type="search" placeholder="Buscar Productos..." aria-label="Search">
                             <button class="btn btn-outline-light" type="submit">Buscar</button>
                         </form>--%>
@@ -90,6 +92,7 @@
                         <div class="nav-item">
                             <asp:Button Text="Cerrar Sesión" CssClass="btn btn-outline-danger" OnClick="btnCerrarSession_Click" ID="btnCerrarSession" runat="server" />
                         </div>
+                       
 
 
                         <% }

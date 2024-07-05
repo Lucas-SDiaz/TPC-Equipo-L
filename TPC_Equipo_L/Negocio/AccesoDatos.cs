@@ -104,5 +104,11 @@ namespace negocio
             comando.Parameters.AddWithValue(nombre, valor);
         }
 
+        public void agregarParametro(string nombreParametro, object valor)
+        {
+            SqlParameter parametro = new SqlParameter(nombreParametro, valor);
+            comando.Parameters.Add(parametro);
+        }
+
     }
 }

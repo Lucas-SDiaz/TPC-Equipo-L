@@ -52,7 +52,7 @@ namespace TPC_Equipo_L
             Venta venta = new Venta();
             venta.FechaVenta = DateTime.Now;
             venta.Usuario = usuario;
-            //momentaneo
+           
             venta.Localidad = 1;
 
             SqlMoney precioTotal = (SqlMoney)Session["precioTotal"];

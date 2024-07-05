@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI;
 
 namespace negocio
 {
@@ -19,11 +21,12 @@ namespace negocio
             try
             {
                 datos.setearProcedimiento("InsertarVenta");
-                datos.setearParametros("@Fecha_V", venta.FechaVenta);
-                datos.setearParametros("@User", usuario.Correo);
-                datos.setearParametros("@Pass", usuario.Contrasenia);
-                datos.setearParametros("@Cod_Localidad_V", venta.Localidad);
-                datos.setearParametros("@MontoFinal_V", venta.MontoFinal);
+                datos.agregarParametro("@FechaVenta", venta.FechaVenta);
+                datos.agregarParametro("@User", usuario.Correo);
+                datos.agregarParametro("@Pass", usuario.Contrasenia);
+                datos.agregarParametro("@CodLocalidad", venta.Localidad);
+                datos.agregarParametro("@MontoFinal", venta.MontoFinal);
+              
 
                 datos.ejecutarAccion();
                 datos.cerrarConexion();
@@ -39,7 +42,7 @@ namespace negocio
                 throw;
             }
         }
-        public List<Venta> listarConSp(Usuario usuario)
+        public List<Venta> listarConSp(string User, string contra)
         {
             List<Venta> lista = new List<Venta>();
             AccesoDatos datos = new AccesoDatos();
@@ -47,6 +50,9 @@ namespace negocio
             try
             {
                 datos.setearProcedimiento("ListarVentas");
+
+                datos.agregarParametro("@User", User);
+                datos.agregarParametro("@Pass", contra);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
