@@ -13,6 +13,8 @@ namespace TPC_Equipo_L
     {
         public List<Categoria> listaCategoria { get; set; }
         public List<Marca> listaMarca { get; set; }
+
+        public List<Venta> listaVenta { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
@@ -24,6 +26,8 @@ namespace TPC_Equipo_L
             listaMarca = negocio1.listarConSp();
             repMarcas.DataSource = listaMarca;
             repMarcas.DataBind();
+           
+
         }
     }
 }

@@ -100,6 +100,7 @@
 	</div>
 
 
+
 	<style>
 		.custom-carousel-img-size {
 			width: auto;
