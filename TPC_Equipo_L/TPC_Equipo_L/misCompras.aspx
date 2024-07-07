@@ -18,7 +18,8 @@
 
 
     <div class="alert alert-dark" role="alert">
-        Debe iniciar sesion o registrarse antes de continuar!
+        Debe <a href="Login.aspx">iniciar sesion</a> o <a href="Register.aspx">registrarse</a> antes de continuar!
+
     </div>
     <a href="Default.aspx" class="btn btn-outline-dark">Volver</a>
 

@@ -12,12 +12,12 @@ namespace TPC_Equipo_L
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usuario = (Usuario)Session["usuario"];
-            if (usuario != null)
-            {
-                lblMensaje.Text = "Hola " + usuario.Nombre.ToString().Trim();
-                lblMensaje.CssClass = "text-primary";
-            }
+            //Usuario usuario = (Usuario)Session["usuario"];
+            //if (usuario != null)
+            //{
+            //    lblMensaje.Text = "Hola " + usuario.Nombre.ToString().Trim();
+            //    lblMensaje.CssClass = "text-primary";
+            //}
           
         }
 

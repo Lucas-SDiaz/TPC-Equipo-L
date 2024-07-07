@@ -33,8 +33,9 @@
 
 
     <div class="alert alert-dark" role="alert">
-        Debe iniciar sesion o registrarse antes de continuar!
-    </div>
+    Debe <a href="Login.aspx">iniciar sesion</a> o <a href="Register.aspx">registrarse</a> antes de continuar!
+
+</div>
     <a href="carritoCompra.aspx" class="btn btn-outline-dark">Volver</a>
 
     <br />
@@ -68,7 +69,7 @@
                     <asp:ListItem Value="Coordinar con vendedor">
                  Envio a domicilio. 
                     <span style="font-weight: bold; text-decoration: underline; color:green">PROMOCION VIGENTE * $2500 a toda argentina *</span>
-    </asp:ListItem>
+                    </asp:ListItem>
                 </asp:RadioButtonList>
             </div>
         </div>

@@ -22,6 +22,8 @@
                 </div>
             </div>
         </div>
+        ¿Eres nuevo? <a href="Register.aspx">Crear cuenta</a>
+    
     </div>
 
 
