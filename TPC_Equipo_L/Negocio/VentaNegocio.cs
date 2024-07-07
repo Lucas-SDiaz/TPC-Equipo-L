@@ -111,5 +111,77 @@ namespace negocio
             }
 
         }
+
+
+        public List<Venta> listarAdminConSp()
+        {
+            List<Venta> lista = new List<Venta>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("ListarVentasAdmin");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Venta aux = new Venta();
+                    aux.Usuario = new Usuario();
+
+                    aux.Usuario.Nombre = (string)datos.Lector["Nombre_U"];
+
+                    aux.Usuario.Apellido = (string)datos.Lector["Apellido_U"];
+                    aux.FechaVenta = (DateTime)datos.Lector["Fecha_V"];
+                    aux.MontoFinal = (decimal)datos.Lector["MontoFinal_V"];
+                    aux.EstadoVenta = (string)datos.Lector["Estado_Venta_V"];
+
+                    aux.MetodoEnvio = (string)datos.Lector["Metodo_Envio_V"];
+
+                    aux.MetodoPago = (string)datos.Lector["Metodo_Pago_V"];
+
+
+                    if (!DBNull.Value.Equals(datos.Lector["Num_Seguimiento_V"]))
+                    {
+                        aux.NumSeguimiento = Convert.ToString(datos.Lector["Num_Seguimiento_V"]);
+                    }
+                    else
+                    {
+                        aux.NumSeguimiento = ""; // o null, según sea necesario
+                    }
+
+
+                    if (!DBNull.Value.Equals(datos.Lector["ID_Pago_V"]))
+                    {
+                        aux.IdPago = Convert.ToString(datos.Lector["ID_Pago_V"]);
+                    }
+                    else
+                    {
+                        aux.IdPago = ""; // o null, según sea necesario
+                    }
+
+                    if (!DBNull.Value.Equals(datos.Lector["Direccion"]))
+                    {
+                        aux.Direccion = Convert.ToString(datos.Lector["Direccion"]);
+                    }
+                    else
+                    {
+                        aux.Direccion = ""; // o null, según sea necesario
+                    }
+                    
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }

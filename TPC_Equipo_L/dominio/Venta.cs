@@ -24,7 +24,9 @@ namespace dominio
 
 
         //Constructor
-        public Venta() { }
+        public Venta() {
+            this.Usuario = new Usuario();
+        }
         //Constructor con Parámetros
         public Venta(/*int cod_Venta,*/ DateTime fechaVenta, Usuario usuario, int direccion, SqlMoney montoFinal)
         {

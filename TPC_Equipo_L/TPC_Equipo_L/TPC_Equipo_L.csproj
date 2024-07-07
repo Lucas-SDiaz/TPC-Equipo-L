@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Error.aspx" />
     <Content Include="FinalizarCompra.aspx" />
+    <Content Include="ListadoVentas.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="misCompras.aspx" />
     <Content Include="modificarMarca.aspx" />
@@ -106,6 +107,13 @@
     </Compile>
     <Compile Include="FinalizarCompra.aspx.designer.cs">
       <DependentUpon>FinalizarCompra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoVentas.aspx.cs">
+      <DependentUpon>ListadoVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoVentas.aspx.designer.cs">
+      <DependentUpon>ListadoVentas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

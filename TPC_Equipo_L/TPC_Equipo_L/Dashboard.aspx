@@ -46,7 +46,7 @@
             <h5 class="card-title">Pedidos</h5>
             <p class="card-text">Nuevos pedidos realizados</p>
               <div class="button-container">
-                  <a href="#" class="btn btn-primary fixed-width-btn">Ver más</a>
+                  <a href="ListadoVentas.aspx" class="btn btn-primary fixed-width-btn">Ver más</a>
               </div>
           </div>
         </div>

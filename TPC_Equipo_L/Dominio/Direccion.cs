@@ -8,11 +8,14 @@ namespace dominio
 {
     public class Direccion
     {
-        public  int ID;
-        public string Calle;
-        public string Nro;
-        public string CP;
+        public  int ID { get; set; }
+        public string Calle { get; set; }
+        public string Nro { get; set; }
+        public string CP { get; set; }
 
+        public int Piso { get; set; }
+
+        public string Depto { get; set; }
         public Direccion() { }
         public Direccion(int ID, string Calle, string Nro, string CP) 
         {
@@ -20,6 +23,16 @@ namespace dominio
             this.Calle = Calle; 
             this.Nro = Nro; 
             this.CP = CP;
+        }
+
+        public Direccion(int ID, string Calle, string Nro, string CP, int piso,string depto)
+        {
+            this.ID = ID;
+            this.Calle = Calle;
+            this.Nro = Nro;
+            this.CP = CP;
+            this.Depto = depto;
+            this.Piso = piso;
         }
         public override string ToString()
         {
