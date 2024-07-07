@@ -31,26 +31,20 @@
                                 <a class="nav-link active" aria-current="page" href="Catalogo.aspx">Catalogo</a>
                             </li>
                             <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="misCompras.aspx">Mis Compras</a>
-</li>
+                                <a class="nav-link active" aria-current="page" href="misCompras.aspx">Mis Compras</a>
+                            </li>
 
                         </ul>
 
-                        <%--                        <form class="d-flex" role="search">
-                            <input class="bd-search" type="search" placeholder="Buscar Productos..." aria-label="Search">
-                            <button class="btn btn-outline-light" type="submit">Buscar</button>
-                        </form>--%>
-
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
-                                <div class="d-flex">
-                                    <asp:TextBox CssClass="form-control me-2" AutoPostBack="true" ID="txtBuscar" runat="server" />
-                                    <asp:Button CssClass="btn btn-outline-success" OnClick="btnBuscar_Click" ID="btnBuscar" Text="Buscar" runat="server" />
+                                <div class="d-flex" role="search">
+                                    <asp:TextBox CssClass="bd-search" type="search" aria-label="Search" ID="txtBuscar" runat="server" />
+                                    <asp:Button CssClass="btn" OnClick="btnBuscar_Click" ID="btnBuscar" Text="Buscar" runat="server" />
                                 </div>
                             </ContentTemplate>
                         </asp:UpdatePanel>
 
-                        <%--agregar iconos de inicio de sesion--%>
 
 
                         <div class="nav-item m-2">
@@ -92,7 +86,7 @@
                         <div class="nav-item">
                             <asp:Button Text="Cerrar Sesión" CssClass="btn btn-outline-danger" OnClick="btnCerrarSession_Click" ID="btnCerrarSession" runat="server" />
                         </div>
-                       
+
 
 
                         <% }
@@ -110,7 +104,6 @@
             </nav>
 
             <div class="container-fluid">
-                <%--<hr />--%>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
                 <hr />
@@ -131,14 +124,5 @@
 </html>
 
 
-<style>
-    .bd-search {
-        position: absolute;
-        top: .875rem;
-        left: 50%;
-        width: 600px;
-        margin-left: -300px;
-        /*        text-align:center;
-*/
-    }
+
 </style>

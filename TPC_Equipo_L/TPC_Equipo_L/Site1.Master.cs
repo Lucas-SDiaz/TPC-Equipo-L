@@ -18,6 +18,7 @@ namespace TPC_Equipo_L
                 lblMensaje.Text = "Hola " + usuario.Nombre.ToString().Trim();
                 lblMensaje.CssClass = "text-primary";
             }
+          
         }
 
         protected void btnCerrarSession_Click(object sender, EventArgs e)

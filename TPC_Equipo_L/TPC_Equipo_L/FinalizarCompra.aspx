@@ -63,9 +63,12 @@
         <div class="col-sm-6 mb-3 mb-sm-0">
             <div class="cardb" style="width: 80%;">
                 <h3 style="text-align: center">Metodo de entrega </h3>
-                <asp:RadioButtonList ID="rblDeliveryMethod" runat="server" CssClass="form-check">
+                <asp:RadioButtonList ID="rblDeliveryMethod" runat="server" CssClass="form-check" AutoPostBack="true" OnSelectedIndexChanged="rblDeliveryMethod_SelectedIndexChanged">
                     <asp:ListItem Text="Retiro en el local" Value="Retirar en local" Selected="True"></asp:ListItem>
-                    <asp:ListItem Text="Envio a domicilio" Value="Coordinar con vendedor"></asp:ListItem>
+                    <asp:ListItem Value="Coordinar con vendedor">
+                 Envio a domicilio. 
+                    <span style="font-weight: bold; text-decoration: underline; color:green">PROMOCION VIGENTE * $2500 a toda argentina *</span>
+    </asp:ListItem>
                 </asp:RadioButtonList>
             </div>
         </div>
