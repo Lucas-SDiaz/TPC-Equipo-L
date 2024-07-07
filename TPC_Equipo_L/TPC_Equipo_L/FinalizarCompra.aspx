@@ -33,9 +33,9 @@
 
 
     <div class="alert alert-dark" role="alert">
-    Debe <a href="Login.aspx">iniciar sesion</a> o <a href="Register.aspx">registrarse</a> antes de continuar!
+        Debe <a href="Login.aspx">iniciar sesion</a> o <a href="Register.aspx">registrarse</a> antes de continuar!
 
-</div>
+    </div>
     <a href="carritoCompra.aspx" class="btn btn-outline-dark">Volver</a>
 
     <br />
@@ -83,6 +83,29 @@
             </div>
         </div>
     </div>
+
+
+    <div class="delivery-form">
+        <div class="cardb">
+            <h3 style="text-align: center">Detalles de domicilio</h3>
+            <div class="mb-3">
+                <asp:Label ID="lblCalle" CssClass="fs-5" Text="Calle" runat="server" />
+                <asp:TextBox ID="txtCalle" CssClass="form-control" placeholder="Calle" runat="server" />
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="lblNro" CssClass="fs-5" Text="Numero" runat="server" />
+                <asp:TextBox ID="txtNro" CssClass="form-control" placeholder="Nro" runat="server" />
+            </div>
+            <div class="mb-3">
+                <asp:Label ID="lblCP" CssClass="fs-5" Text="Codigo Postal" runat="server" />
+                <asp:TextBox CssClass="form-control" ID="txtCP" placeholder="CP" runat="server" />
+            </div>
+
+
+        </div>
+    </div>
+
+
     <br />
     <asp:Button ID="btnFinalizarCompra" runat="server" CssClass="btn btn-success" Text="Finalizar Compra" OnClick="btnFinalizarCompra_Click" />
     <a href="carritoCompra.aspx" class="btn btn-outline-dark">Volver</a>
@@ -91,6 +114,30 @@
 
 
     <br />
+
+
+
+    <script type="text/javascript">
+        // Función para mostrar u ocultar el formulario de domicilio
+        function toggleDeliveryForm() {
+            var deliveryForm = document.querySelector('.delivery-form');
+            var deliveryMethod = document.querySelector('[id*="rblDeliveryMethod"] input:checked');
+
+            if (deliveryMethod && deliveryMethod.value === "Coordinar con vendedor") {
+                deliveryForm.style.display = 'block'; // Mostrar el formulario si se selecciona "Envío a domicilio"
+            } else {
+                deliveryForm.style.display = 'none'; // Ocultar el formulario en otros casos
+            }
+        }
+
+        // Asignar evento al RadioButtonList para controlar cambios
+        document.addEventListener('DOMContentLoaded', function () {
+            toggleDeliveryForm(); // Llamar inicialmente para establecer el estado correcto
+            var rblDeliveryMethod = document.querySelector('[id*="rblDeliveryMethod"]');
+            rblDeliveryMethod.addEventListener('change', toggleDeliveryForm);
+        });
+</script>
 </asp:Content>
+
 
 

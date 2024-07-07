@@ -104,5 +104,6 @@ namespace TPC_Equipo_L
             lblPrecioFinal.Text = "Precio Total: $" + precioTotal.ToString();
             Session["precioTotal"] = precioTotal;
         }
+       
     }
 }
