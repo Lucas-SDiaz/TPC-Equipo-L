@@ -31,9 +31,9 @@
             <asp:TemplateField HeaderText="&nbsp; &nbsp; Cantidad">
                 <ItemTemplate>
                     <div class="d-flex  align-items-center">
-                        <asp:Button ID="btnRestar" runat="server" Text="-" Class="btn btn btn-outline-danger" OnClick="RestarCantidad_Click" CommandArgument='<%# Container.DataItemIndex %>' />
+                        <asp:Button ID="btnRestar" runat="server" Text="-" Class="btn" OnClick="RestarCantidad_Click" CommandArgument='<%# Container.DataItemIndex %>' />
                         <asp:TextBox ID="txtCantidad" runat="server" Text='<%# Eval("Cantidad") %>' Width="50px" CssClass="form-control text-center" ReadOnly="true" />
-                        <asp:Button ID="btnSumar" runat="server" Text="+" Class="btn btn-outline-success" OnClick="SumarCantidad_Click" CommandArgument='<%# Container.DataItemIndex %>' />
+                        <asp:Button ID="btnSumar" runat="server" Text="+" Class="btn" OnClick="SumarCantidad_Click" CommandArgument='<%# Container.DataItemIndex %>' />
                     </div>
                 </ItemTemplate>
             </asp:TemplateField>
