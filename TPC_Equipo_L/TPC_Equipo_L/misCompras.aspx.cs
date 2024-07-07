@@ -20,10 +20,12 @@ namespace TPC_Equipo_L
                 VentaNegocio ventaNegocio = new VentaNegocio();
                 Usuario usuario = new Usuario();
                 usuario = (Usuario)Session["usuario"];
-                venta = ventaNegocio.listarConSp(usuario.Correo, usuario.Contrasenia);
+                venta = ventaNegocio.listarConSp(usuario.Cod_Usuario);
                 dgvCompras.DataSource = venta;
                 dgvCompras.DataBind();
             }
         }
+
+        
     }
 }

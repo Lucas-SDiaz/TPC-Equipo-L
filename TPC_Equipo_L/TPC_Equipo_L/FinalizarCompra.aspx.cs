@@ -27,6 +27,7 @@ namespace TPC_Equipo_L
             EmailService emailService = new EmailService();
             Usuario usuario = (Usuario)Session["usuario"];
             VentaNegocio negocio = new VentaNegocio();
+            DireccionNegocio direccionNegocio = new DireccionNegocio();
 
             string metodoEntrega = rblDeliveryMethod.SelectedValue;
             string metodoPago = rblPaymentMethod.SelectedValue;
@@ -46,9 +47,16 @@ namespace TPC_Equipo_L
 
             // Crear objeto Venta y guardar en la base de datos
             Venta venta = new Venta();
+            Direccion direccion = new Direccion();
+            direccion.Calle = txtCalle.Text;
+            direccion.Nro = txtNro.Text;
+            direccion.CP = txtCP.Text;
+            venta.IdDireccion = direccionNegocio.agregar(direccion,usuario);
             venta.FechaVenta = DateTime.Now;
             venta.Usuario = usuario;
-            venta.Localidad = 1;
+            
+            venta.MetodoPago = metodoPago;
+            venta.MetodoEnvio = metodoEntrega;
 
             SqlMoney precioTotal = (SqlMoney)Session["precioTotal"];
             venta.MontoFinal = precioTotal;

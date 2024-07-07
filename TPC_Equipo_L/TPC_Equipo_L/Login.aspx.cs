@@ -22,7 +22,7 @@ namespace TPC_Equipo_L
             UsuarioNegocio negocio = new UsuarioNegocio();
             try
             {
-                usuario = new Usuario(txtEmail.Text.Trim(), txtPass.Text.Trim(), false);
+                usuario = new Usuario(null,txtEmail.Text.Trim(), txtPass.Text.Trim(), false);
                 if (negocio.Logear(usuario))
                 {
                     Session.Add("Usuario", usuario);

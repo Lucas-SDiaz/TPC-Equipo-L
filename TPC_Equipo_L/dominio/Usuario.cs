@@ -44,8 +44,9 @@ namespace dominio
             Estado = estado;
             TipoUsuario = admin ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
         }        
-        public Usuario(string correo, string contrasenia, bool estado)
+        public Usuario (string cod_Usuario, string correo, string contrasenia, bool estado)
         {
+            Cod_Usuario = cod_Usuario;
             Correo = correo;
             Contrasenia = contrasenia;
             Estado = estado;

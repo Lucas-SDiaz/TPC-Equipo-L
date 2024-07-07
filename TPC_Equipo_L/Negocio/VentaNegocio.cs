@@ -22,11 +22,13 @@ namespace negocio
             {
                 datos.setearProcedimiento("InsertarVenta");
                 datos.agregarParametro("@FechaVenta", venta.FechaVenta);
-                datos.agregarParametro("@User", usuario.Correo);
-                datos.agregarParametro("@Pass", usuario.Contrasenia);
-                datos.agregarParametro("@CodLocalidad", venta.Localidad);
+                datos.agregarParametro("@CodUsuario", usuario.Cod_Usuario);
+                datos.agregarParametro("@ID_Direccion", venta.IdDireccion);
                 datos.agregarParametro("@MontoFinal", venta.MontoFinal);
-              
+
+                datos.agregarParametro("@Metodo_Pago", venta.MetodoPago);
+                datos.agregarParametro("@Metodo_Envio", venta.MetodoEnvio);
+
 
                 datos.ejecutarAccion();
                 datos.cerrarConexion();
@@ -42,7 +44,7 @@ namespace negocio
                 throw;
             }
         }
-        public List<Venta> listarConSp(string User, string contra)
+        public List<Venta> listarConSp(string Cod_Usuario)
         {
             List<Venta> lista = new List<Venta>();
             AccesoDatos datos = new AccesoDatos();
@@ -50,9 +52,7 @@ namespace negocio
             try
             {
                 datos.setearProcedimiento("ListarVentas");
-
-                datos.agregarParametro("@User", User);
-                datos.agregarParametro("@Pass", contra);
+                datos.setearParametros("@CodUsuario", Cod_Usuario);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -61,6 +61,41 @@ namespace negocio
                     aux.Cod_Venta = (int)datos.Lector["Cod_Venta"];
                     aux.FechaVenta = (DateTime)datos.Lector["Fecha_V"];
                     aux.MontoFinal = (decimal)datos.Lector["MontoFinal_V"];
+                    aux.EstadoVenta = (string)datos.Lector["Estado_Venta_V"];
+
+                    aux.MetodoEnvio = (string)datos.Lector["Metodo_Envio_V"];
+
+                    aux.MetodoPago = (string)datos.Lector["Metodo_Pago_V"];
+
+
+                    if (!DBNull.Value.Equals(datos.Lector["Num_Seguimiento_V"]))
+                    {
+                        aux.NumSeguimiento = Convert.ToString(datos.Lector["Num_Seguimiento_V"]);
+                    }
+                    else
+                    {
+                        aux.NumSeguimiento = ""; // o null, según sea necesario
+                    }
+
+
+                    if (!DBNull.Value.Equals(datos.Lector["ID_Pago_V"]))
+                    {
+                        aux.IdPago = Convert.ToString(datos.Lector["ID_Pago_V"]);
+                    }
+                    else
+                    {
+                        aux.IdPago = ""; // o null, según sea necesario
+                    }
+
+                    if (!DBNull.Value.Equals(datos.Lector["Direccion"]))
+                    {
+                        aux.Direccion = Convert.ToString(datos.Lector["Direccion"]);
+                    }
+                    else
+                    {
+                        aux.Direccion = ""; // o null, según sea necesario
+                    }
+
                     lista.Add(aux);
                 }
 

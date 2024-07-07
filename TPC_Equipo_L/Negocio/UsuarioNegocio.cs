@@ -23,7 +23,7 @@ namespace negocio
                 datos.ejecutarLectura();
                 while(datos.Lector.Read())
                 {
-                    usuario.Cod_Usuario = (string)datos.Lector["Cod_Usuario"];
+                    usuario.Cod_Usuario = datos.Lector["Cod_Usuario"].ToString();
                     usuario.Nombre = (string)datos.Lector["Nombre_U"];
                     usuario.TipoUsuario = (int)(datos.Lector["TipoUser_U"]) == 2 ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
                     return true;

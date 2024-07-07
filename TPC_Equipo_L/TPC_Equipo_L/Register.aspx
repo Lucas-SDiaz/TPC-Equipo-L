@@ -89,7 +89,7 @@
         <asp:Label ID="lblMensaje" Text="" runat="server" />
 
     </div>
-    <div class="container-fluid" style="max-width: 50%;">
+  <%--  <div class="container-fluid" style="max-width: 50%;">
     <div class="card mb-2">
         <div class="card-body">
             <asp:UpdatePanel runat="server">
@@ -136,8 +136,8 @@
                     </div>
 
                 </ContentTemplate>
-            </asp:UpdatePanel>
-            <div class="text-end m-2">
+            </asp:UpdatePanel>--%>
+            <div class="text-center m-2">
                 <asp:Button Text="Volver" ID="Button1" CssClass="btn btn-outline-secondary" OnClick="btnVolver_Click" runat="server" />
                 <asp:Button ID="Button2" CssClass="btn btn-outline-primary" Text="Registrar" runat="server" OnClick="btnRegistrar_Click" />
             </div>

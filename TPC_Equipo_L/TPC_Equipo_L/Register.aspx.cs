@@ -18,8 +18,8 @@ namespace TPC_Equipo_L
             UsuarioNegocio negocio = new UsuarioNegocio();
             if (!IsPostBack)
             {
-                ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-                negocio.cargarDDLProvincias(ddlProvincia);
+                //ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+                //negocio.cargarDDLProvincias(ddlProvincia);
 
             }
 
@@ -37,13 +37,13 @@ namespace TPC_Equipo_L
             nuevo.Contrasenia = txtPass.Text;
             nuevo.Nombre = txtNombre.Text;
             nuevo.Apellido = txtApellido.Text;
-            direccion.Calle = txtCalle.Text;
-            direccion.Nro = txtNro.Text;
-            direccion.CP = txtCP.Text;
-            prov.Nombre = ddlProvincia.SelectedItem.ToString();
-            prov.Id = int.Parse(ddlProvincia.Text);
-            localidad.Nombre = ddlLocalidad.Text.ToString();
-            localidad.Id = ddlLocalidad.SelectedIndex; 
+            //direccion.Calle = txtCalle.Text;
+            //direccion.Nro = txtNro.Text;
+            //direccion.CP = txtCP.Text;
+            //prov.Nombre = ddlProvincia.SelectedItem.ToString();
+            //prov.Id = int.Parse(ddlProvincia.Text);
+            //localidad.Nombre = ddlLocalidad.Text.ToString();
+            //localidad.Id = ddlLocalidad.SelectedIndex; 
             nuevo.Provincia = prov;
             nuevo.Localidad = localidad;
             nuevo.Direccion = direccion;
@@ -101,16 +101,16 @@ namespace TPC_Equipo_L
 
         }
 
-        protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UsuarioNegocio negocio = new UsuarioNegocio();
-            int prov = int.Parse(ddlProvincia.SelectedItem.Value);
-            List<Localidad> Localidades = negocio.listarLocalidades(prov);
-            ddlLocalidad.DataSource = Localidades;
-            ddlLocalidad.DataBind();
-            ddlLocalidad.Items.Insert(0, new ListItem("-Localidades-", "0"));
+        //protected void ddlProvincia_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    UsuarioNegocio negocio = new UsuarioNegocio();
+        //    int prov = int.Parse(ddlProvincia.SelectedItem.Value);
+        //    List<Localidad> Localidades = negocio.listarLocalidades(prov);
+        //    ddlLocalidad.DataSource = Localidades;
+        //    ddlLocalidad.DataBind();
+        //    ddlLocalidad.Items.Insert(0, new ListItem("-Localidades-", "0"));
 
-        }
+        //}
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
