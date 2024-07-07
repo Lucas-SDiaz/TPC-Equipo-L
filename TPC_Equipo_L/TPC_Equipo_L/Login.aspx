@@ -23,8 +23,21 @@
             </div>
         </div>
         ¿Eres nuevo? <a href="Register.aspx">Crear cuenta</a>
-    
+
     </div>
+    <asp:ScriptManager runat="server" />
+    <script type="text/javascript">
+        // Función para detectar la tecla Enter
+        function detectEnterKeyPress(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevenir el comportamiento predeterminado del Enter
+                document.getElementById('<%= btnIniciar.ClientID %>').click(); // Simular clic en el botón Iniciar sesión
+            }
+        }
+        document.getElementById('<%= txtEmail.ClientID %>').addEventListener('keypress', detectEnterKeyPress);
+        document.getElementById('<%= txtPass.ClientID %>').addEventListener('keypress', detectEnterKeyPress);
+    </script>
+
 
 
 </asp:Content>
