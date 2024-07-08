@@ -160,7 +160,6 @@ namespace negocio
                     datos.setearParametros("@Apellido_U", usuario.Apellido);
                     datos.setearParametros("@Correo_U", usuario.Correo);
                     datos.setearParametros("@Contrasenia_U", usuario.Contrasenia);
-                    datos.setearParametros("@Direccion_U", usuario.Direccion.Calle);
                     datos.setearParametros("@Cod_Localidad_U", usuario.Localidad.Id);
                     datos.setearParametros("@ImgURL_U", usuario.ImagenURL);
                     datos.setearParametros("@Estado_U", usuario.Estado);

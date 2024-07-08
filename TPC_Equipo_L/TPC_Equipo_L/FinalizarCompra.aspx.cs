@@ -51,7 +51,7 @@ namespace TPC_Equipo_L
             direccion.Calle = txtCalle.Text;
             direccion.Nro = txtNro.Text;
             direccion.CP = txtCP.Text;
-            venta.IdDireccion = direccionNegocio.agregar(direccion,usuario);
+            venta.IdDireccion = direccionNegocio.Agregar(direccion,usuario);
             venta.FechaVenta = DateTime.Now;
             venta.Usuario = usuario;
             

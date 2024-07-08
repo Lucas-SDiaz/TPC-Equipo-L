@@ -42,19 +42,74 @@
                     </div>
                     <div class="col-6">
                         <div class="p-3">
-                            <asp:Label ID="Label1" CssClass="fs-5" Text="Email" runat="server" />
+                            <asp:Label ID="lblEmail" CssClass="fs-5" Text="Email" runat="server" />
                             <asp:TextBox type="email" CssClass="form-control" ID="txtEmail" placeholder="Email@Ejemplo.com" runat="server" />
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="p-3">
-                            <asp:Label ID="Label2" CssClass="fs-5" Text="Contraseña" runat="server" />
+                            <asp:Label ID="lblPass" CssClass="fs-5" Text="Contraseña" runat="server" />
                             <asp:TextBox type="password" CssClass="form-control" ID="txtPass" placeholder="Contraseña" runat="server" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-3">
+                            <asp:Label ID="lblNombreUsuario" CssClass="fs-5" Text="Nombre Usuario" runat="server" />
+                            <asp:TextBox ID="txtNombreUsuario" CssClass="form-control" placeholder="Nombre de Usuario" runat="server" />
+                        </div>
+                    </div>                    
+                    <div class="col-6">
+                        <div class="p-3">
+                            <asp:Label ID="lblImagen" CssClass="fs-5" Text="Imagen" runat="server" />
+                            <asp:TextBox ID="txtImagen" CssClass="form-control" placeholder="URL Imagen" runat="server" />
+                        </div>
+                    </div>  
+                    <div class="col-6">
+                        <div class="p-3">
+                            <asp:Label ID="lblCalle" CssClass="fs-5" Text="Calle" runat="server" />
+                            <asp:TextBox ID="txtCalle" CssClass="form-control" placeholder="Calle" runat="server" />
+                        </div>
+                    </div>                    
+                    <div class="col-6">
+                        <div class="p-3">
+                            <asp:Label ID="lblNumero" CssClass="fs-5" Text="Numero de Calle" runat="server" />
+                            <asp:TextBox ID="txtNro" CssClass="form-control" placeholder="Numero de Callle" runat="server" />
+                        </div>
+                    </div>                    
+                    <div class="col-6">
+                        <div class="p-3">
+                            <asp:Label ID="lblCP" CssClass="fs-5" Text="Código Postal" runat="server" />
+                            <asp:TextBox ID="txtCP" CssClass="form-control" placeholder="Código Postal" runat="server" />
+                        </div>
+                    </div>                    
+                    <div class="col-6">
+                        <div class="p-3">
+                            <asp:Label ID="lblPiso" CssClass="fs-5" Text="Piso" runat="server" />
+                            <asp:TextBox ID="txtPiso" CssClass="form-control" placeholder="Piso" runat="server" />
+                        </div>
+                    </div>                    
+                    <div class="col-6">
+                        <div class="p-3">
+                            <asp:Label ID="lblDepto" CssClass="fs-5" Text="Departamento" runat="server" />
+                            <asp:TextBox ID="txtDepto" CssClass="form-control" placeholder="Departamento" runat="server" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-3">
+                            <asp:DropDownList AutoPostBack="true" ID="ddlProvincia" CssClass="btn btn-dark dropdown-toggle" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged" runat="server" />
+                        </div>
+                    </div>                    
+                    <div class="col-6">
+                        <div class="p-3">
+                            <asp:DropDownList ID="ddlLocalidad" CssClass="btn btn-dark dropdown-toggle" runat="server" />
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div class="text-end">
+                <asp:Button CssClass="btn btn-outline-primary" ID="btnGuardar" OnClick="btnGuardar_Click" Text="Guardar" runat="server" />
+            </div>
         </div>
     </div>
 

@@ -10,30 +10,31 @@ namespace dominio
     {
         public  int ID { get; set; }
         public string Calle { get; set; }
-        public string Nro { get; set; }
-        public string CP { get; set; }
-
+        public int Nro { get; set; }
+        public int CP { get; set; }
         public int Piso { get; set; }
-
         public string Depto { get; set; }
+
         public Direccion() { }
-        public Direccion(int ID, string Calle, string Nro, string CP) 
+        public Direccion(int ID, string Calle, int Nro, int CP, int Piso, string Depto) 
         {
             this.ID = ID;
             this.Calle = Calle; 
             this.Nro = Nro; 
             this.CP = CP;
+            this.Piso = Piso;
+            this.Depto = Depto;
         }
 
-        public Direccion(int ID, string Calle, string Nro, string CP, int piso,string depto)
-        {
-            this.ID = ID;
-            this.Calle = Calle;
-            this.Nro = Nro;
-            this.CP = CP;
-            this.Depto = depto;
-            this.Piso = piso;
-        }
+        //public Direccion(int ID, string Calle, string Nro, string CP, int piso,string depto)
+        //{
+        //    this.ID = ID;
+        //    this.Calle = Calle;
+        //    this.Nro = Nro;
+        //    this.CP = CP;
+        //    this.Depto = depto;
+        //    this.Piso = piso;
+        //}
         public override string ToString()
         {
             return "Calle: " + Calle + " Nro° " + Nro; 
