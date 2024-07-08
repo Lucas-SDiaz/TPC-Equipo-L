@@ -67,7 +67,7 @@
                     </p>
                 </div>
             </div>
-            <%if (Session["metodoPago"].ToString() == "Coordinar con vendedor" && Session["metodoEntrega"].ToString() == "Coordinar con vendedor")
+            <%if (Session["metodoPago"].ToString() == "Efectivo" && Session["metodoEntrega"].ToString() == "Envio a domicilio.")
                 {%>
             <div class="card card-horizontal">
                 <div class="card-body">
@@ -79,10 +79,10 @@
                 </div>
             </div>
             <%}
-            else
-            { %>
+                else
+                { %>
             <div class="row">
-                <%if (Session["metodoEntrega"].ToString() == "Retirar en local")
+                <%if (Session["metodoEntrega"].ToString() == "Retiro en el local")
                     { %>
                 <div class="col-md-6">
                     <div class="card card-custom">
@@ -97,15 +97,15 @@
                     </div>
                 </div>
                 <%}
-                    else if (Session["metodoEntrega"].ToString() == "Coordinar con vendedor")
+                    else if (Session["metodoEntrega"].ToString() == "Envio a domicilio.")
                     {%>
                 <div class="col-md-6">
                     <div class="card card-custom">
                         <div class="card-body">
-                            <h5 class="card-title">Coordinar envio</h5>
+                            <h5 class="card-title">Envio dentro de las 48hs habiles.</h5>
                             <p class="card-text">
                                 Whatsapp: 2246438721<br />
-                                <br />
+                                Instagram: @Supermercado<br />
                             </p>
                         </div>
                     </div>
@@ -128,20 +128,19 @@
                 </div>
                 <% }
                     else if (Session["metodoPago"].ToString() == "Efectivo")
-                    {%>
-                <div class="col-md-6">
-                    <div class="card card-custom">
+                    {%><div class="col-md-6">
+    <div class="card card-custom">
                         <div class="card-body">
-                            <h5 class="card-title">Coordinar metodo de pago</h5>
+                            <h5 class="card-title">Datos de contacto</h5>
                             <p class="card-text">
                                 Whatsapp: 2246438721<br />
-                                <br />
+                                Instagram: @Supermercado<br />
                             </p>
                         </div>
                     </div>
-                </div>
+                        </div>
                 <%}
-                }%>
+                    }%>
             </div>
         </div>
         <div class="button-container">

@@ -35,7 +35,7 @@ namespace TPC_Equipo_L
             Session["metodoPago"] = metodoPago;
 
             // Enviar correo electrónico
-            if (metodoEntrega == "Retirar en local")
+            if (metodoEntrega == "Retiro en el local")
             {
                 emailService.armarCorreoRetiro(usuario.Correo, "Felicitaciones por tu compra", usuario);
             }
@@ -104,7 +104,7 @@ namespace TPC_Equipo_L
                 precioTotal += (producto.Precio) * (producto.Cantidad);
             }
 
-            if (rblDeliveryMethod.SelectedValue == "Coordinar con vendedor" || rblPaymentMethod.SelectedValue == "Coordinar con vendedor")
+            if (rblDeliveryMethod.SelectedValue == "Envio a domicilio.")
             {
                 precioTotal += 2500;
             }
