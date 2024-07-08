@@ -96,6 +96,11 @@
                     </div>
                     <div class="col-6">
                         <div class="p-3">
+                            <asp:Label ID="lblM" Text="" runat="server" />
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-3">
                             <asp:DropDownList AutoPostBack="true" ID="ddlProvincia" CssClass="btn btn-dark dropdown-toggle" OnSelectedIndexChanged="ddlProvincia_SelectedIndexChanged" runat="server" />
                         </div>
                     </div>                    
