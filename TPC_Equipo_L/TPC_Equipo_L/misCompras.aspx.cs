@@ -16,16 +16,21 @@ namespace TPC_Equipo_L
 
             if (Session["usuario"] != null)
             {
-                List<Venta> venta = (List<Venta>)Session["venta"];
+                
                 VentaNegocio ventaNegocio = new VentaNegocio();
                 Usuario usuario = new Usuario();
                 usuario = (Usuario)Session["usuario"];
-                venta = ventaNegocio.listarConSp(usuario.Cod_Usuario);
-                dgvCompras.DataSource = venta;
+                Session.Add("venta", ventaNegocio.listarConSp(usuario.Cod_Usuario));
+                dgvCompras.DataSource = Session["venta"];
                 dgvCompras.DataBind();
+
             }
         }
 
-        
+        protected void dgvCompras_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var codV = dgvCompras.SelectedDataKey.Value.ToString();
+            Response.Redirect("modificarVenta.aspx?codV=" + codV);
+        }
     }
 }

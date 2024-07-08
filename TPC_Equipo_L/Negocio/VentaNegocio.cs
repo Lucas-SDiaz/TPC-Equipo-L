@@ -14,6 +14,26 @@ namespace negocio
     {
         public VentaNegocio() { }
 
+        public void modificarPago(Venta ven)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                if (ven != null)
+                {
+                    datos.setearConsulta("update Ventas set ID_Pago_V = @idPago where Cod_Venta = @codVenta");
+                    datos.setearParametros("@codVenta", ven.Cod_Venta);
+                    datos.setearParametros("@idPago", ven.IdPago);
+                    datos.ejecutarAccion();
+                    datos.cerrarConexion();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public void agregar(Venta venta, Usuario usuario)
         {
             AccesoDatos datos = new AccesoDatos();

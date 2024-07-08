@@ -87,6 +87,7 @@
     <Content Include="listarMarca.aspx" />
     <Content Include="listarProducto.aspx" />
     <Content Include="modificarCategoria.aspx" />
+    <Content Include="modificarVenta.aspx" />
     <Content Include="Perfil.aspx" />
     <Content Include="PerfilAdmin.aspx" />
     <Content Include="Register.aspx" />
@@ -243,6 +244,13 @@
     </Compile>
     <Compile Include="modificarCategoria.aspx.designer.cs">
       <DependentUpon>modificarCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="modificarVenta.aspx.cs">
+      <DependentUpon>modificarVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modificarVenta.aspx.designer.cs">
+      <DependentUpon>modificarVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
