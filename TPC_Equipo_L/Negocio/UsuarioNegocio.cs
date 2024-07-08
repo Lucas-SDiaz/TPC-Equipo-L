@@ -86,7 +86,7 @@ namespace negocio
 
         }
 
-       
+        
         public List<Localidad> listarLocalidades(int prov)
         {
             List<string> lista = new List<string>();
@@ -191,6 +191,46 @@ namespace negocio
             datos.cerrarConexion();
             }
         }
+
+        public List<Venta> listarClientesConSp()
+        {
+            List<Venta> lista = new List<Venta>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                //datos.setearProcedimiento("ListarClientes");
+                datos.setearConsulta("SELECT Nombre_U, Apellido_U, Correo_U as 'Email', COUNT(Cod_Venta) AS 'Cantidad de compras' FROM Usuarios" +
+                                     " INNER JOIN Ventas ON Cod_Usuario_V = Cod_Usuario WHERE Baja_V = 1" +
+                                     "GROUP BY Nombre_U, Apellido_U, Correo_U ORDER BY Apellido_U ASC");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Venta aux = new Venta();
+                    Usuario usuario = new Usuario();
+
+                    aux.Usuario = new Usuario();
+
+                    aux.Usuario.Nombre = (string)datos.Lector["Nombre_U"];
+                    aux.Usuario.Apellido = (string)datos.Lector["Apellido_U"];
+                    aux.Usuario.Correo = (string)datos.Lector["Email"];
+                    aux.Cod_Venta = (int)(datos.Lector["Cantidad de compras"]);
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
 
     }
 }

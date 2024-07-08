@@ -57,7 +57,7 @@
             <h5 class="card-title">Clientes</h5>
             <p class="card-text">Listado de clientes y datos pertinentes</p>
               <div class="button-container">
-                  <a href="#" class="btn btn-primary fixed-width-btn">Ver más</a>
+                  <a href="Clientes.aspx" class="btn btn-primary fixed-width-btn">Ver más</a>
               </div>
           </div>
         </div>
