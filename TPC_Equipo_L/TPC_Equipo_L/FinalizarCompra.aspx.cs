@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -48,9 +49,38 @@ namespace TPC_Equipo_L
             // Crear objeto Venta y guardar en la base de datos
             Venta venta = new Venta();
             Direccion direccion = new Direccion();
-            direccion.Calle = txtCalle.Text;
-            direccion.Nro = txtNro.Text;
-            direccion.CP = txtCP.Text;
+
+            if (metodoEntrega != "Retiro en el local")
+            {
+                direccion.Calle = txtCalle.Text;
+                direccion.Nro = int.Parse(txtNro.Text);
+                direccion.CP = int.Parse(txtCP.Text);
+                if (txtPiso.Text != "")
+                {
+                    direccion.Piso = int.Parse(txtPiso.Text);
+
+                }
+                if (txtDepto.Text != "")
+                {
+                    direccion.Depto = txtDepto.Text;
+
+                }
+                else
+                {
+                    direccion.Depto = "";
+
+                }
+            }
+            else
+            {
+             
+                    direccion.Calle = "Calle Falsa";
+                    direccion.Nro = 123;
+                    direccion.CP = 12345;
+                    direccion.Piso = 0;
+                    direccion.Depto = "";
+
+            }
             venta.IdDireccion = direccionNegocio.Agregar(direccion,usuario);
             venta.FechaVenta = DateTime.Now;
             venta.Usuario = usuario;
@@ -58,6 +88,14 @@ namespace TPC_Equipo_L
             venta.MetodoPago = metodoPago;
             venta.MetodoEnvio = metodoEntrega;
 
+            if(metodoPago== "Efectivo")
+            {
+                venta.IdPago = "-";
+            }
+            if(metodoEntrega== "Retiro en el local")
+            {
+                venta.NumSeguimiento = "-";
+            }
             SqlMoney precioTotal = (SqlMoney)Session["precioTotal"];
             venta.MontoFinal = precioTotal;
 

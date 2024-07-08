@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
 using System.Web;
+using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -14,47 +15,55 @@ namespace TPC_Equipo_L
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string codV;
-            VentaNegocio negocio = new VentaNegocio();
             if (!IsPostBack)
             {
                 if (Request.QueryString["codV"] != null)
                 {
                     ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-                    codV = Request.QueryString["codV"].ToString();
+                    string codV = Request.QueryString["codV"].ToString();
                     List<Venta> temp = (List<Venta>)Session["venta"];
                     Venta selected = temp.Find(x => x.Cod_Venta == int.Parse(codV));
 
-                    selected.Cod_Venta = int.Parse(codV);
-                    txtComprobante.Text = selected.IdPago;
-
+                    if (selected != null)
+                    {
+                        txtComprobante.Text = selected.IdPago;
+                    }
                 }
-            }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
 
+            }
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
-            string codV;
-            try
+            if (Request.QueryString["codV"] != null)
             {
-                VentaNegocio negocio = new VentaNegocio();
-                codV = Request.QueryString["codV"].ToString();
+                string codV = Request.QueryString["codV"].ToString();
                 List<Venta> temp = (List<Venta>)Session["venta"];
                 Venta selected = temp.Find(x => x.Cod_Venta == int.Parse(codV));
 
-
-
-                if (selected != null &&  txtComprobante.Text.Trim() != string.Empty )
+                if (selected != null && !string.IsNullOrWhiteSpace(txtComprobante.Text))
                 {
-                    selected.IdPago = txtComprobante.Text.Trim();
-                    negocio.modificarPago(selected);
+                    try
+                    {
+                        VentaNegocio negocio = new VentaNegocio();
+                        selected.IdPago = txtComprobante.Text.Trim();
+                        negocio.modificarPago(selected);
 
-                    lblMensaje.Text = "Se actualizo el nro de pago exitosamente.";
-                    lblMensaje.CssClass = "alert alert-success";
+                        lblMensaje.Text = "Se actualizó el número de pago exitosamente.";
+                        lblMensaje.CssClass = "alert alert-success";
 
-                    Response.Redirect("misCompras.aspx");
-
+                        // Redireccionar después de un pequeño retraso para permitir que el mensaje sea visible
+                        ScriptManager.RegisterStartupScript(this, GetType(), "Redirect", "setTimeout(function(){ window.location.href = 'misCompras.aspx'; }, 2000);", true);
+                    }
+                    catch (Exception ex)
+                    {
+                        lblMensaje.Text = "Ocurrió un error al actualizar: " + ex.Message;
+                        lblMensaje.CssClass = "alert alert-danger";
+                    }
                 }
                 else
                 {
@@ -62,12 +71,6 @@ namespace TPC_Equipo_L
                     lblMensaje.CssClass = "alert alert-danger";
                 }
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)

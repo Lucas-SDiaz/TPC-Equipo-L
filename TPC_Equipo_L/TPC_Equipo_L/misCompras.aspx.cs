@@ -32,5 +32,23 @@ namespace TPC_Equipo_L
             var codV = dgvCompras.SelectedDataKey.Value.ToString();
             Response.Redirect("modificarVenta.aspx?codV=" + codV);
         }
+
+        protected void dgvCompras_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // Obtener el valor del MetodoPago de la fila actual
+                string metodoPago = DataBinder.Eval(e.Row.DataItem, "MetodoPago").ToString();
+
+                // Encontrar el LinkButton de selección (CARGAR) y deshabilitarlo si el MetodoPago no es "transferencia bancaria"
+                if (metodoPago != "Transferencia Bancaria")
+                {
+                    LinkButton selectButton = (LinkButton)e.Row.Cells[8].Controls[0]; // Asumiendo que la columna CommandField es la octava columna (index 7)
+                    selectButton.Enabled = false;
+                    selectButton.CssClass = " disabled"; // Añadir clase CSS para estilo deshabilitado si es necesario
+                    selectButton.Text = "-";
+                }
+            }
+        }
     }
 }
