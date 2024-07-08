@@ -30,7 +30,7 @@
         else
         {%>
 
-    <asp:GridView runat="server" ID="dgvCompras" CssClass="table table-info table-borderless table-striped" AutoGenerateColumns="false">
+    <asp:GridView runat="server" ID="dgvCompras" DataKeyNames="Cod_Venta" CssClass="table table-info table-borderless table-striped" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvCompras_SelectedIndexChanged">
         <Columns>
 
             <asp:BoundField HeaderText="Fecha" DataField="FechaVenta" DataFormatString="{0:d}" />
@@ -45,6 +45,8 @@
 
             <asp:BoundField HeaderText="Nro de Seguimiento" DataField="NumSeguimiento" />
             <asp:BoundField HeaderText="Nro de Pago" DataField="IdPago" />
+             <asp:CommandField ShowSelectButton="true" SelectText="CARGAR" HeaderStyle-BackColor="DarkGray" ControlStyle-CssClass="btn " HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" HeaderText="Cargar Comprobante" />
+                
 
 
 

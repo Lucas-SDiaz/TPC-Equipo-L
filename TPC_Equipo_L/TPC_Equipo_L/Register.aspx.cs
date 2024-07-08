@@ -85,6 +85,7 @@ namespace TPC_Equipo_L
                     //nuevo.Cod_Usuario = negocio.registrarUsuario(nuevo);
                     emailService.armarCorreo(nuevo.Correo,"Bienvenido a Supermercado", nuevo);
                     emailService.enviarMail();
+                    negocio.Logear(nuevo);
                     Session["usuario"] = nuevo;
                     Response.Redirect("Default.aspx", false);
                 }
