@@ -11,7 +11,7 @@ namespace dominio
         //Atributos
         public int Id { get; set; }
         public Provincia Provincia { get; set; }
-        public string Nombre { get; set; }
+        public string localidad { get; set; }
 
         //Constructor
         public Localidad() { }
@@ -20,13 +20,13 @@ namespace dominio
         {
             Id = id;
             Provincia = provincia;
-            Nombre = nombre;
+            localidad = nombre;
         }
 
         //Override ToString
         public override string ToString()
         {
-            return Nombre;
+            return localidad;
         }
     }
 }

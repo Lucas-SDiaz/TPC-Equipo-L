@@ -21,7 +21,7 @@ namespace negocio
                 datos.setearParametros("@user", usuario.Correo);
                 datos.setearParametros("@pass", usuario.Contrasenia);
                 datos.ejecutarLectura();
-                while(datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
                     usuario.Cod_Usuario = datos.Lector["Cod_Usuario"].ToString();
                     usuario.Nombre = (string)datos.Lector["Nombre_U"];
@@ -65,7 +65,7 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-        public void cargarDDL(DropDownList list, string query, string text, string value)
+        public void cargarDDL(DropDownList list, string query, string text, string value, string value2 = "")
         {
             AccesoDatos datos = new AccesoDatos();
             list.DataSource = datos.cargarControl(query);
@@ -79,14 +79,14 @@ namespace negocio
             list.Items.Insert(0, new ListItem("-Provincias-", "0"));
         }
 
-        public void cargarDDLLocalidades(DropDownList list)
+        public void cargarDDLLocalidades(DropDownList list, int idProvincia)
         {
-            cargarDDL(list, "SELECT * FROM LOCALIDADES", "Localidad", "ID");
+            cargarDDL(list, "SELECT * FROM LOCALIDADES WHERE ID_Provincia = '" + idProvincia + "'", "Localidad", "ID", "ID_Provincia");
             list.Items.Insert(0, new ListItem("-Localidades-", "0"));
 
         }
 
-        
+
         public List<Localidad> listarLocalidades(int prov)
         {
             List<string> lista = new List<string>();
@@ -97,13 +97,11 @@ namespace negocio
                 datos.setearConsulta("SELECT L.Localidad, L.ID FROM Localidades L WHERE L.ID_Provincia = @ID_Provincia");
                 datos.setearParametros("@ID_Provincia", prov);
                 datos.ejecutarLectura();
-                while(datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
-                    string loc = (string)datos.Lector["Localidad"];
-                    int id = (int)datos.Lector["ID"];
                     Localidad localidad = new Localidad();
-                    localidad.Nombre = loc;
-                    localidad.Id = id;
+                    localidad.localidad = (string)datos.Lector["Localidad"];
+                    localidad.Id = (int)datos.Lector["ID"];
                     localidades.Add(localidad);
                 }
 
@@ -135,7 +133,7 @@ namespace negocio
                     "WHERE Cod_Usuario = @Cod_Usuario");
                 datos.setearParametros("@Cod_Usuario", cod);
                 datos.ejecutarLectura();
-                while(datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
                     usuario.Cod_Usuario = cod;
                     usuario.NombreUsuario = (string)datos.Lector["NombreUsuario_U"];
@@ -175,7 +173,14 @@ namespace negocio
                     datos.setearParametros("@Cod_Localidad_U", usuario.Localidad.Id);
                     datos.setearParametros("@ImgURL_U", usuario.ImagenURL);
                     datos.setearParametros("@Estado_U", true);
-                    datos.setearParametros("@TipoUser_U", usuario.TipoUsuario);
+                    if (usuario.TipoUsuario == TipoUsuario.ADMIN)
+                    {
+                        datos.setearParametros("@TipoUser_U", 2);
+                    }
+                    else
+                    {
+                        datos.setearParametros("@TipoUser_U", 1);
+                    }
                     datos.ejecutarAccion();
                     return true;
                 }
@@ -186,9 +191,9 @@ namespace negocio
 
                 throw;
             }
-            finally 
-            { 
-            datos.cerrarConexion();
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
 

@@ -18,8 +18,7 @@ namespace TPC_Equipo_L
             if (!IsPostBack)
             {
                 ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-                negocio.cargarDDLProvincias(ddlProvincia);
-                negocio.cargarDDLLocalidades(ddlLocalidad);
+
                 if (Session["Usuario"] == null || ((Usuario)Session["Usuario"]).TipoUsuario == TipoUsuario.NORMAL)
                 {
                     Session.Add("error", "Error! Usted No tiene permisos para acceder");
@@ -49,13 +48,15 @@ namespace TPC_Equipo_L
                     usuario = negocio.BuscarUsuario(cod);
                     ddlLocalidad.SelectedValue = usuario.Localidad.Id.ToString();
                     ddlProvincia.SelectedValue = usuario.Provincia.Id.ToString();
+                    negocio.cargarDDLProvincias(ddlProvincia);
+                    negocio.cargarDDLLocalidades(ddlLocalidad, usuario.Provincia.Id);
                     txtEmail.Text = usuario.Correo;
                     txtPass.Text = usuario.Contrasenia;
                     txtNombre.Text = usuario.Nombre;
                     txtNombreUsuario.Text = usuario.NombreUsuario;
                     txtImagen.Text = usuario.ImagenURL;
                     txtApellido.Text = usuario.Apellido;
-
+                    Session["TipoUsuario"] = usuario.TipoUsuario;
                 }
 
             }
@@ -90,6 +91,7 @@ namespace TPC_Equipo_L
                 usuario.ImagenURL = txtImagen.Text;
                 usuario.Localidad.Id = ddlLocalidad.SelectedIndex;
                 usuario.Provincia.Id = ddlProvincia.SelectedIndex;
+                usuario.TipoUsuario = (TipoUsuario)Session["TipoUsuario"];
                 if (direccionNegocio.GetDireccion(usuario.Direccion, usuario.Cod_Usuario) != null)
                 {
                     usuario.Direccion.Calle = txtCalle.Text;
