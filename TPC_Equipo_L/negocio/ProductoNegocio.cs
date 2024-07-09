@@ -10,6 +10,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web.Security;
 using System.Web.UI.WebControls;
 using dominio;
 
@@ -143,9 +144,6 @@ namespace negocio
 
 
         }
-
-
-
         public void cargarDDL(DropDownList list, string query, string text, string value)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -296,9 +294,10 @@ namespace negocio
                 throw;
             }
         }
-        public void ModificarStock(Producto producto, int cantidad)
+        public void ModificarStock(Producto producto)
         {
-            producto.Stock -= cantidad;
+            producto.Stock -= producto.Cantidad;
+            producto.Estado = true;
             modificar(producto);
         }
 

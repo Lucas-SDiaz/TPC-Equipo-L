@@ -101,6 +101,14 @@ namespace TPC_Equipo_L
 
             negocio.agregar(venta, usuario);
 
+            //
+            List<Producto> carrito = (List<Producto>)Session["carrito"];
+            ProductoNegocio productoNegocio = new ProductoNegocio();
+            foreach(Producto producto in carrito)
+            {
+                productoNegocio.ModificarStock(producto);
+            }
+
             // Redirigir a la página de compra exitosa
             Response.Redirect("CompraExitosa.aspx");
         }
