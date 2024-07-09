@@ -3,29 +3,49 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
-
-    <asp:GridView runat="server" ID="dgvVentas" CssClass="table table-info table-borderless table-striped" AutoGenerateColumns="false">
+    <style>
+    .rounded-gridview {
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 50px; 
+    }
+    .centered-table {
+        margin: 20px auto; 
+        max-width: 90%; 
+        text-align: center; 
+    }
+</style>
+    <br />
+    
+    <br />
+    <asp:GridView runat="server" DataKeyNames="Cod_Venta" ID="dgvVentas" CssClass="table table-dark table-borderless table-striped rounded-gridview" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged" OnRowDataBound="dgvVentas_RowDataBound">
     <Columns>
-        <asp:BoundField HeaderText="Nombre" DataField="Usuario.Nombre" />
-        <asp:BoundField HeaderText="Apellido" DataField="Usuario.Apellido" />
-        <asp:BoundField HeaderText="Fecha" DataField="FechaVenta" DataFormatString="{0:d}" />
-        <asp:BoundField HeaderText="Precio" DataField="MontoFinal" />
-        <asp:BoundField HeaderText="Envio" DataField="MetodoEnvio" />
+        <asp:BoundField HeaderText="Nombre" DataField="Usuario.Nombre" HeaderStyle-CssClass="text-center"/>
+        <asp:BoundField HeaderText="Apellido" DataField="Usuario.Apellido" HeaderStyle-CssClass="text-center"/>
+        <asp:BoundField HeaderText="Fecha" DataField="FechaVenta" DataFormatString="{0:d}" HeaderStyle-CssClass="text-center"/>
+        <asp:BoundField HeaderText="Precio" DataField="MontoFinal" HeaderStyle-CssClass="text-center"/>
+        <asp:BoundField HeaderText="Envio" DataField="MetodoEnvio" HeaderStyle-CssClass="text-center"/>
 
-        <asp:BoundField HeaderText="Pago" DataField="MetodoPago" />
+        <asp:BoundField HeaderText="Pago" DataField="MetodoPago" HeaderStyle-CssClass="text-center"/>
 
-        <asp:BoundField HeaderText="Direccion" DataField="Direccion" />
+        <asp:BoundField HeaderText="Direccion" DataField="Direccion" HeaderStyle-CssClass="text-center"/>
 
-        <asp:BoundField HeaderText="Estado Compra" DataField="EstadoVenta" />
+        <asp:BoundField HeaderText="Estado Compra" DataField="EstadoVenta" HeaderStyle-CssClass="text-center"/>
 
-        <asp:BoundField HeaderText="Nro de Seguimiento" DataField="NumSeguimiento" />
-        <asp:BoundField HeaderText="Nro de Pago" DataField="IdPago" />
-
+        <asp:BoundField HeaderText="Nro de Seguimiento" DataField="NumSeguimiento" HeaderStyle-CssClass="text-center"/>
+        <asp:BoundField HeaderText="Nro de Pago" DataField="IdPago" HeaderStyle-CssClass="text-center"/>
+        <asp:CommandField ShowSelectButton="true" SelectText="CARGAR"  ItemStyle-ForeColor="White" ControlStyle-CssClass="btn" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" HeaderText="Cargar Nro Seguimiento" />
+             
 
 
     </Columns>
-</asp:GridView>
 
+
+        
+</asp:GridView>
+   <a href="dashboard.aspx" class="btn btn-outline-dark">Volver</a>
+        <br />
+
+<br />
 
 </asp:Content>
