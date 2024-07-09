@@ -200,7 +200,7 @@ namespace negocio
             try
             {
                 //datos.setearProcedimiento("ListarClientes");
-                datos.setearConsulta("SELECT Nombre_U, Apellido_U, Correo_U as 'Email', COUNT(Cod_Venta) AS 'Cantidad de compras' FROM Usuarios" +
+                datos.setearConsulta("SELECT Nombre_U, Apellido_U, Correo_U as 'Email'," + /*Telefono_U*/ "COUNT(Cod_Venta) AS 'Cantidad de compras' FROM Usuarios" +
                                      " INNER JOIN Ventas ON Cod_Usuario_V = Cod_Usuario WHERE Baja_V = 1" +
                                      "GROUP BY Nombre_U, Apellido_U, Correo_U ORDER BY Apellido_U ASC");
                 datos.ejecutarLectura();
@@ -214,6 +214,7 @@ namespace negocio
                     aux.Usuario.Nombre = (string)datos.Lector["Nombre_U"];
                     aux.Usuario.Apellido = (string)datos.Lector["Apellido_U"];
                     aux.Usuario.Correo = (string)datos.Lector["Email"];
+                    // aux.Usuario.Telefono = (string)datos.Lector["Telefono"];   AGREGAMOS TELEFONO?
                     aux.Cod_Venta = (int)(datos.Lector["Cantidad de compras"]);
                     lista.Add(aux);
                 }

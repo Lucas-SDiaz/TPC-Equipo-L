@@ -64,6 +64,7 @@ namespace negocio
                 throw;
             }
         }
+
         public List<Venta> listarConSp(string Cod_Usuario)
         {
             List<Venta> lista = new List<Venta>();
