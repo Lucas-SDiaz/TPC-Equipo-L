@@ -52,8 +52,6 @@ namespace TPC_Equipo_L
 
                         lblMensaje.Text = "Se actualizó el número de seguimiento exitosamente.";
                         lblMensaje.CssClass = "alert alert-success";
-
-                        // Redireccionar después de un pequeño retraso para permitir que el mensaje sea visible
                         ScriptManager.RegisterStartupScript(this, GetType(), "Redirect", "setTimeout(function(){ window.location.href = 'ListadoVentas.aspx'; }, 2000);", true);
                     }
                     catch (Exception ex)

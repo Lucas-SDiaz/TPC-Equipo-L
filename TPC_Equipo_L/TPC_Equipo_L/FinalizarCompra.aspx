@@ -104,7 +104,7 @@
                 <asp:Label ID="lblPiso" CssClass="fs-5" Text="Piso" runat="server" />
                 <asp:TextBox CssClass="form-control" ID="txtPiso" placeholder="Piso" runat="server" />
             </div>
-            
+
             <div class="mb-3">
                 <asp:Label ID="lblDepto" CssClass="fs-5" Text="Depto" runat="server" />
                 <asp:TextBox CssClass="form-control" ID="txtDepto" placeholder="Depto" runat="server" />

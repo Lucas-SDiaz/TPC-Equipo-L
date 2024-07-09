@@ -73,26 +73,26 @@ namespace TPC_Equipo_L
             }
             else
             {
-             
-                    direccion.Calle = "Calle Falsa";
-                    direccion.Nro = 123;
-                    direccion.CP = 12345;
-                    direccion.Piso = 0;
-                    direccion.Depto = "";
+
+                direccion.Calle = "Calle Falsa";
+                direccion.Nro = 123;
+                direccion.CP = 12345;
+                direccion.Piso = 0;
+                direccion.Depto = "";
 
             }
-            venta.IdDireccion = direccionNegocio.Agregar(direccion,usuario);
+            venta.IdDireccion = direccionNegocio.Agregar(direccion, usuario);
             venta.FechaVenta = DateTime.Now;
             venta.Usuario = usuario;
-            
+
             venta.MetodoPago = metodoPago;
             venta.MetodoEnvio = metodoEntrega;
 
-            if(metodoPago== "Efectivo")
+            if (metodoPago == "Efectivo")
             {
                 venta.IdPago = "-";
             }
-            if(metodoEntrega== "Retiro en el local")
+            if (metodoEntrega == "Retiro en el local")
             {
                 venta.NumSeguimiento = "-";
             }
@@ -150,6 +150,6 @@ namespace TPC_Equipo_L
             lblPrecioFinal.Text = "Precio Total: $" + precioTotal.ToString();
             Session["precioTotal"] = precioTotal;
         }
-       
+
     }
 }

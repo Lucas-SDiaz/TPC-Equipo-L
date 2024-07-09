@@ -16,7 +16,7 @@ namespace TPC_Equipo_L
 
             if (Session["usuario"] != null)
             {
-                
+
                 VentaNegocio ventaNegocio = new VentaNegocio();
                 Usuario usuario = new Usuario();
                 usuario = (Usuario)Session["usuario"];

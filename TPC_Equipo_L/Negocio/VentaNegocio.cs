@@ -14,6 +14,26 @@ namespace negocio
     {
         public VentaNegocio() { }
 
+        public void ActualizarEstadoVenta(Venta ven, string estado)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                if (ven != null)
+                {
+                    datos.setearConsulta("update Ventas set Estado_Venta_V = @estadoVenta where Cod_Venta = @codVenta");
+                    datos.setearParametros("@codVenta", ven.Cod_Venta);
+                    datos.setearParametros("@estadoVenta", estado);
+                    datos.ejecutarAccion();
+                    datos.cerrarConexion();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public void modificarPago(Venta ven)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -114,7 +134,7 @@ namespace negocio
                     }
                     else
                     {
-                        aux.NumSeguimiento = ""; // o null, según sea necesario
+                        aux.NumSeguimiento = "";
                     }
 
 
@@ -124,7 +144,7 @@ namespace negocio
                     }
                     else
                     {
-                        aux.IdPago = ""; // o null, según sea necesario
+                        aux.IdPago = "";
                     }
 
                     if (!DBNull.Value.Equals(datos.Lector["Direccion"]))
@@ -133,7 +153,7 @@ namespace negocio
                     }
                     else
                     {
-                        aux.Direccion = ""; // o null, según sea necesario
+                        aux.Direccion = "";
                     }
 
                     lista.Add(aux);
@@ -186,7 +206,7 @@ namespace negocio
                     }
                     else
                     {
-                        aux.NumSeguimiento = ""; // o null, según sea necesario
+                        aux.NumSeguimiento = "";
                     }
 
 
@@ -196,7 +216,7 @@ namespace negocio
                     }
                     else
                     {
-                        aux.IdPago = ""; // o null, según sea necesario
+                        aux.IdPago = "";
                     }
 
                     if (!DBNull.Value.Equals(datos.Lector["Direccion"]))
@@ -205,9 +225,9 @@ namespace negocio
                     }
                     else
                     {
-                        aux.Direccion = ""; // o null, según sea necesario
+                        aux.Direccion = "";
                     }
-                    
+
 
                     lista.Add(aux);
                 }
