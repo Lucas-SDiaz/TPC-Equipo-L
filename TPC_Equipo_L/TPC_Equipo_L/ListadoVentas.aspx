@@ -3,9 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
-
-    <asp:GridView runat="server" ID="dgvVentas" CssClass="table table-info table-borderless table-striped" AutoGenerateColumns="false">
+    <br />
+    
+    <br />
+    <asp:GridView runat="server" DataKeyNames="Cod_Venta" ID="dgvVentas" CssClass="table table-primary table-borderless table-striped" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged" OnRowDataBound="dgvVentas_RowDataBound">
     <Columns>
         <asp:BoundField HeaderText="Nombre" DataField="Usuario.Nombre" />
         <asp:BoundField HeaderText="Apellido" DataField="Usuario.Apellido" />
@@ -21,7 +22,8 @@
 
         <asp:BoundField HeaderText="Nro de Seguimiento" DataField="NumSeguimiento" />
         <asp:BoundField HeaderText="Nro de Pago" DataField="IdPago" />
-
+        <asp:CommandField ShowSelectButton="true" SelectText="CARGAR" HeaderStyle-BackColor="DarkGray" ControlStyle-CssClass="btn" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" HeaderText="Cargar Nro Seguimiento" />
+             
 
 
     </Columns>

@@ -34,6 +34,26 @@ namespace negocio
                 throw;
             }
         }
+        public void modificarNumSeguimiento(Venta ven)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                if (ven != null)
+                {
+                    datos.setearConsulta("update Ventas set Num_Seguimiento_V = @idSeguimiento where Cod_Venta = @codVenta");
+                    datos.setearParametros("@codVenta", ven.Cod_Venta);
+                    datos.setearParametros("@idSeguimiento", ven.NumSeguimiento);
+                    datos.ejecutarAccion();
+                    datos.cerrarConexion();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public void agregar(Venta venta, Usuario usuario)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -148,6 +168,7 @@ namespace negocio
                     aux.Usuario = new Usuario();
 
                     aux.Usuario.Nombre = (string)datos.Lector["Nombre_U"];
+                    aux.Cod_Venta = (int)datos.Lector["Cod_Venta"];
 
                     aux.Usuario.Apellido = (string)datos.Lector["Apellido_U"];
                     aux.FechaVenta = (DateTime)datos.Lector["Fecha_V"];
