@@ -72,7 +72,7 @@ namespace TPC_Equipo_L
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("misCompras.aspx");
+            Response.Redirect("ListadoVentas.aspx");
         }
     }
 }
