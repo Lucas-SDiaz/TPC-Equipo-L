@@ -103,8 +103,9 @@ namespace TPC_Equipo_L
             {
                 DetalleVenta detalleVenta = new DetalleVenta();
 
+                detalleVenta.Cod_Prod = producto.CodigoProducto;
                 detalleVenta.Cod_Venta = venta.Cod_Venta;
-                detalleVenta.Nombre = producto.Nombre;
+               // detalleVenta.Nombre = producto.Nombre;
                 detalleVenta.Cantidad = producto.Cantidad;
                 detalleVenta.PrecioUni = producto.Precio;
 

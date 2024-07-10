@@ -71,7 +71,7 @@
             <h5 class="card-title">Ventas</h5>
             <p class="card-text">Historial de ventas</p>
               <div class="button-container">
-                  <a href="#" class="btn btn-primary fixed-width-btn">Ver más</a>
+                  <a href="ListadoDetalleVentas.aspx" class="btn btn-primary fixed-width-btn">Ver más</a>
               </div>
           </div>
         </div>

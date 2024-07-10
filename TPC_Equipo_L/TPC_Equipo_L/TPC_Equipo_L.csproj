@@ -70,6 +70,7 @@
     <Content Include="Clientes.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="FinalizarCompra.aspx" />
+    <Content Include="ListadoDetalleVentas.aspx" />
     <Content Include="ListadoVentas.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="DetallesCompra.aspx" />
@@ -118,6 +119,13 @@
     </Compile>
     <Compile Include="FinalizarCompra.aspx.designer.cs">
       <DependentUpon>FinalizarCompra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoDetalleVentas.aspx.cs">
+      <DependentUpon>ListadoDetalleVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoDetalleVentas.aspx.designer.cs">
+      <DependentUpon>ListadoDetalleVentas.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListadoVentas.aspx.cs">
       <DependentUpon>ListadoVentas.aspx</DependentUpon>
