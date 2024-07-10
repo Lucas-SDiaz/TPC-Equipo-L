@@ -45,7 +45,7 @@ namespace TPC_Equipo_L
             if (e.CommandName == "VerDetalleVenta")
             {
                 int codVenta = Convert.ToInt32(e.CommandArgument);
-                Response.Redirect($"DetallesCompra.aspx?Cod_Venta={codVenta}");
+                Response.Redirect($"DetallesVenta.aspx?Cod_Venta={codVenta}");
             }
         }
     }

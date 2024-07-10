@@ -39,7 +39,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("select Cod_Venta_DV,Nombre_P,PUnitario_DV,Cantidad_DV from Detalle_Ventas inner join Productos on Cod_Producto_DV = Cod_Producto where Cod_Venta_DV = @codventa");
+                datos.setearConsulta("select Cod_Venta_DV,Nombre_P,PUnitario_DV,Cantidad_DV,Cod_Producto_DV from Detalle_Ventas inner join Productos on Cod_Producto_DV = Cod_Producto where Cod_Venta_DV = @codventa");
                 datos.setearParametros("@codVenta", int.Parse(codVenta));
                 datos.ejecutarLectura();
 
@@ -48,6 +48,7 @@ namespace negocio
                     DetalleVenta aux = new DetalleVenta();
 
                     aux.Cod_Venta = (int)datos.Lector["Cod_Venta_DV"];
+                    aux.Cod_Prod = (string)datos.Lector["Cod_Producto_DV"];
                     aux.Nombre = (string)datos.Lector["Nombre_P"];
                     aux.Cantidad = (int)datos.Lector["Cantidad_DV"];
                     aux.PrecioUni = (decimal)datos.Lector["PUnitario_DV"];
