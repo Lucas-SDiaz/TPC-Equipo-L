@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
-using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -58,33 +57,27 @@ namespace TPC_Equipo_L
                 if (txtPiso.Text != "")
                 {
                     direccion.Piso = int.Parse(txtPiso.Text);
-
                 }
                 if (txtDepto.Text != "")
                 {
                     direccion.Depto = txtDepto.Text;
-
                 }
                 else
                 {
                     direccion.Depto = "";
-
                 }
             }
             else
             {
-
                 direccion.Calle = "Calle Falsa";
                 direccion.Nro = 123;
                 direccion.CP = 12345;
                 direccion.Piso = 0;
                 direccion.Depto = "";
-
             }
             venta.IdDireccion = direccionNegocio.Agregar(direccion, usuario);
             venta.FechaVenta = DateTime.Now;
             venta.Usuario = usuario;
-
             venta.MetodoPago = metodoPago;
             venta.MetodoEnvio = metodoEntrega;
 
@@ -99,13 +92,23 @@ namespace TPC_Equipo_L
             SqlMoney precioTotal = (SqlMoney)Session["precioTotal"];
             venta.MontoFinal = precioTotal;
 
-            negocio.agregar(venta, usuario);
+           venta.Cod_Venta= int.Parse(negocio.agregarScalar(venta, usuario));
 
-            //
+            // Guardar detalles de la venta en la base de datos
             List<Producto> carrito = (List<Producto>)Session["carrito"];
             ProductoNegocio productoNegocio = new ProductoNegocio();
-            foreach(Producto producto in carrito)
+            DetalleVentaNegocio detalleVentaNegocio = new DetalleVentaNegocio();
+
+            foreach (Producto producto in carrito)
             {
+                DetalleVenta detalleVenta = new DetalleVenta();
+                
+                    detalleVenta.Cod_Venta = venta.Cod_Venta;
+                detalleVenta.Cod_Prod = producto.CodigoProducto;
+                detalleVenta.Cantidad = producto.Cantidad;
+                detalleVenta.PrecioUni = producto.Precio;
+               
+                detalleVentaNegocio.agregar(detalleVenta);
                 productoNegocio.ModificarStock(producto);
             }
 
@@ -158,6 +161,5 @@ namespace TPC_Equipo_L
             lblPrecioFinal.Text = "Precio Total: $" + precioTotal.ToString();
             Session["precioTotal"] = precioTotal;
         }
-
     }
 }

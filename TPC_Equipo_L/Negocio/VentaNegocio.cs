@@ -74,7 +74,7 @@ namespace negocio
                 throw;
             }
         }
-        public void agregar(Venta venta, Usuario usuario)
+        public string agregarScalar(Venta venta, Usuario usuario)
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -90,8 +90,8 @@ namespace negocio
                 datos.agregarParametro("@Metodo_Envio", venta.MetodoEnvio);
 
 
-                datos.ejecutarAccion();
-                datos.cerrarConexion();
+                return datos.ejecutarAccionScalar();
+            
 
 
 
@@ -102,6 +102,9 @@ namespace negocio
             {
 
                 throw;
+            }
+            finally {
+                datos.cerrarConexion();
             }
         }
 
