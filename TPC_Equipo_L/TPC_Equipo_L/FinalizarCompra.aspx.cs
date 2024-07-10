@@ -92,7 +92,7 @@ namespace TPC_Equipo_L
             SqlMoney precioTotal = (SqlMoney)Session["precioTotal"];
             venta.MontoFinal = precioTotal;
 
-           venta.Cod_Venta= int.Parse(negocio.agregarScalar(venta, usuario));
+            venta.Cod_Venta = int.Parse(negocio.agregarScalar(venta, usuario));
 
             // Guardar detalles de la venta en la base de datos
             List<Producto> carrito = (List<Producto>)Session["carrito"];
@@ -102,12 +102,12 @@ namespace TPC_Equipo_L
             foreach (Producto producto in carrito)
             {
                 DetalleVenta detalleVenta = new DetalleVenta();
-                
-                    detalleVenta.Cod_Venta = venta.Cod_Venta;
-                detalleVenta.Cod_Prod = producto.CodigoProducto;
+
+                detalleVenta.Cod_Venta = venta.Cod_Venta;
+                detalleVenta.Nombre = producto.Nombre;
                 detalleVenta.Cantidad = producto.Cantidad;
                 detalleVenta.PrecioUni = producto.Precio;
-               
+
                 detalleVentaNegocio.agregar(detalleVenta);
                 productoNegocio.ModificarStock(producto);
             }

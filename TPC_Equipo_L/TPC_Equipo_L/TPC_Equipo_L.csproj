@@ -72,6 +72,7 @@
     <Content Include="FinalizarCompra.aspx" />
     <Content Include="ListadoVentas.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="DetallesCompra.aspx" />
     <Content Include="misCompras.aspx" />
     <Content Include="modificarMarca.aspx" />
     <Content Include="modificarProducto.aspx" />
@@ -138,6 +139,13 @@
     </Compile>
     <Compile Include="LogReg.Master.designer.cs">
       <DependentUpon>LogReg.Master</DependentUpon>
+    </Compile>
+    <Compile Include="DetallesCompra.aspx.cs">
+      <DependentUpon>DetallesCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetallesCompra.aspx.designer.cs">
+      <DependentUpon>DetallesCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="misCompras.aspx.cs">
       <DependentUpon>misCompras.aspx</DependentUpon>
