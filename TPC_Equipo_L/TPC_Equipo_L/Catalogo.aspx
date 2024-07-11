@@ -7,11 +7,16 @@
 		.img-thumbnail {
 			width: 100%;
 			height: 300px;
+			border: hidden
 		}
 
 		.custom-card-size {
 			width: 250px;
 			height: 300px;
+		}
+
+		.border-black {
+			border: 1px solid black;
 		}
 	</style>
 
@@ -28,7 +33,7 @@
 					<asp:UpdatePanel runat="server">
 						<ContentTemplate>
 							<div class="col">
-								<div class="card">
+								<div class="card border-black">
 									<asp:Image ID="imgProducto" runat="server" CssClass="img-thumbnail" />
 									<div class="card-body">
 										<h5 class="card-title" style="color: black; text-align: center;"><b><%#Eval("Nombre")%></b></h5>
@@ -36,13 +41,16 @@
 										<p class="card-text" style="color: black; text-align: center;">Stock: <%#Eval("Stock")%></p>
 										<p class="card-text" style="color: black; text-align: center;">Precio: $ <%#Eval("Precio")%></p>
 										<div class="d-grid gap-2">
-											<a href="detalleProducto.aspx?id=<%#Eval("CodigoProducto")%>" class="btn btn-outline-success">Ver detalle</a>
+											<a href="detalleProducto.aspx?id=<%#Eval("CodigoProducto")%>" class="btn btn-light border-black">Ver detalle</a>
 											<div class="input-group">
-												<asp:Button class="btn btn-success" runat="server" type="button" Text="-" CommandName="Quitar" CommandArgument='<%#Eval("CodigoProducto")%>' OnCommand="Unnamed_Command" />
-												<asp:TextBox ID="txtCantidad" runat="server" CssClass="form-control text-center" Text="1" ReadOnly="true" />
-												<asp:Button class="btn btn-success" runat="server" type="button" Text="+" CommandName="Agregar" CommandArgument='<%#Eval("CodigoProducto")%>' OnCommand="Unnamed_Command" />
+												<asp:Button class="btn btn-outline-dark" runat="server" type="button" Text="-" CommandName="Quitar" CommandArgument='<%#Eval("CodigoProducto")%>' OnCommand="Unnamed_Command" Style="background-color: #99bbc2;" />
+												<asp:TextBox ID="txtCantidad" runat="server" CssClass="form-control text-center border-black" Text="1" ReadOnly="true" />
+												<asp:Button class="btn btn-outline-dark" runat="server" type="button" Text="+" CommandName="Agregar" CommandArgument='<%#Eval("CodigoProducto")%>' OnCommand="Unnamed_Command" Style="background-color: #99bbc2;" />
+
 											</div>
-											<a href="carritoCompra.aspx?id=<%#Eval("CodigoProducto")%>" class="btn btn-success">Agregar al carrito</a>
+											<%--<a href="carritoCompra.aspx?id=<%#Eval("CodigoProducto")%>" class="btn btn-success">Agregar al carrito</a>--%>
+											<asp:Button class="btn btn-outline-dark" runat="server" type="button" Text="Agregar al carrito" CommandName="carrito" CommandArgument='<%#Eval("CodigoProducto")%>' OnCommand="agregar" Style="background-color: #99bbc2;" />
+
 										</div>
 									</div>
 								</div>

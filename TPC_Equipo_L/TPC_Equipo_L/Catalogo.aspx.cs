@@ -90,10 +90,10 @@ namespace TPC_Equipo_L
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-               
+
                 dominio.Producto producto = (dominio.Producto)e.Item.DataItem;
 
-                 negocio.ImagenNegocio negocioImagen = new negocio.ImagenNegocio();
+                negocio.ImagenNegocio negocioImagen = new negocio.ImagenNegocio();
                 List<string> listaImagenes = negocioImagen.listarImgPorProducto(producto);
 
                 Image imgProducto = (Image)e.Item.FindControl("imgProducto");
@@ -106,6 +106,39 @@ namespace TPC_Equipo_L
                 {
                     imgProducto.ImageUrl = "https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg";
                 }
+            }
+        }
+        protected void agregar(object sender, CommandEventArgs e)
+        {
+            List<Producto> carrito = Session["carrito"] as List<Producto> ?? new List<Producto>();
+
+            string id = e.CommandArgument.ToString();
+
+            int cant = 1;
+            if (Session["cantidad"] != null)
+            {
+                cant = Convert.ToInt32(Session["cantidad"]);
+            }
+
+            List<Producto> listaOriginal = Session["ListaProductos"] as List<Producto>;
+
+            Producto seleccionado = listaOriginal.FirstOrDefault(p => p.CodigoProducto == id);
+
+            if (seleccionado != null)
+            {
+                seleccionado.Cantidad = cant;
+
+                Producto productoEnCarrito = carrito.FirstOrDefault(p => p.CodigoProducto == seleccionado.CodigoProducto);
+                if (productoEnCarrito != null)
+                {
+                    productoEnCarrito.Cantidad += cant;
+                }
+                else
+                {
+                    carrito.Add(seleccionado);
+                }
+
+                Session["carrito"] = carrito;
             }
         }
 

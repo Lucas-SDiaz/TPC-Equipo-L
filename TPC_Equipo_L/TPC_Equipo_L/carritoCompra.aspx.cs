@@ -16,7 +16,7 @@ namespace TPC_Equipo_L
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
             List<Producto> carrito;
             carrito = Session["carrito"] != null ? (List<Producto>)Session["carrito"] : new List<Producto>();
             Session.Add("carrito", carrito);
@@ -35,7 +35,7 @@ namespace TPC_Equipo_L
                     {
                         cant = int.Parse((string)Session["cantidad"]);
                     }
-                   
+
                     List<Producto> listaOriginal = (List<Producto>)Session["listaProductos"];
                     Producto seleccionado = listaOriginal.Find(x => x.CodigoProducto == id);
                     seleccionado.Cantidad = cant;
@@ -48,7 +48,7 @@ namespace TPC_Equipo_L
                         Producto productoEnCarrito = carrito.Find(p => p.CodigoProducto == seleccionado.CodigoProducto);
                         productoEnCarrito.Cantidad += cant;
 
-                     }
+                    }
                 }
 
                 dgvCarrito.DataSource = carrito;
@@ -56,17 +56,17 @@ namespace TPC_Equipo_L
                 SqlMoney precioTotal = 0;
                 foreach (Producto producto in carrito)
                 {
-                    precioTotal += (producto.Precio)* (producto.Cantidad);
+                    precioTotal += (producto.Precio) * (producto.Cantidad);
                 }
 
                 lblPrecioTotal.Text = "Precio Total: $" + precioTotal.ToString();
             }
 
-        
+
         }
         protected void dgvCarrito_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
             var id = dgvCarrito.SelectedDataKey.Value.ToString();
 
             List<Producto> carrito;
@@ -83,7 +83,7 @@ namespace TPC_Equipo_L
             }
 
             lblPrecioTotal.Text = "Precio Total: $" + precioTotal.ToString();
-    
+
         }
 
         protected void RestarCantidad_Click(object sender, EventArgs e)
@@ -97,7 +97,7 @@ namespace TPC_Equipo_L
             if (producto.Cantidad > 1)
             {
                 producto.Cantidad--;
-                Session["carrito"] = carrito; 
+                Session["carrito"] = carrito;
                 dgvCarrito.DataSource = carrito;
                 dgvCarrito.DataBind();
 
@@ -114,7 +114,7 @@ namespace TPC_Equipo_L
             Producto producto = carrito[rowIndex];
 
             producto.Cantidad++;
-            Session["carrito"] = carrito; 
+            Session["carrito"] = carrito;
             dgvCarrito.DataSource = carrito;
             dgvCarrito.DataBind();
 
