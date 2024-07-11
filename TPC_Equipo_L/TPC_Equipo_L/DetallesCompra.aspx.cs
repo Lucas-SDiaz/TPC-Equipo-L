@@ -3,7 +3,6 @@ using negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.ConstrainedExecution;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -30,18 +29,10 @@ namespace TPC_Equipo_L
                     // Asignar los detalles al GridView dgvDetalle
                     dgvDetalle.DataSource = detallesVenta;
                     dgvDetalle.DataBind();
-                    //< a href = "detalleProducto.aspx?id=<%#Eval("Cod_Prod")%>" class="btn btn-outline-success">Ver detalle</a>
 
                 }
             }
         }
-       
 
-        protected void dgvDetalle_SelectedIndexChanged1(object sender, EventArgs e)
-        {
-            var codV = dgvDetalle.SelectedDataKey.Value.ToString();
-            Response.Redirect("detalleProducto.aspx?id=" + codV);
-
-        }
     }
 }

@@ -42,10 +42,8 @@
     </asp:GridView>
     <asp:Label ID="lblPrecioTotal" runat="server" CssClass="form-control" Style="text-align: right;" BorderColor="black" BackColor="#d5e8eb"></asp:Label>
     <br />
-
+    <a href="Catalogo.aspx" class="btn btn-outline-dark">Volver</a>
     <a href="FinalizarCompra.aspx" class="btn btn-outline-success" style="float: right;">Continuar compra</a>
     <%-- </ContentTemplate>
     </asp:UpdatePanel>--%>
-    <br />
-    <br />
 </asp:Content>

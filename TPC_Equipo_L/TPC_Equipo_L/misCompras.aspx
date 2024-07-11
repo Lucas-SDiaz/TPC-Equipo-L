@@ -21,7 +21,8 @@
 		Debe <a href="Login.aspx">iniciar sesion</a> o <a href="Register.aspx">registrarse</a> antes de continuar!
 
 	</div>
-	
+	<a href="Default.aspx" class="btn btn-outline-dark">Volver</a>
+
 	<br />
 	<br />
 
@@ -44,10 +45,10 @@
 
 			<asp:BoundField HeaderText="Nro de Seguimiento" DataField="NumSeguimiento" />
 			<asp:BoundField HeaderText="Nro de Pago" DataField="IdPago" />
-			<asp:CommandField ShowSelectButton="true" SelectText="-> Cargar Comprobante" HeaderStyle-BackColor="DarkGray" ControlStyle-CssClass="btn" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" />
-			<asp:TemplateField  HeaderStyle-BackColor="DarkGray" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
+			<asp:CommandField ShowSelectButton="true" SelectText="CARGAR" HeaderStyle-BackColor="DarkGray" ControlStyle-CssClass="btn" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" HeaderText="Cargar Comprobante" />
+			<asp:TemplateField HeaderText="Ver Detalle" HeaderStyle-BackColor="DarkGray" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
 				<ItemTemplate>
-					<asp:Button ID="btnVerDetalle" runat="server" Text="-> Detalle De Compra" CommandName="VerDetalle"  CommandArgument='<%# Eval("Cod_Venta") %>' CssClass="btn" />
+					<asp:Button ID="btnVerDetalle" runat="server" Text="Ver Detalle" CommandName="VerDetalle" CommandArgument='<%# Eval("Cod_Venta") %>' CssClass="btn btn-info" />
 				</ItemTemplate>
 			</asp:TemplateField>
 

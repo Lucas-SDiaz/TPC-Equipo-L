@@ -18,9 +18,8 @@
 </div>
         <br />
         <div class="mb-2 text-center">
-            
-        <asp:Button ID="btnVolver" runat="server" CssClass="btn btn-outline-secondary" Text="Volver" OnClick="btnVolver_Click" />
         <asp:Button ID="btnModificar" runat="server"  Text="Modificar" CssClass="btn btn-outline-success" OnClick="btnModificar_Click" />
+        <asp:Button ID="btnVolver" runat="server" CssClass="btn btn-outline-secondary" Text="Volver" OnClick="btnVolver_Click" />
             
            </div> 
         <br />
