@@ -30,7 +30,7 @@
 		else
 		{%>
 
-	<asp:GridView runat="server" ID="dgvDetalle" DataKeyNames="Cod_Venta" CssClass="table table-info table-borderless table-striped" AutoGenerateColumns="false">
+	<asp:GridView runat="server" ID="dgvDetalle" DataKeyNames="Cod_Prod" CssClass="table table-info table-borderless table-striped" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvDetalle_SelectedIndexChanged1">
 		<Columns>
 
 			<asp:BoundField HeaderText="Producto" DataField="Nombre" />
@@ -38,6 +38,8 @@
 			<asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
 
 			<asp:BoundField HeaderText="Precio Unitario" DataField="PrecioUni" />
+			<asp:CommandField ShowSelectButton="true" SelectText="-> Ver Producto" HeaderStyle-BackColor="DarkGray" ControlStyle-CssClass="btn" HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center" />
+			
 
 		</Columns>
 	</asp:GridView>
