@@ -45,16 +45,16 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
 
-
-
                         <div class="nav-item m-2">
                             <a class="nav-link" href="carritoCompra.aspx">
                                 <span class="badge text-bg-danger"><span id="spanMensaje"><%  string cantProd = "0";
                                                                                               int cant = 0;
+
+                                                                                              List<dominio.Producto> carrito = new List<dominio.Producto>();
+                                                                                              carrito = (List<dominio.Producto>)Session["carrito"];
+                                                                                              Session.Add("carrito", carrito);
                                                                                               if (Session["carrito"] != null)
                                                                                               {
-                                                                                                  List<dominio.Producto> carrito = (List<dominio.Producto>)Session["carrito"];
-                                                                                                  Session.Add("carrito", carrito);
                                                                                                   foreach (dominio.Producto producto in carrito)
                                                                                                   {
                                                                                                       cant += producto.Cantidad;
@@ -70,6 +70,7 @@
 
                                                                                                   }
                                                                                               }
+
                                 %><%= cantProd %></span></span>
 
 
@@ -78,6 +79,7 @@
                                 </svg>
                             </a>
                         </div>
+
 
                         <%if (Session["usuario"] != null)
                             { %>
@@ -152,8 +154,6 @@
         left: 50%;
         width: 600px;
         margin-left: -300px;
-        /*        text-align:center;
-*/
     }
 
     .texto-medio {

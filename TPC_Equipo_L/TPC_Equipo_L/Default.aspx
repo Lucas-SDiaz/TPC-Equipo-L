@@ -3,12 +3,25 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+	<style>
+		 .custom-font {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+			font-size: 2em;
+			font-weight: bold;
+			color: #000;
+		 }
+		 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'); 
+		 .categorybrand-custom-font {
+			 font-family: 'Montserrat', sans-serif;
+			 font-size: 2em;
+			 color: #000;
+		 }
+	</style>
 
 
 	<br />
 	<figure class="text-center">
-		<h1>CATEGORIAS</h1>
+		<h3 class="custom-font">CATEGORÍAS</h3>
 	</figure>
 
 	<br />
@@ -25,7 +38,7 @@
 
 					<div class="card border-light mb-3">
 						<div class="card-header text-center  bg-white">
-							<h3>
+							<h3 class="categorybrand-custom-font">
 								<%# Eval("Nombre") %>
 							</h3>
 						</div>
@@ -57,7 +70,7 @@
 	<br />
 	<br />
 	<figure class="text-center">
-		<h1>MARCAS</h1>
+		<h3 class="custom-font">MARCAS</h3>
 	</figure>
 	<br />
 
@@ -74,7 +87,7 @@
 
 					<div class="card border-light mb-3">
 						<div class="card-header text-center  bg-white">
-							<h3>
+							<h3 class="categorybrand-custom-font">
 								<%# Eval("Nombre") %>
 							</h3>
 						</div>
