@@ -96,6 +96,7 @@
     <Content Include="Perfil.aspx" />
     <Content Include="PerfilAdmin.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Stock.aspx" />
     <Content Include="Web.config" />
     <Content Include="CompraExitosa.aspx" />
   </ItemGroup>
@@ -327,6 +328,13 @@
     </Compile>
     <Compile Include="CompraExitosa.aspx.designer.cs">
       <DependentUpon>CompraExitosa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stock.aspx.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stock.aspx.designer.cs">
+      <DependentUpon>Stock.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

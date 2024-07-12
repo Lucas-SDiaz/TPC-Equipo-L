@@ -2,24 +2,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <style>
-        .rounded-gridview {
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 50px; 
-        }
-        .centered-table {
-            margin: 20px auto; 
-            max-width: 90%; 
-            text-align: center; 
-        }
-    </style>
-        <asp:GridView runat="server" ID="dgvClientes" CssClass="table table-borderless table-striped rounded-gridview" AutoGenerateColumns="false">
+   
+         <br />
+
+<h2 class="text-center p-2">Listado clientes</h2>
+
+        <asp:GridView runat="server" ID="dgvClientes" CssClass="table table-dark table-bordered" AutoGenerateColumns="false">
     <Columns>
-        <asp:BoundField HeaderText="Apellido" DataField="Usuario.Apellido" />
-        <asp:BoundField HeaderText="Nombre" DataField="Usuario.Nombre" />
-        <asp:BoundField HeaderText="Email" DataField="Usuario.Correo" />
-        <asp:BoundField HeaderText="Cantidad de compras" DataField="Cod_Venta" />
+        <asp:BoundField HeaderText="Apellido" DataField="Usuario.Apellido" HeaderStyle-BackColor="DarkGray" />
+        <asp:BoundField HeaderText="Nombre" DataField="Usuario.Nombre" HeaderStyle-BackColor="DarkGray" />
+        <asp:BoundField HeaderText="Email" DataField="Usuario.Correo" HeaderStyle-BackColor="DarkGray" />
+        <asp:BoundField HeaderText="Cantidad de compras" DataField="Cod_Venta" HeaderStyle-BackColor="DarkGray" />
         
     </Columns>
 </asp:GridView>

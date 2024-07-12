@@ -68,7 +68,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT pro.Cod_Producto, pro.Cod_Categoria_P, Pro.Cod_Marcas_P, pro.Nombre_P, pro.Descripcion_P, pro.PUnitario_P, pro.Stock_P FROM Productos AS pro WHERE pro.Estado_P = 1 AND pro.Cod_Categoria_P ='" + cat + "'");
+                datos.setearConsulta("SELECT pro.Cod_Producto, c.Nombre_C, c.Cod_Categoria, m.Cod_Marca, m.Nombre_M, pro.Nombre_P, pro.Descripcion_P, pro.PUnitario_P, pro.Stock_P FROM Productos AS pro inner join Marcas m on m.Cod_Marca = pro.Cod_Marcas_P inner join Categorias c on c.Cod_Categoria = pro.Cod_Categoria_P WHERE pro.Estado_P = 1 AND pro.Cod_Categoria_P ='" + cat + "'");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -77,12 +77,55 @@ namespace negocio
                     aux.Categoria = new Categoria();
                     aux.Imagen = new Imagen();
                     aux.CodigoProducto = (string)datos.Lector["Cod_Producto"];
-                    aux.Categoria.Cod_Categoria = (string)datos.Lector["Cod_Categoria_P"];
-                    aux.Marca.Cod_Marca = (string)datos.Lector["Cod_Marcas_P"];
+                    aux.Categoria.Cod_Categoria = (string)datos.Lector["Cod_Categoria"];
+                    aux.Marca.Cod_Marca = (string)datos.Lector["Cod_Marca"];
                     aux.Nombre = (string)datos.Lector["Nombre_P"];
                     aux.Descripcion = (string)datos.Lector["Descripcion_P"];
-                    //aux.Categoria.Nombre = (string)datos.Lector["Nombre_C"];
-                    //aux.Marca.Nombre = (string)datos.Lector["Nombre_M"];
+                    aux.Categoria.Nombre = (string)datos.Lector["Nombre_c"];
+                    aux.Marca.Nombre = (string)datos.Lector["Nombre_m"];
+                    //aux.Imagen.Url = (string)datos.Lector["ImagenURL"];
+                    aux.Precio = (decimal)datos.Lector["PUnitario_P"];
+                    aux.Stock = (int)datos.Lector["Stock_P"];
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+
+        }
+
+
+        public List<Producto> listarStock()
+        {
+            List<Producto> lista = new List<Producto>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT pro.Cod_Producto, c.Nombre_C, m.Nombre_M, pro.Nombre_P, pro.Descripcion_P, pro.PUnitario_P, pro.Stock_P FROM Productos AS pro inner join Marcas m on m.Cod_Marca = pro.Cod_Marcas_P inner join Categorias c on c.Cod_Categoria = pro.Cod_Categoria_P WHERE pro.Stock_P < 10");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Producto aux = new Producto();
+                    aux.Marca = new Marca();
+                    aux.Categoria = new Categoria();
+                    aux.Imagen = new Imagen();
+                   aux.CodigoProducto = (string)datos.Lector["Cod_Producto"];
+                    //aux.Categoria.Cod_Categoria = (string)datos.Lector["Cod_Categoria_P"];
+                    //  aux.Marca.Cod_Marca = (string)datos.Lector["Cod_Marcas_P"];
+                    aux.Nombre = (string)datos.Lector["Nombre_P"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion_P"];
+                    aux.Categoria.Nombre = (string)datos.Lector["Nombre_c"];
+                    aux.Marca.Nombre = (string)datos.Lector["Nombre_m"];
                     //aux.Imagen.Url = (string)datos.Lector["ImagenURL"];
                     aux.Precio = (decimal)datos.Lector["PUnitario_P"];
                     aux.Stock = (int)datos.Lector["Stock_P"];
@@ -110,7 +153,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT pro.Cod_Producto, pro.Cod_Categoria_P, Pro.Cod_Marcas_P, pro.Nombre_P, pro.Descripcion_P, pro.PUnitario_P, pro.Stock_P FROM Productos AS pro WHERE pro.Estado_P = 1 AND pro.Cod_Marcas_P ='" + mar + "'");
+                datos.setearConsulta("SELECT pro.Cod_Producto, c.Nombre_C, c.Cod_Categoria, m.Cod_Marca, m.Nombre_M, pro.Nombre_P, pro.Descripcion_P, pro.PUnitario_P, pro.Stock_P FROM Productos AS pro inner join Marcas m on m.Cod_Marca = pro.Cod_Marcas_P inner join Categorias c on c.Cod_Categoria = pro.Cod_Categoria_P WHERE pro.Estado_P = 1 AND pro.Cod_Marcas_P ='" + mar + "'");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -119,12 +162,12 @@ namespace negocio
                     aux.Categoria = new Categoria();
                     aux.Imagen = new Imagen();
                     aux.CodigoProducto = (string)datos.Lector["Cod_Producto"];
-                    aux.Categoria.Cod_Categoria = (string)datos.Lector["Cod_Categoria_P"];
-                    aux.Marca.Cod_Marca = (string)datos.Lector["Cod_Marcas_P"];
+                    aux.Categoria.Cod_Categoria = (string)datos.Lector["Cod_Categoria"];
+                    aux.Marca.Cod_Marca = (string)datos.Lector["Cod_Marca"];
                     aux.Nombre = (string)datos.Lector["Nombre_P"];
                     aux.Descripcion = (string)datos.Lector["Descripcion_P"];
-                    //aux.Categoria.Nombre = (string)datos.Lector["Nombre_C"];
-                    //aux.Marca.Nombre = (string)datos.Lector["Nombre_M"];
+                    aux.Categoria.Nombre = (string)datos.Lector["Nombre_c"];
+                    aux.Marca.Nombre = (string)datos.Lector["Nombre_m"];
                     //aux.Imagen.Url = (string)datos.Lector["ImagenURL"];
                     aux.Precio = (decimal)datos.Lector["PUnitario_P"];
                     aux.Stock = (int)datos.Lector["Stock_P"];

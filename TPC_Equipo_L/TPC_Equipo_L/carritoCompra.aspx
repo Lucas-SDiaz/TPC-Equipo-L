@@ -43,7 +43,7 @@
     <asp:Label ID="lblPrecioTotal" runat="server" CssClass="form-control" Style="text-align: right;" BorderColor="black" BackColor="#d5e8eb"></asp:Label>
     <br />
 
-    <a href="FinalizarCompra.aspx" class="btn btn-outline-success" style="float: right;">Continuar compra</a>
+    <a href="FinalizarCompra.aspx" class="btn btn-outline-dark" Style="background-color: #99bbc2 ;float: right;">Continuar compra</a>
     <%-- </ContentTemplate>
     </asp:UpdatePanel>--%>
     <br />

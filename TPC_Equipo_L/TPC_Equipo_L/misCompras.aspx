@@ -29,10 +29,10 @@
 		else
 		{%>
 
-	<asp:GridView runat="server" ID="dgvCompras" DataKeyNames="Cod_Venta" CssClass="table table-info table-borderless table-striped" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvCompras_SelectedIndexChanged" OnRowDataBound="dgvCompras_RowDataBound" OnRowCommand="dgvCompras_RowCommand">
+	<asp:GridView runat="server" ID="dgvCompras" DataKeyNames="Cod_Venta" CssClass="table table-info table-borderless table-striped" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvCompras_SelectedIndexChanged" OnRowDataBound="dgvCompras_RowDataBound" OnRowCommand="dgvCompras_RowCommand" >
 		<Columns>
 
-			<asp:BoundField HeaderText="Fecha" DataField="FechaVenta" DataFormatString="{0:d}" />
+			<asp:BoundField HeaderText="Fecha"  DataField="FechaVenta" DataFormatString="{0:d}" />
 			<asp:BoundField HeaderText="Precio" DataField="MontoFinal" />
 			<asp:BoundField HeaderText="Envio" DataField="MetodoEnvio" />
 

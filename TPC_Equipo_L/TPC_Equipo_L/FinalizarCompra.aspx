@@ -45,7 +45,7 @@
         else
         {%>
 
-    <asp:GridView runat="server" ID="dgvFinalizarCompra" CssClass="table table-borderless table-striped rounded-gridview" AutoGenerateColumns="false">
+    <asp:GridView runat="server" ID="dgvFinalizarCompra" CssClass="table table-info table-borderless table-striped" AutoGenerateColumns="false">
         <Columns>
             <asp:BoundField HeaderText="Producto" DataField="Nombre" />
             <asp:BoundField HeaderText="Cantidad" DataField="Cantidad" />
@@ -115,8 +115,10 @@
 
 
     <br />
-    <asp:Button ID="btnFinalizarCompra" runat="server" CssClass="btn btn-success" Text="Finalizar Compra" OnClick="btnFinalizarCompra_Click" />
-    <a href="carritoCompra.aspx" class="btn btn-outline-dark">Volver</a>
+     <a href="carritoCompra.aspx" class="btn btn-outline-dark">Volver</a>
+
+    <asp:Button ID="btnFinalizarCompra" runat="server" class="btn btn-outline-dark" Style="background-color: #99bbc2 ;float: right;" Text="Finalizar Compra" OnClick="btnFinalizarCompra_Click" />
+   
 
     <%   }%>
 

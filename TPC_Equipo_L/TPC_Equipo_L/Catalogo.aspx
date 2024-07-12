@@ -56,7 +56,7 @@
 											</div>
 										</ContentTemplate>
 									</asp:UpdatePanel>
-									<asp:Button class="btn btn-outline-dark" runat="server" type="button" Text="Agregar al carrito" CommandName="carrito" CommandArgument='<%#Eval("CodigoProducto")%>' OnCommand="agregar" Style="background-color: #99bbc2;" />
+									<asp:Button class="btn btn-outline-dark" Style="background-color: #99bbc2;" runat="server" type="button" Text="Agregar al carrito" CommandName="carrito" CommandArgument='<%#Eval("CodigoProducto")%>' OnCommand="agregar"  />
 								</div>
 							</div>
 						</div>
