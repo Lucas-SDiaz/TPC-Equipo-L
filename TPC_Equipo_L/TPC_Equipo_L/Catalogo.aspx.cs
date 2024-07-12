@@ -12,18 +12,16 @@ namespace TPC_Equipo_L
     public partial class Catalogo : System.Web.UI.Page
     {
         public List<Producto> ListaProductos { get; set; }
-        //public List<Producto> ListaProductosCategoria { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             if (!IsPostBack)
             {
                 if (Session["Busqueda"] != null && Session["Busqueda"].ToString() != string.Empty)
                 {
                     ProductoNegocio negocio = new ProductoNegocio();
                     ListaProductos = negocio.Buscador(Session["Busqueda"].ToString());
-                    Session.Add("ListaProductos", ListaProductos);
+                    Session["ListaProductos"] = ListaProductos;
                     repRepetidor.DataSource = ListaProductos;
                     repRepetidor.DataBind();
                     Session["Busqueda"] = null;
@@ -31,20 +29,18 @@ namespace TPC_Equipo_L
                 else if (Request.QueryString["Cat"] != null)
                 {
                     string cat = Request.QueryString["Cat"].ToString();
-
                     ProductoNegocio negocio = new ProductoNegocio();
                     ListaProductos = negocio.listarCategorias(cat);
-                    Session.Add("ListaProductos", ListaProductos);
+                    Session["ListaProductos"] = ListaProductos;
                     repRepetidor.DataSource = ListaProductos;
                     repRepetidor.DataBind();
                 }
                 else if (Request.QueryString["Mar"] != null)
                 {
                     string mar = Request.QueryString["Mar"].ToString();
-
                     ProductoNegocio negocio = new ProductoNegocio();
                     ListaProductos = negocio.listarMarcas(mar);
-                    Session.Add("ListaProductos", ListaProductos);
+                    Session["ListaProductos"] = ListaProductos;
                     repRepetidor.DataSource = ListaProductos;
                     repRepetidor.DataBind();
                 }
@@ -52,21 +48,17 @@ namespace TPC_Equipo_L
                 {
                     ProductoNegocio negocio = new ProductoNegocio();
                     ListaProductos = negocio.listarConSp();
-                    Session.Add("ListaProductos", ListaProductos);
+                    Session["ListaProductos"] = ListaProductos;
                     repRepetidor.DataSource = ListaProductos;
                     repRepetidor.DataBind();
-                    Session.Add("cantidad", "1");
-
+                    Session["cantidad"] = "1";
                 }
             }
-
-
         }
 
         protected void Unnamed_Command(object sender, CommandEventArgs e)
         {
             var boton = (Button)sender;
-            Producto prod = new Producto();
             var item = (RepeaterItem)boton.NamingContainer;
             var txtCantidad = (TextBox)item.FindControl("txtCantidad");
 
@@ -81,23 +73,23 @@ namespace TPC_Equipo_L
                 {
                     txtCantidad.Text = (cant + 1).ToString();
                 }
-                Session.Add("cantidad", txtCantidad.Text);
+
+                var productId = ((HiddenField)item.FindControl("hdnProductId")).Value;
+                var cantidades = Session["Cantidades"] as Dictionary<string, int> ?? new Dictionary<string, int>();
+                cantidades[productId] = int.Parse(txtCantidad.Text);
+                Session["Cantidades"] = cantidades;
             }
-
-
         }
+
         protected void repRepetidor_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
+                var producto = (Producto)e.Item.DataItem;
+                var negocioImagen = new ImagenNegocio();
+                var listaImagenes = negocioImagen.listarImgPorProducto(producto);
 
-                dominio.Producto producto = (dominio.Producto)e.Item.DataItem;
-
-                negocio.ImagenNegocio negocioImagen = new negocio.ImagenNegocio();
-                List<string> listaImagenes = negocioImagen.listarImgPorProducto(producto);
-
-                Image imgProducto = (Image)e.Item.FindControl("imgProducto");
-
+                var imgProducto = (Image)e.Item.FindControl("imgProducto");
                 if (listaImagenes != null && listaImagenes.Count > 0)
                 {
                     imgProducto.ImageUrl = listaImagenes[0];
@@ -106,42 +98,57 @@ namespace TPC_Equipo_L
                 {
                     imgProducto.ImageUrl = "https://image.freepik.com/vector-gratis/icono-marco-fotos-foto-vacia-blanco-vector-sobre-fondo-transparente-aislado-eps-10_399089-1290.jpg";
                 }
+
+                var txtCantidad = (TextBox)e.Item.FindControl("txtCantidad");
+                var hdnProductId = (HiddenField)e.Item.FindControl("hdnProductId");
+                hdnProductId.Value = producto.CodigoProducto;
+
+                var cantidades = Session["Cantidades"] as Dictionary<string, int>;
+                if (cantidades != null && cantidades.ContainsKey(producto.CodigoProducto))
+                {
+                    txtCantidad.Text = cantidades[producto.CodigoProducto].ToString();
+                }
+                else
+                {
+                    txtCantidad.Text = "1";
+                }
             }
         }
+
         protected void agregar(object sender, CommandEventArgs e)
         {
-            List<Producto> carrito = Session["carrito"] as List<Producto> ?? new List<Producto>();
+            var carrito = Session["carrito"] as List<Producto> ?? new List<Producto>();
 
-            string id = e.CommandArgument.ToString();
-
+            var id = e.CommandArgument.ToString();
             int cant = 1;
-            if (Session["cantidad"] != null)
+
+            var cantidades = Session["Cantidades"] as Dictionary<string, int>;
+            if (cantidades != null && cantidades.ContainsKey(id))
             {
-                cant = Convert.ToInt32(Session["cantidad"]);
+                cant = cantidades[id];
             }
 
-            List<Producto> listaOriginal = Session["ListaProductos"] as List<Producto>;
-
-            Producto seleccionado = listaOriginal.FirstOrDefault(p => p.CodigoProducto == id);
+            var listaOriginal = Session["ListaProductos"] as List<Producto>;
+            var seleccionado = listaOriginal?.FirstOrDefault(p => p.CodigoProducto == id);
 
             if (seleccionado != null)
             {
-                seleccionado.Cantidad = cant;
 
-                Producto productoEnCarrito = carrito.FirstOrDefault(p => p.CodigoProducto == seleccionado.CodigoProducto);
+                var productoEnCarrito = carrito.FirstOrDefault(p => p.CodigoProducto == seleccionado.CodigoProducto);
                 if (productoEnCarrito != null)
                 {
                     productoEnCarrito.Cantidad += cant;
                 }
                 else
                 {
+
+                    seleccionado.Cantidad = cant;
                     carrito.Add(seleccionado);
                 }
 
                 Session["carrito"] = carrito;
             }
         }
-
-
     }
 }
+

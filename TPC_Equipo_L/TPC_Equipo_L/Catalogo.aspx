@@ -5,6 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 		.img-thumbnail {
 			width: 100%;
 			height: 300px;
@@ -19,12 +20,13 @@
 		.border-black {
 			border: 1px solid black;
 		}
-		 .custom-font {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            font-size: 2em;
-            font-weight: bold;
-            color: #000;
-         }
+
+		.custom-font {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+			font-size: 2em;
+			font-weight: bold;
+			color: #000;
+		}
 	</style>
 
 	<br />
@@ -54,15 +56,17 @@
 												<asp:TextBox ID="txtCantidad" runat="server" CssClass="form-control text-center border-black" Text="1" ReadOnly="true" />
 												<asp:Button class="btn btn-outline-dark" runat="server" type="button" Text="+" CommandName="Agregar" CommandArgument='<%#Eval("CodigoProducto")%>' OnCommand="Unnamed_Command" Style="background-color: #99bbc2;" />
 											</div>
+											<asp:HiddenField ID="hdnProductId" runat="server" Value='<%# Eval("CodigoProducto") %>' />
 										</ContentTemplate>
 									</asp:UpdatePanel>
-									<asp:Button class="btn btn-outline-dark" Style="background-color: #99bbc2;" runat="server" type="button" Text="Agregar al carrito" CommandName="carrito" CommandArgument='<%#Eval("CodigoProducto")%>' OnCommand="agregar"  />
+									<asp:Button class="btn btn-outline-dark" Style="background-color: #99bbc2;" runat="server" type="button" Text="Agregar al carrito" CommandName="carrito" CommandArgument='<%#Eval("CodigoProducto")%>' OnCommand="agregar" />
 								</div>
 							</div>
 						</div>
 					</div>
 				</ItemTemplate>
 			</asp:Repeater>
+
 		</div>
 	</div>
 </asp:Content>
