@@ -35,12 +35,26 @@ namespace TPC_Equipo_L
                 }
             }
         }
-       
+
 
         protected void dgvDetalle_SelectedIndexChanged1(object sender, EventArgs e)
         {
             var codV = dgvDetalle.SelectedDataKey.Value.ToString();
             Response.Redirect("detalleProducto.aspx?id=" + codV);
+
+        }
+
+        protected void dgvDetalle_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "VerDetalle")
+            {
+                // Obtener el valor de Cod_Venta del CommandArgument
+                string codV = e.CommandArgument.ToString();
+
+                // Lógica para manejar la visualización de los detalles
+                // Redirigir a una página de detalles, mostrar un modal, etc.
+                Response.Redirect($"detalleProducto.aspx?id=" + codV);
+            }
 
         }
     }

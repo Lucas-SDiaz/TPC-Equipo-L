@@ -63,7 +63,7 @@ namespace TPC_Equipo_L
                 string metodoEnvio = DataBinder.Eval(e.Row.DataItem, "MetodoEnvio").ToString();
 
                 // Encontrar el LinkButton de selección (CARGAR) y deshabilitarlo si el MetodoPago no es "transferencia bancaria"
-                if (metodoPago != "Transferencia Bancaria")
+                if (metodoEnvio != "Envio a domicilio.")
                 {
                     LinkButton selectButton = (LinkButton)e.Row.Cells[10].Controls[0]; // Asumiendo que la columna CommandField es la octava columna (index 7)
                     selectButton.Enabled = false;

@@ -77,6 +77,16 @@ namespace TPC_Equipo_L
                 // Redirigir a una página de detalles, mostrar un modal, etc.
                 Response.Redirect($"DetallesCompra.aspx?Cod_Venta={codVenta}");
             }
+            if (e.CommandName == "CargarComprobante")
+            {
+                // Obtener el valor de Cod_Venta del CommandArgument
+                string codVenta = e.CommandArgument.ToString();
+
+                // Lógica para manejar la visualización de los detalles
+                // Redirigir a una página de detalles, mostrar un modal, etc.
+                Response.Redirect($"modificarVenta.aspx?codV={codVenta}");
+            }
+
         }
     }
 }
