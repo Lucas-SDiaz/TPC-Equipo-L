@@ -121,40 +121,33 @@ namespace negocio
         {
             AccesoDatos datos = new AccesoDatos();
             Usuario usuario = new Usuario();
-            usuario.Localidad = new Localidad();
-            usuario.Direccion = new Direccion();
-            usuario.Provincia = new Provincia();
             try
             {
-                datos.setearConsulta("SELECT usu.NombreUsuario_U, usu.Nombre_U, usu.Apellido_U, usu.Correo_U, usu.Contrasenia_U, usu.Cod_Localidad_U, usu.ImgURL_U, usu.TipoUser_U, pro.ID " +
+                datos.setearConsulta("SELECT usu.NombreUsuario_U, usu.Nombre_U, usu.Apellido_U, usu.Correo_U, usu.Contrasenia_U, usu.ImgURL_U, usu.TipoUser_U " +
                     "FROM USUARIOS AS usu " +
-                    "INNER JOIN Localidades AS loc ON Cod_Localidad_U = loc.ID " +
-                    "INNER JOIN Provincias AS pro ON loc.ID_Provincia = pro.ID " +
-                    "WHERE Cod_Usuario = @Cod_Usuario");
+                    "WHERE usu.Cod_Usuario = @Cod_Usuario");
                 datos.setearParametros("@Cod_Usuario", cod);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     usuario.Cod_Usuario = cod;
-                    usuario.NombreUsuario = (string)datos.Lector["NombreUsuario_U"];
-                    usuario.Nombre = (string)datos.Lector["Nombre_U"];
-                    usuario.Apellido = (string)datos.Lector["Apellido_U"];
-                    usuario.Correo = (string)datos.Lector["Correo_U"];
-                    usuario.Contrasenia = (string)datos.Lector["Contrasenia_U"];
-                    usuario.Localidad.Id = (int)datos.Lector["Cod_Localidad_U"];
-                    usuario.ImagenURL = (string)datos.Lector["ImgURL_U"];
-                    usuario.TipoUsuario = (TipoUsuario)datos.Lector["TipoUser_U"];
-                    usuario.Provincia.Id = (int)datos.Lector["ID"];
+                    usuario.NombreUsuario = datos.Lector["NombreUsuario_U"] != DBNull.Value ? (string)datos.Lector["NombreUsuario_U"] : null;
+                    usuario.Nombre = datos.Lector["Nombre_U"] != DBNull.Value ? (string)datos.Lector["Nombre_U"] : null;
+                    usuario.Apellido = datos.Lector["Apellido_U"] != DBNull.Value ? (string)datos.Lector["Apellido_U"] : null;
+                    usuario.Correo = datos.Lector["Correo_U"] != DBNull.Value ? (string)datos.Lector["Correo_U"] : null;
+                    usuario.Contrasenia = datos.Lector["Contrasenia_U"] != DBNull.Value ? (string)datos.Lector["Contrasenia_U"] : null;
+                    usuario.ImagenURL = datos.Lector["ImgURL_U"] != DBNull.Value ? (string)datos.Lector["ImgURL_U"] : null;
+                    usuario.TipoUsuario = datos.Lector["TipoUser_U"] != DBNull.Value ? (TipoUsuario)datos.Lector["TipoUser_U"] : TipoUsuario.NORMAL;
                     usuario.Estado = true;
                 }
                 return usuario;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw new Exception("Error al buscar usuario: " + ex.Message);
             }
         }
+
 
         public bool ModificarUsuario(Usuario usuario)
         {
@@ -163,14 +156,14 @@ namespace negocio
             {
                 if (usuario != null)
                 {
-                    datos.setearProcedimiento("spActualizarUsuario");
+                    datos.setearConsulta("UPDATE Usuarios SET NombreUsuario_U = @NombreUsuario_U, Nombre_U = @Nombre_U, Apellido_U = @Apellido_U, Correo_U = @Correo_U, Contrasenia_U = @Contrasenia_U, ImgURL_U = @ImgURL_U, Estado_U = @Estado_U, TipoUser_U = @TipoUser_U WHERE Cod_Usuario = @Cod_Usuario");
                     datos.setearParametros("@Cod_Usuario", usuario.Cod_Usuario);
                     datos.setearParametros("@NombreUsuario_U", usuario.NombreUsuario);
                     datos.setearParametros("@Nombre_U", usuario.Nombre);
                     datos.setearParametros("@Apellido_U", usuario.Apellido);
                     datos.setearParametros("@Correo_U", usuario.Correo);
                     datos.setearParametros("@Contrasenia_U", usuario.Contrasenia);
-                    datos.setearParametros("@Cod_Localidad_U", usuario.Localidad.Id);
+                   // datos.setearParametros("@Cod_Localidad_U", usuario.Localidad.Id);
                     datos.setearParametros("@ImgURL_U", usuario.ImagenURL);
                     datos.setearParametros("@Estado_U", true);
                     if (usuario.TipoUsuario == TipoUsuario.ADMIN)
