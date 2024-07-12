@@ -52,6 +52,7 @@ namespace negocio
                 datos.setearParametros("@Nombre_U", usuario.Nombre);
                 datos.setearParametros("@Apellido_U", usuario.Apellido);
                 datos.setearParametros("@TipoUser_U", 1);
+                //datos.setearParametros("@Telefono_U", usuario.Telefono);
                 datos.setearParametros("Estado_U", true);
                 return datos.ejecutarAccionScalar();
             }
@@ -123,7 +124,7 @@ namespace negocio
             Usuario usuario = new Usuario();
             try
             {
-                datos.setearConsulta("SELECT usu.NombreUsuario_U, usu.Nombre_U, usu.Apellido_U, usu.Correo_U, usu.Contrasenia_U, usu.ImgURL_U, usu.TipoUser_U " +
+                datos.setearConsulta("SELECT usu.NombreUsuario_U, usu.Nombre_U, usu.Apellido_U, usu.Correo_U, usu.Contrasenia_U, usu.ImgURL_U, usu.TipoUser_U, usu.Telefono_U " +
                     "FROM USUARIOS AS usu " +
                     "WHERE usu.Cod_Usuario = @Cod_Usuario");
                 datos.setearParametros("@Cod_Usuario", cod);
@@ -138,6 +139,7 @@ namespace negocio
                     usuario.Contrasenia = datos.Lector["Contrasenia_U"] != DBNull.Value ? (string)datos.Lector["Contrasenia_U"] : null;
                     usuario.ImagenURL = datos.Lector["ImgURL_U"] != DBNull.Value ? (string)datos.Lector["ImgURL_U"] : null;
                     usuario.TipoUsuario = datos.Lector["TipoUser_U"] != DBNull.Value ? (TipoUsuario)datos.Lector["TipoUser_U"] : TipoUsuario.NORMAL;
+                    usuario.Telefono = datos.Lector["Telefono_U"] != DBNull.Value ? (int)datos.Lector["Telefono_U"] : 0;
                     usuario.Estado = true;
                 }
                 return usuario;
@@ -156,7 +158,7 @@ namespace negocio
             {
                 if (usuario != null)
                 {
-                    datos.setearConsulta("UPDATE Usuarios SET NombreUsuario_U = @NombreUsuario_U, Nombre_U = @Nombre_U, Apellido_U = @Apellido_U, Correo_U = @Correo_U, Contrasenia_U = @Contrasenia_U, ImgURL_U = @ImgURL_U, Estado_U = @Estado_U, TipoUser_U = @TipoUser_U WHERE Cod_Usuario = @Cod_Usuario");
+                    datos.setearConsulta("UPDATE Usuarios SET NombreUsuario_U = @NombreUsuario_U, Nombre_U = @Nombre_U, Apellido_U = @Apellido_U, Correo_U = @Correo_U, Contrasenia_U = @Contrasenia_U, ImgURL_U = @ImgURL_U, Estado_U = @Estado_U, TipoUser_U = @TipoUser_U, Telefono_U = @Telefono_U WHERE Cod_Usuario = @Cod_Usuario");
                     datos.setearParametros("@Cod_Usuario", usuario.Cod_Usuario);
                     datos.setearParametros("@NombreUsuario_U", usuario.NombreUsuario);
                     datos.setearParametros("@Nombre_U", usuario.Nombre);
@@ -166,6 +168,7 @@ namespace negocio
                    // datos.setearParametros("@Cod_Localidad_U", usuario.Localidad.Id);
                     datos.setearParametros("@ImgURL_U", usuario.ImagenURL);
                     datos.setearParametros("@Estado_U", true);
+                    datos.setearParametros("@Telefono_U", usuario.Telefono);
                     if (usuario.TipoUsuario == TipoUsuario.ADMIN)
                     {
                         datos.setearParametros("@TipoUser_U", 2);
@@ -198,7 +201,7 @@ namespace negocio
             try
             {
                 //datos.setearProcedimiento("ListarClientes");
-                datos.setearConsulta("SELECT Nombre_U, Apellido_U, Correo_U as 'Email'," + /*Telefono_U*/ "COUNT(Cod_Venta) AS 'Cantidad de compras' FROM Usuarios" +
+                datos.setearConsulta("SELECT Nombre_U, Apellido_U, Correo_U as 'Email', Telefono_U COUNT(Cod_Venta) AS 'Cantidad de compras' FROM Usuarios" +
                                      " INNER JOIN Ventas ON Cod_Usuario_V = Cod_Usuario WHERE Baja_V = 1" +
                                      "GROUP BY Nombre_U, Apellido_U, Correo_U ORDER BY Apellido_U ASC");
                 datos.ejecutarLectura();
@@ -212,7 +215,7 @@ namespace negocio
                     aux.Usuario.Nombre = (string)datos.Lector["Nombre_U"];
                     aux.Usuario.Apellido = (string)datos.Lector["Apellido_U"];
                     aux.Usuario.Correo = (string)datos.Lector["Email"];
-                    // aux.Usuario.Telefono = (string)datos.Lector["Telefono"];   AGREGAMOS TELEFONO?
+                    aux.Usuario.Telefono = (int)datos.Lector["Telefono_U"]; //AGREGAMOS TELEFONO? Sí
                     aux.Cod_Venta = (int)(datos.Lector["Cantidad de compras"]);
                     lista.Add(aux);
                 }

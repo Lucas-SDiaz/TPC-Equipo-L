@@ -23,9 +23,8 @@ namespace TPC_Equipo_L
 
         protected void btnCerrarSession_Click(object sender, EventArgs e)
         {
-            //Session["usuario"] = null;
             Session.Clear();
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Default.aspx", false);
         }
 
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -35,6 +34,9 @@ namespace TPC_Equipo_L
             txtBuscar.Text = string.Empty;
         }
 
-        
+        protected void btnPerfil_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Perfil.aspx", false);
+        }
     }
 }
