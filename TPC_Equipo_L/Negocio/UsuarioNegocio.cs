@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using dominio;
@@ -201,9 +203,7 @@ namespace negocio
             try
             {
                 //datos.setearProcedimiento("ListarClientes");
-                datos.setearConsulta("SELECT Nombre_U, Apellido_U, Correo_U as 'Email', Telefono_U COUNT(Cod_Venta) AS 'Cantidad de compras' FROM Usuarios" +
-                                     " INNER JOIN Ventas ON Cod_Usuario_V = Cod_Usuario WHERE Baja_V = 1" +
-                                     "GROUP BY Nombre_U, Apellido_U, Correo_U ORDER BY Apellido_U ASC");
+                datos.setearConsulta("SELECT Nombre_U, Apellido_U, Correo_U as 'Email', Telefono_U, COUNT(Cod_Venta) AS 'Cantidad de compras' FROM Usuarios INNER JOIN Ventas ON Cod_Usuario_V = Cod_Usuario WHERE Baja_V = 1 GROUP BY Nombre_U, Apellido_U, Correo_U, Telefono_U ORDER BY Apellido_U ASC");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {

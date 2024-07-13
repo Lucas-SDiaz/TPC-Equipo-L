@@ -34,6 +34,7 @@
 		<h2 class="custom-font">CATÁLOGO</h2>
 	</figure>
 
+
 	<br />
 	<div class="container-xxl">
 		<div class="row row-cols-1 row-cols-md-4 g-4">

@@ -27,11 +27,20 @@ namespace TPC_Equipo_L
 
         private void CargarDatosGrid()
         {
+
+            //VentaNegocio ventaNegocio = new VentaNegocio();
+            //List<Venta> ventas = ventaNegocio.listarAdminConSp();
+            //Session["venta"] = ventas;
+            //dgvVentas.DataSource = ventas;
+            string estadoFiltrado = ddlEstadoFiltro.SelectedValue;
+            string metodoPagoFiltrado = ddlMetodoPagoFiltro.SelectedValue;
+            //dgvVentas.DataBind();
             VentaNegocio ventaNegocio = new VentaNegocio();
-            List<Venta> ventas = ventaNegocio.listarAdminConSp();
+            List<Venta> ventas = ventaNegocio.listarAdminFiltros(estadoFiltrado, metodoPagoFiltrado); // Asume que tienes un método en tu capa de negocio para aplicar filtros
             Session["venta"] = ventas;
             dgvVentas.DataSource = ventas;
             dgvVentas.DataBind();
+
         }
 
         protected void dgvVentas_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,6 +137,18 @@ namespace TPC_Equipo_L
 
             VentaNegocio ventaNegocio = new VentaNegocio();
             ventaNegocio.ActualizarEstadoVenta(selected, nuevoEstado);
+            CargarDatosGrid();
+        }
+
+      
+
+        protected void ddlEstadoFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarDatosGrid();
+        }
+
+        protected void ddlMetodoPagoFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
             CargarDatosGrid();
         }
     }

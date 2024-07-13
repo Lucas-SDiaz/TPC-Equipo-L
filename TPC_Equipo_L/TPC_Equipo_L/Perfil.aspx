@@ -15,7 +15,7 @@
                     <asp:Label ID="lblApellido" CssClass="fs-5" Text="Apellido" runat="server" />
                     <asp:TextBox ID="txtApellido" CssClass="form-control" placeholder="Apellido" runat="server" />
                 </div>
-                <div class="container-fluid text-center p-2">
+                <%--<div class="container-fluid text-center p-2">
                     <div class="row align-items-start">
                         <div class="col">
                             <asp:Label ID="lblProvincia" CssClass="fs-5" Text="Provincia" runat="server" />
@@ -26,7 +26,7 @@
                             <asp:DropDownList CssClass="btn btn-outline-dark dropdown-toggle dropdown-toggle-split" ID="ddlLocalidad" runat="server" />
                         </div>
                     </div>
-                </div>
+                </div>--%>
                 <div class="container-fluid text-center p-2">
                     <div class="row align-items-start">
                         <div class="col">
