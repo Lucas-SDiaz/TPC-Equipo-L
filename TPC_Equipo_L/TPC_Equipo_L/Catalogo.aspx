@@ -33,12 +33,14 @@
     <figure class="text-center">
         <h2 class="custom-font">CATÁLOGO</h2>
     </figure>
-    <asp:DropDownList CssClass="btn btn-secondary btn-sm dropdown-toggle" BackColor="#99bbc2" ID="ddlMarca" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged" />
-    <asp:DropDownList CssClass="btn btn-secondary btn-sm dropdown-toggle" BackColor="#99bbc2" ID="ddlCategoria" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" />
-    <asp:Button ID="btnResetFiltros" runat="server" Text="Restablecer Filtros" CssClass="btn btn-sm btn-outline-dark" OnClick="btnResetFiltros_Click" Style="background-color: #99bbc2;" />
-    <br />
-    <br />
     <div class="container-xxl">
+
+     <div class="text-end"> <!-- Alineación a la derecha -->
+                <asp:DropDownList CssClass="btn btn-secondary btn-sm dropdown-toggle" BackColor="#99bbc2" ID="ddlMarca" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged" />
+                <asp:DropDownList CssClass="btn btn-secondary btn-sm dropdown-toggle" BackColor="#99bbc2" ID="ddlCategoria" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" />
+                <asp:Button ID="btnResetFiltros" runat="server" Text="Restablecer Filtros" CssClass="btn btn-sm btn-outline-dark" OnClick="btnResetFiltros_Click" Style="background-color: #99bbc2;" ForeColor="White" />
+            </div>
+        <br />        
         <div class="row row-cols-1 row-cols-md-4 g-4">
 
 

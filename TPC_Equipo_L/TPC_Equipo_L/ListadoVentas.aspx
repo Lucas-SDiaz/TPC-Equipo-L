@@ -8,6 +8,8 @@
 
     <h2 class="text-center p-2">Pedidos actuales</h2>
 
+
+    <div class="text-end"> <!-- Alineación a la derecha -->
     <asp:DropDownList ID="ddlEstadoFiltro" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstadoFiltro_SelectedIndexChanged" CssClass="btn btn-secondary btn-sm dropdown-toggle" BackColor="Black">
         <asp:ListItem Text="Estado Compra" Value=""></asp:ListItem>
         <asp:ListItem Text="Solicitado" Value="Solicitado"></asp:ListItem>
@@ -23,8 +25,8 @@
     </asp:DropDownList>
 
     <br />
-    <br />
-
+    <br />   </div>
+      
 
     <asp:GridView runat="server" DataKeyNames="Cod_Venta" ID="dgvVentas" CssClass="table table-dark table-bordered" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvVentas_SelectedIndexChanged" OnRowDataBound="dgvVentas_RowDataBound">
         <Columns>
