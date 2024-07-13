@@ -28,15 +28,12 @@ namespace TPC_Equipo_L
         private void CargarDatosGrid()
         {
 
-            //VentaNegocio ventaNegocio = new VentaNegocio();
-            //List<Venta> ventas = ventaNegocio.listarAdminConSp();
-            //Session["venta"] = ventas;
-            //dgvVentas.DataSource = ventas;
+
             string estadoFiltrado = ddlEstadoFiltro.SelectedValue;
             string metodoPagoFiltrado = ddlMetodoPagoFiltro.SelectedValue;
-            //dgvVentas.DataBind();
+
             VentaNegocio ventaNegocio = new VentaNegocio();
-            List<Venta> ventas = ventaNegocio.listarAdminFiltros(estadoFiltrado, metodoPagoFiltrado); // Asume que tienes un método en tu capa de negocio para aplicar filtros
+            List<Venta> ventas = ventaNegocio.listarAdminFiltros(estadoFiltrado, metodoPagoFiltrado);
             Session["venta"] = ventas;
             dgvVentas.DataSource = ventas;
             dgvVentas.DataBind();
@@ -45,10 +42,10 @@ namespace TPC_Equipo_L
 
         protected void dgvVentas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Obtener el código de venta seleccionado
+   
             int codVenta = Convert.ToInt32(dgvVentas.SelectedDataKey.Value);
 
-            // Redireccionar a la página para modificar la venta
+            
             Response.Redirect("modificarVentaS.aspx?codV=" + codVenta);
         }
 
@@ -56,27 +53,26 @@ namespace TPC_Equipo_L
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                // Obtener el DropDownList de Estado Compra de la fila actual
+     
                 DropDownList ddlEstadoCompra = (DropDownList)e.Row.FindControl("ddlEstadoCompra");
 
-                // Obtener el valor actual del estado desde los datos
+               
                 string estadoActual = DataBinder.Eval(e.Row.DataItem, "EstadoVenta").ToString();
 
-                // Establecer el valor seleccionado en el DropDownList
+         
                 ddlEstadoCompra.SelectedValue = estadoActual;
 
 
-                // Obtener el valor del MetodoPago de la fila actual
                 string metodoPago = DataBinder.Eval(e.Row.DataItem, "MetodoPago").ToString();
 
                 string metodoEnvio = DataBinder.Eval(e.Row.DataItem, "MetodoEnvio").ToString();
 
-                // Encontrar el LinkButton de selección (CARGAR) y deshabilitarlo si el MetodoPago no es "transferencia bancaria"
+       
                 if (metodoEnvio != "Envio a domicilio.")
                 {
-                    LinkButton selectButton = (LinkButton)e.Row.Cells[10].Controls[0]; // Asumiendo que la columna CommandField es la octava columna (index 7)
+                    LinkButton selectButton = (LinkButton)e.Row.Cells[10].Controls[0]; 
                     selectButton.Enabled = false;
-                    selectButton.CssClass = " disabled"; // Añadir clase CSS para estilo deshabilitado si es necesario
+                    selectButton.CssClass = " disabled"; 
                     selectButton.Text = "-";
                 }
                 if (metodoPago == "Efectivo" && metodoEnvio == "Envio a domicilio.")
@@ -140,7 +136,7 @@ namespace TPC_Equipo_L
             CargarDatosGrid();
         }
 
-      
+
 
         protected void ddlEstadoFiltro_SelectedIndexChanged(object sender, EventArgs e)
         {

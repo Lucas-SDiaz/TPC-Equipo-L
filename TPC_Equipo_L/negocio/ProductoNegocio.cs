@@ -68,17 +68,17 @@ namespace negocio
 
             try
             {
-                
-               string query = "SELECT pro.Cod_Producto, cat.Cod_Categoria, cat.Nombre_C, mar.Cod_Marca, mar.Nombre_M, pro.Nombre_P, pro.Descripcion_P, pro.PUnitario_P, pro.Stock_P FROM Productos AS pro INNER JOIN Categorias AS cat ON pro.Cod_Categoria_P = cat.Cod_Categoria INNER JOIN Marcas AS mar ON pro.Cod_Marcas_P = mar.Cod_Marca WHERE pro.Estado_P = 1";
+
+                string query = "SELECT pro.Cod_Producto, cat.Cod_Categoria, cat.Nombre_C, mar.Cod_Marca, mar.Nombre_M, pro.Nombre_P, pro.Descripcion_P, pro.PUnitario_P, pro.Stock_P FROM Productos AS pro INNER JOIN Categorias AS cat ON pro.Cod_Categoria_P = cat.Cod_Categoria INNER JOIN Marcas AS mar ON pro.Cod_Marcas_P = mar.Cod_Marca WHERE pro.Estado_P = 1";
                 if (!string.IsNullOrEmpty(marca))
                 {
-                    query += " AND mar.Nombre_M = @marca";
+                    query += " AND mar.Cod_Marca = @marca";
                     datos.setearParametros("@marca", marca);
                 }
 
                 if (!string.IsNullOrEmpty(categoria))
                 {
-                    query += " AND cat.Nombre_C = @categoria";
+                    query += " AND cat.Cod_Categoria = @categoria";
                     datos.setearParametros("@categoria", categoria);
                 }
 
@@ -176,7 +176,7 @@ namespace negocio
                     aux.Marca = new Marca();
                     aux.Categoria = new Categoria();
                     aux.Imagen = new Imagen();
-                   aux.CodigoProducto = (string)datos.Lector["Cod_Producto"];
+                    aux.CodigoProducto = (string)datos.Lector["Cod_Producto"];
                     //aux.Categoria.Cod_Categoria = (string)datos.Lector["Cod_Categoria_P"];
                     //  aux.Marca.Cod_Marca = (string)datos.Lector["Cod_Marcas_P"];
                     aux.Nombre = (string)datos.Lector["Nombre_P"];
@@ -256,13 +256,13 @@ namespace negocio
         public void cargarDDLMarcas(DropDownList list)
         {
             cargarDDL(list, "SELECT * FROM Marcas", "Nombre_M", "Cod_Marca");
-            list.Items.Insert(0, new ListItem("-Marcas-", "0"));
+            list.Items.Insert(0, new ListItem("Marcas", ""));
         }
 
         public void cargarDDLCategorias(DropDownList list)
         {
             cargarDDL(list, "SELECT * FROM Categorias", "Nombre_C", "Cod_Categoria");
-            list.Items.Insert(0, new ListItem("-Categorias-", "0"));
+            list.Items.Insert(0, new ListItem("Categorias", ""));
         }
 
         public void agregar(Producto pro)

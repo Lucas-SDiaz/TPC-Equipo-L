@@ -17,45 +17,44 @@ namespace TPC_Equipo_L
         {
             if (!IsPostBack)
             {
+
                 if (Session["Busqueda"] != null && Session["Busqueda"].ToString() != string.Empty)
                 {
                     ProductoNegocio negocio = new ProductoNegocio();
                     ListaProductos = negocio.Buscador(Session["Busqueda"].ToString());
-                    Session["ListaProductos"] = ListaProductos;
-                    repRepetidor.DataSource = ListaProductos;
-                    repRepetidor.DataBind();
-                    Session["Busqueda"] = null;
                 }
+
                 else if (Request.QueryString["Cat"] != null)
                 {
                     string cat = Request.QueryString["Cat"].ToString();
                     ProductoNegocio negocio = new ProductoNegocio();
                     ListaProductos = negocio.listarCategorias(cat);
-                    Session["ListaProductos"] = ListaProductos;
-                    repRepetidor.DataSource = ListaProductos;
-                    repRepetidor.DataBind();
                 }
+
                 else if (Request.QueryString["Mar"] != null)
                 {
                     string mar = Request.QueryString["Mar"].ToString();
                     ProductoNegocio negocio = new ProductoNegocio();
                     ListaProductos = negocio.listarMarcas(mar);
-                    Session["ListaProductos"] = ListaProductos;
-                    repRepetidor.DataSource = ListaProductos;
-                    repRepetidor.DataBind();
                 }
+
                 else
                 {
                     ProductoNegocio negocio = new ProductoNegocio();
                     ListaProductos = negocio.listarConSp();
-                    Session["ListaProductos"] = ListaProductos;
-                    repRepetidor.DataSource = ListaProductos;
-                    repRepetidor.DataBind();
-                    Session["cantidad"] = "1";
                 }
+
+                ProductoNegocio negocio1 = new ProductoNegocio();
+                negocio1.cargarDDLCategorias(ddlCategoria);
+                negocio1.cargarDDLMarcas(ddlMarca);
+
+                Session["ListaProductos"] = ListaProductos;
+
+
+                repRepetidor.DataSource = ListaProductos;
+                repRepetidor.DataBind();
             }
         }
-
         protected void Unnamed_Command(object sender, CommandEventArgs e)
         {
             var boton = (Button)sender;
@@ -149,6 +148,49 @@ namespace TPC_Equipo_L
                 Session["carrito"] = carrito;
             }
         }
+
+        protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string categoria = ddlCategoria.SelectedValue;
+            string marca = ddlMarca.SelectedValue;
+            ProductoNegocio negocio = new ProductoNegocio();
+            ListaProductos = negocio.listarConFiltros(marca, categoria);
+            Session["ListaProductos"] = ListaProductos;
+
+
+            repRepetidor.DataSource = ListaProductos;
+            repRepetidor.DataBind();
+        }
+
+        protected void ddlMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string categoria = ddlCategoria.SelectedValue;
+            string marca = ddlMarca.SelectedValue;
+            ProductoNegocio negocio = new ProductoNegocio();
+            ListaProductos = negocio.listarConFiltros(marca, categoria);
+            Session["ListaProductos"] = ListaProductos;
+
+
+            repRepetidor.DataSource = ListaProductos;
+            repRepetidor.DataBind();
+        }
+        protected void btnResetFiltros_Click(object sender, EventArgs e)
+        {
+
+            ddlMarca.SelectedIndex = 0;
+            ddlCategoria.SelectedIndex = 0;
+            string categoria = ddlCategoria.SelectedValue;
+            string marca = ddlMarca.SelectedValue;
+            ProductoNegocio negocio = new ProductoNegocio();
+            ListaProductos = negocio.listarConFiltros(marca, categoria);
+            Session["ListaProductos"] = ListaProductos;
+
+
+            repRepetidor.DataSource = ListaProductos;
+            repRepetidor.DataBind();
+
+        }
     }
+
 }
 
