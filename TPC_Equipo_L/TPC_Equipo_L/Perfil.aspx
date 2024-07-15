@@ -33,7 +33,7 @@
                             <asp:Label ID="lblDirecciones" CssClass="fs-5" Text="Direcciones" runat="server" />
                         </div>
                         <div class="col">
-                            
+
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Agregar
@@ -53,38 +53,98 @@
                                                     <div class="col">
                                                         <asp:Label ID="lblCalle" CssClass="fs-5" Text="Calle" runat="server" />
                                                         <asp:TextBox ID="txtCalle" CssClass="form-control" runat="server" />
-                                                    </div>                                                    
+                                                    </div>
                                                     <div class="col">
                                                         <asp:Label ID="lblNumero" CssClass="fs-5" Text="Numero" runat="server" />
                                                         <asp:TextBox ID="txtNumero" CssClass="form-control" runat="server" />
-                                                    </div>                                                    
+                                                    </div>
                                                     <div class="col">
                                                         <asp:Label ID="lblCodPostal" CssClass="fs-5" Text="Código Postal" runat="server" />
                                                         <asp:TextBox ID="txtCodPostal" CssClass="form-control" runat="server" />
-                                                    </div>                                                    
+                                                    </div>
                                                 </div>
                                                 <div class="row align-items-start">
                                                     <div class="col">
                                                         <asp:Label ID="lblPiso" CssClass="fs-5" Text="Piso" runat="server" />
                                                         <asp:TextBox ID="txtPiso" CssClass="form-control" runat="server" />
-                                                    </div>                                                    
+                                                    </div>
                                                     <div class="col">
                                                         <asp:Label ID="lblDepto" CssClass="fs-5" Text="Departamento" runat="server" />
                                                         <asp:TextBox ID="txtDepto" CssClass="form-control" runat="server" />
-                                                    </div>  
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                             <asp:Button ID="btnAgregarDireccion" CssClass="btn btn-outline-success" OnClick="btnAgregarDireccion_Click" Text="Agregar" runat="server" />
+                                            <asp:Button ID="btnAgregarDireccion" CssClass="btn btn-outline-success" OnClick="btnAgregarDireccion_Click" Text="Agregar" runat="server" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col">
-                            <asp:Button ID="btnModificarDireccion" CssClass="btn btn-outline-warning" OnClick="btnModificarDireccion_Click" Text="Modificar" runat="server" />
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                Modificar
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-warning text-white">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel1">Modificar Direcciones</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+
+                                            <div class="container-fluid text-center p-2">
+
+                                                <div class="row align-items-start">
+                                                    <div class="col">
+                                                        <asp:DropDownList AutoPostBack="true" ID="ddlDirecciones" CssClass="btn btn-outline-dark dropdown-toggle dropdown-toggle-split" OnSelectedIndexChanged="ddlDirecciones_SelectedIndexChanged" runat="server"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row align-items-start">
+                                                    <div class="col">
+                                                        <asp:Label ID="lblCalleMod" CssClass="fs-5" Text="Calle" runat="server" />
+                                                        <asp:TextBox ID="txtCalleMod" CssClass="form-control" runat="server" />
+                                                    </div>
+                                                    <div class="col">
+                                                        <asp:Label ID="lblNumMod" CssClass="fs-5" Text="Numero" runat="server" />
+                                                        <asp:TextBox ID="txtNumMod" CssClass="form-control" runat="server" />
+                                                    </div>
+                                                    <div class="col">
+                                                        <asp:Label ID="lblCPMod" CssClass="fs-5" Text="Código Postal" runat="server" />
+                                                        <asp:TextBox ID="txtCPMod" CssClass="form-control" runat="server" />
+                                                    </div>
+                                                </div>
+                                                <div class="row align-items-start">
+                                                    <div class="col">
+                                                        <asp:Label ID="lblPisoMod" CssClass="fs-5" Text="Piso" runat="server" />
+                                                        <asp:TextBox ID="txtPisoMod" CssClass="form-control" runat="server" />
+                                                    </div>
+                                                    <div class="col">
+                                                        <asp:Label ID="lblDeptoMod" CssClass="fs-5" Text="Departamento" runat="server" />
+                                                        <asp:TextBox ID="txtDeptoMod" CssClass="form-control" runat="server" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                            <asp:Button ID="btnModificarDireccion" CssClass="btn btn-outline-warning" OnClick="btnModificarDireccion_Click" Text="Modificar" runat="server" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
                         </div>
                         <div class="col">
                             <asp:Label ID="lblResultado" Text="⚪" runat="server" />

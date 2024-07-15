@@ -37,9 +37,10 @@ namespace dominio
         //    this.Depto = depto;
         //    this.Piso = piso;
         //}
+        //+ "Cod_Usuario: " + Cod_Usuario + " Numero: " + Nro + " Cod_Postal: " + CP + " Piso: " + Piso + " Depto: " + Depto
         public override string ToString()
         {
-            return "Calle: " + Calle + " Nro° " + Nro; 
+            return "Calle: " + Calle + " " + Nro; 
         }
     }
 

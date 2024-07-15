@@ -13,7 +13,7 @@ namespace TPC_Equipo_L
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            UsuarioNegocio negocio = new UsuarioNegocio();
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
             DireccionNegocio direccionNegocio = new DireccionNegocio();
             if (!IsPostBack)
             {
@@ -31,7 +31,7 @@ namespace TPC_Equipo_L
                     // Busca el usuario usando el código proporcionado
                     Usuario usuarioBase = (Usuario)Session["Usuario"];
 
-                    Usuario usuario = negocio.BuscarUsuario(usuarioBase.Cod_Usuario);
+                    Usuario usuario = usuarioNegocio.BuscarUsuario(usuarioBase.Cod_Usuario);
                     if (usuario == null)
                     {
                         Session.Add("error", "Error! Usuario no encontrado");
@@ -49,9 +49,24 @@ namespace TPC_Equipo_L
                     txtImagen.Text = usuario.ImagenURL;
                     txtApellido.Text = usuario.Apellido;
                     txtTelefono.Text = Convert.ToString(usuario.Telefono);
+                    ddlDirecciones.DataSource = direccionNegocio.listarDirecciones(usuario);
+                    ddlDirecciones.DataBind();
+                    Direccion direccion = new Direccion();
 
                     Session["Cod_Usuario"] = usuarioBase.Cod_Usuario;
                     Session["TipoUsuario"] = usuario.TipoUsuario;
+
+                    direccion = direccionNegocio.GetDireccion(direccion, usuarioBase.Cod_Usuario);
+
+                    Session["IDDireccion"] = direccion.ID;
+                    txtCalleMod.Text = direccion.Calle;
+                    txtNumMod.Text = Convert.ToString(direccion.Nro);
+                    txtCPMod.Text = Convert.ToString(direccion.CP);
+                    txtPisoMod.Text = Convert.ToString(direccion.Piso);
+                    txtDeptoMod.Text = direccion.Depto;
+
+
+
                 }
             }
         }
@@ -136,7 +151,40 @@ namespace TPC_Equipo_L
 
         protected void btnModificarDireccion_Click(object sender, EventArgs e)
         {
+            DireccionNegocio direccionNegocio = new DireccionNegocio();
+            Direccion direccion = new Direccion();
+            direccion.ID = (int)Session["IDDireccion"];
+            direccion.Cod_Usuario = (string)Session["Cod_Usuario"];
+            direccion.Calle = txtCalleMod.Text.Trim();
+            direccion.Nro = int.Parse(txtNumMod.Text.Trim());
+            direccion.CP = int.Parse(txtCPMod.Text.Trim());
+            direccion.Piso = int.Parse(txtPisoMod.Text.Trim());
+            direccion.Depto = txtDeptoMod.Text.Trim();
+            Usuario usuario = (Usuario)Session["Usuario"];
+            if(direccionNegocio.Modificar(direccion, usuario))
+            {
+                lblM.Text = "¡Se modifico con Exito!";
+                lblM.CssClass = "alert alert-success";
+            }
+            else
+            {
+                lblM.Text = "Hubo un problema, contacte a soporte.";
+                lblM.CssClass = "alert alert-danger";
+            }
 
+        }
+
+        protected void ddlDirecciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DireccionNegocio direccionNegocio = new DireccionNegocio();
+            Direccion direccion = direccionNegocio.GetDireccion(new Direccion(), (string)Session["Cod_Usuario"]);
+
+            Session["IDDireccion"] = direccion.ID;
+            txtCalleMod.Text = direccion.Calle;
+            txtNumMod.Text = Convert.ToString(direccion.Nro);
+            txtCPMod.Text = Convert.ToString(direccion.CP);
+            txtPisoMod.Text = Convert.ToString(direccion.Piso);
+            txtDeptoMod.Text = direccion.Depto;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 
 namespace negocio
@@ -68,6 +69,52 @@ namespace negocio
             {
 
                 throw;
+            }
+        }
+
+        public void cargarDDL(DropDownList list, string query, string text, string value, string value2 = "")
+        {
+            AccesoDatos datos = new AccesoDatos();
+            list.DataSource = datos.cargarControl(query);
+            list.DataTextField = text;
+            list.DataValueField = value;
+            list.DataBind();
+        }
+
+        public void cargarDDLDirecciones(DropDownList list, Usuario usuario)
+        {
+            cargarDDL(list, "SELECT * FROM Direcciones WHERE Cod_Usuario = '" + usuario.Cod_Usuario + "'", "Calle", "ID");
+            list.Items.Insert(0, new ListItem("-Direcciones-", "0"));
+        }
+
+        public List<Direccion> listarDirecciones(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Direccion> direccions = new List<Direccion>();
+            try
+            {
+                datos.setearConsulta("SELECT ID, Cod_Usuario, Calle, Numero, Cod_Postal, Piso, Depto FROM Direcciones WHERE Cod_Usuario = @Cod_Usuario");
+                datos.setearParametros("@Cod_Usuario", usuario.Cod_Usuario);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Direccion direccion = new Direccion();
+                    direccion.ID = (int)datos.Lector["ID"];
+                    direccion.Cod_Usuario = (string)datos.Lector["Cod_Usuario"];
+                    direccion.Calle = (string)datos.Lector["Calle"];
+                    direccion.Nro = (int)datos.Lector["Numero"];
+                    direccion.CP = (int)datos.Lector["Cod_Postal"];
+                    direccion.Piso = (int)datos.Lector["Piso"];
+                    direccion.Depto = (string)datos.Lector["Depto"];
+                    direccions.Add(direccion);
+                }
+                return direccions;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Error al buscar las direcciones: " + ex.Message);
             }
         }
 

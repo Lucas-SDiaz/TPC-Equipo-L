@@ -112,7 +112,7 @@ namespace negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error al buscar las localidades: " + ex.Message);
             }
             finally
             {
