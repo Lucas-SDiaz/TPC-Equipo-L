@@ -53,7 +53,9 @@
 		</Columns>
 	</asp:GridView>
 
+	<a href="misCompras.aspx" class="btn btn-outline-dark">Volver</a>
 
+<br />
 
 
 	<%   }%>
