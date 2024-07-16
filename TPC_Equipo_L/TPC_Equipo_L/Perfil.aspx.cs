@@ -56,7 +56,7 @@ namespace TPC_Equipo_L
                     Session["Cod_Usuario"] = usuarioBase.Cod_Usuario;
                     Session["TipoUsuario"] = usuario.TipoUsuario;
 
-                    direccion = direccionNegocio.GetDireccion(direccion, usuarioBase.Cod_Usuario);
+                    direccion = direccionNegocio.GetDireccion( usuarioBase.Cod_Usuario);
 
                     Session["IDDireccion"] = direccion.ID;
                     txtCalleMod.Text = direccion.Calle;
@@ -177,7 +177,7 @@ namespace TPC_Equipo_L
         protected void ddlDirecciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             DireccionNegocio direccionNegocio = new DireccionNegocio();
-            Direccion direccion = direccionNegocio.GetDireccion(new Direccion(), (string)Session["Cod_Usuario"]);
+            Direccion direccion = direccionNegocio.GetDireccion( (string)Session["Cod_Usuario"]);
 
             Session["IDDireccion"] = direccion.ID;
             txtCalleMod.Text = direccion.Calle;

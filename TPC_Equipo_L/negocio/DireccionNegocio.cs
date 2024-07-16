@@ -46,11 +46,12 @@ namespace negocio
             }
         }
 
-        public Direccion GetDireccion(Direccion direccion, string cod)
+        public Direccion GetDireccion( string cod)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                Direccion direccion = new Direccion();
                 datos.setearConsulta("SELECT ID, Cod_Usuario, Calle, Numero, Cod_Postal, Piso, Depto FROM Direcciones WHERE Cod_Usuario = '" + cod + "'");
                 datos.ejecutarLectura();
                 while(datos.Lector.Read())
@@ -83,8 +84,13 @@ namespace negocio
 
         public void cargarDDLDirecciones(DropDownList list, Usuario usuario)
         {
-            cargarDDL(list, "SELECT * FROM Direcciones WHERE Cod_Usuario = '" + usuario.Cod_Usuario + "'", "Calle", "ID");
+            cargarDDL(list, "SELECT ID,concat(Calle,' ',Numero) as direccion FROM Direcciones WHERE Cod_Usuario = '" + usuario.Cod_Usuario + "'" , "direccion", "ID");
             list.Items.Insert(0, new ListItem("-Direcciones-", "0"));
+        }
+        public void cargarDDLDireccionesCompra(DropDownList list, Usuario usuario)
+        {
+            cargarDDL(list, "SELECT ID,concat(Calle,' ',Numero) as direccion FROM Direcciones WHERE Cod_Usuario = '" + usuario.Cod_Usuario + "'", "direccion", "ID");
+            list.Items.Insert(0, new ListItem("Cargar nueva direccion", "0"));
         }
 
         public List<Direccion> listarDirecciones(Usuario usuario)

@@ -16,6 +16,16 @@ namespace TPC_Equipo_L
         {
             if (!IsPostBack)
             {
+
+                Usuario usuario = (Usuario)Session["usuario"];
+                DireccionNegocio direccionNegocio = new DireccionNegocio();
+                if (usuario != null)
+                {
+                    direccionNegocio.cargarDDLDireccionesCompra(ddlDireccion, usuario);
+
+                }
+
+
                 CargarCarrito();
                 ActualizarPrecioTotal();
             }
@@ -105,7 +115,7 @@ namespace TPC_Equipo_L
 
                 detalleVenta.Cod_Prod = producto.CodigoProducto;
                 detalleVenta.Cod_Venta = venta.Cod_Venta;
-               // detalleVenta.Nombre = producto.Nombre;
+                // detalleVenta.Nombre = producto.Nombre;
                 detalleVenta.Cantidad = producto.Cantidad;
                 detalleVenta.PrecioUni = producto.Precio;
 
@@ -161,6 +171,19 @@ namespace TPC_Equipo_L
 
             lblPrecioFinal.Text = "Precio Total: $" + precioTotal.ToString();
             Session["precioTotal"] = precioTotal;
+        }
+
+        protected void ddDireccion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected bool IsDireccionCero()
+        {
+            if (ddlDireccion.SelectedItem != null && ddlDireccion.SelectedItem.Value == "0")
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
