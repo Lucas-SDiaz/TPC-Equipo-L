@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="agregarImagen.aspx" />
     <Content Include="Clientes.aspx" />
     <Content Include="DetallesVenta.aspx" />
     <Content Include="Error.aspx" />
@@ -101,6 +102,13 @@
     <Content Include="CompraExitosa.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="agregarImagen.aspx.cs">
+      <DependentUpon>agregarImagen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agregarImagen.aspx.designer.cs">
+      <DependentUpon>agregarImagen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Clientes.aspx.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

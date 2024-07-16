@@ -11,6 +11,7 @@ namespace TPC_Equipo_L
 {
     public partial class modificarMarca : System.Web.UI.Page
     {
+        public string url { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             string codM;
@@ -25,7 +26,7 @@ namespace TPC_Equipo_L
                     Marca selected = temp.Find(x => x.Cod_Marca == codM);
                     txtNombre.Text = selected.Nombre;
                     txtImagen.Text = selected.ImagenURL;
-
+                    url = selected.ImagenURL;
                 }
             }
         }

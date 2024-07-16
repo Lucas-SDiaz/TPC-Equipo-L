@@ -11,7 +11,7 @@
 
             <div class="row m-4" style="display: flex; justify-content: space-around;">
 
-                <div class="card col" style="max-width: 30rem; max-height: 19rem; background-color: black;">
+ <div class="card col" style="max-width: 30rem; max-height: 19rem; background-color: white; border:hidden">
                     <div class="mx-auto pt-4">
                         <div class="card col" style="width: 28rem;">
                             <div class="card-body">
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="card m-4 col" style="max-height: 20rem; max-width: 20rem; border: 5px solid black; padding: 0px;">
-                    <div class="card-body p-1">
+                    <div class="d-flex justify-content-center">
                         <img src="<% = url %>" class="img-fluid" style="max-width: 18rem; max-height: 18rem;" alt="" />
                     </div>
                 </div>
@@ -46,5 +46,6 @@
     <div class="text-end p-4">
         <asp:Label Text="" ID="lblMensaje" runat="server" />
     </div>
+
 
 </asp:Content>

@@ -11,6 +11,8 @@ namespace TPC_Equipo_L
 {
     public partial class actualizarProducto : System.Web.UI.Page
     {
+        public List<Producto> ListaProductos;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string codP;
@@ -24,18 +26,32 @@ namespace TPC_Equipo_L
                     negocio.cargarDDLCategorias(ddlCategoria);
                     codP = Request.QueryString["codP"].ToString();
                     List<Producto> temp = (List<Producto>)Session["listaProductos"];
+                    ListaProductos = (List<Producto>)Session["listaProductos"];
                     List<Imagen> tImagen = (List<Imagen>)Session["listaImagenes"];
-                    Producto selected = temp.Find(x => x.CodigoProducto == codP);
+                    Producto selected = temp.Find(x => x.CodigoProducto == codP);                    
                     selected.Imagen = new Imagen();
                     selected.CodigoProducto = codP;
                     txtNombre.Text = selected.Nombre;
                     txtDescripcion.Text = selected.Descripcion;
                     txtPrecio.Text = selected.Precio.ToString();
                     txtStock.Text = selected.Stock.ToString();
-                    //txtImagen.Text = negocio.buscarImagenes(selected);
+                    lblId.Text = codP;
+
                     url = txtImagen.Text;
                     ddlCategoria.SelectedValue = selected.Categoria.Cod_Categoria;
                     ddlMarca.SelectedValue = selected.Marca.Cod_Marca;
+
+                    List<Imagen> lista = negocio.buscarImagenes(selected);
+                    if (lista != null && lista.Count > 0)
+                    {
+                        txtImagen.Text = lista[0].Url; // Asignar la primera imagen del carrusel
+                        url = txtImagen.Text; // Actualizar la variable url
+                    }
+                    else
+                    {
+                        txtImagen.Text = string.Empty; // O asignar un valor predeterminado si no hay imágenes
+                        url = string.Empty; // Actualizar la variable url en caso de no haber imagen
+                    }
                 }
             }
 
@@ -181,5 +197,7 @@ namespace TPC_Equipo_L
         {
             Response.Redirect("listarProducto.aspx");
         }
+
+        
     }
 }
