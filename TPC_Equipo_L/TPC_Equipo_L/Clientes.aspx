@@ -12,6 +12,7 @@
 		<Columns>
 			<asp:BoundField HeaderText="Apellido" DataField="Usuario.Apellido" HeaderStyle-BackColor="DarkGray" />
 			<asp:BoundField HeaderText="Nombre" DataField="Usuario.Nombre" HeaderStyle-BackColor="DarkGray" />
+			<asp:BoundField HeaderText="Telefono" DataField="Usuario.Telefono" HeaderStyle-BackColor="DarkGray" />
 			<asp:BoundField HeaderText="Email" DataField="Usuario.Correo" HeaderStyle-BackColor="DarkGray" />
 			<asp:BoundField HeaderText="Cantidad de compras" DataField="Cod_Venta" HeaderStyle-BackColor="DarkGray" />
 

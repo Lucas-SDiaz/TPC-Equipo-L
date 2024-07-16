@@ -54,7 +54,7 @@ namespace negocio
                 datos.setearParametros("@Nombre_U", usuario.Nombre);
                 datos.setearParametros("@Apellido_U", usuario.Apellido);
                 datos.setearParametros("@TipoUser_U", 1);
-                //datos.setearParametros("@Telefono_U", usuario.Telefono);
+                datos.setearParametros("@Telefono_U", usuario.Telefono);
                 datos.setearParametros("Estado_U", true);
                 return datos.ejecutarAccionScalar();
             }
@@ -215,7 +215,7 @@ namespace negocio
                     aux.Usuario.Nombre = (string)datos.Lector["Nombre_U"];
                     aux.Usuario.Apellido = (string)datos.Lector["Apellido_U"];
                     aux.Usuario.Correo = (string)datos.Lector["Email"];
-                   // aux.Usuario.Telefono = (int)datos.Lector["Telefono_U"]; //AGREGAMOS TELEFONO? Sí
+                    aux.Usuario.Telefono = (int)datos.Lector["Telefono_U"]; 
                     aux.Cod_Venta = (int)(datos.Lector["Cantidad de compras"]);
                     lista.Add(aux);
                 }

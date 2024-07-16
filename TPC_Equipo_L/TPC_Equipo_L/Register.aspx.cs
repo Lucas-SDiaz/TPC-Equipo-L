@@ -37,6 +37,7 @@ namespace TPC_Equipo_L
             nuevo.Contrasenia = txtPass.Text;
             nuevo.Nombre = txtNombre.Text;
             nuevo.Apellido = txtApellido.Text;
+            nuevo.Telefono = int.Parse(txtTelefono.Text);
             //direccion.Calle = txtCalle.Text;
             //direccion.Nro = txtNro.Text;
             //direccion.CP = txtCP.Text;
@@ -49,7 +50,7 @@ namespace TPC_Equipo_L
             nuevo.Direccion = direccion;
             //string nombreUsuario = txtNombreUsuario.Text;
 
-            negocio.registrarUsuario(nuevo);
+            //negocio.registrarUsuario(nuevo);
 
             try
             {
@@ -82,7 +83,7 @@ namespace TPC_Equipo_L
                 }
                 else if(txtEmail.Text == txtEmailRep.Text && txtPass.Text == txtPassRep.Text)
                 {
-                    //nuevo.Cod_Usuario = negocio.registrarUsuario(nuevo);
+                    nuevo.Cod_Usuario = negocio.registrarUsuario(nuevo);
                     emailService.armarCorreo(nuevo.Correo,"Bienvenido a Supermercado", nuevo);
                     emailService.enviarMail();
                     negocio.Logear(nuevo);

@@ -76,6 +76,13 @@
                                     </div>
                                     <asp:Label ID="lblErrorPass" Text="" runat="server" />
                                 </div>
+                                <div class="col-6">
+                                    <div class="p-3">
+                                        <asp:Label ID="lblTelefono" CssClass="fs-5" Text="Teléfono" runat="server" />
+                                        <asp:TextBox ID="txtTelefono" placeholder="1144445555" CssClass="form-control" runat="server" />
+                                    </div>
+                                    <asp:Label ID="Label2" Text="" runat="server" />
+                                </div>
 
                             </div>
                         </div>

@@ -88,7 +88,6 @@ namespace negocio
                 datos.agregarParametro("@CodUsuario", usuario.Cod_Usuario);
                 datos.agregarParametro("@ID_Direccion", venta.IdDireccion);
                 datos.agregarParametro("@MontoFinal", venta.MontoFinal);
-
                 datos.agregarParametro("@Metodo_Pago", venta.MetodoPago);
                 datos.agregarParametro("@Metodo_Envio", venta.MetodoEnvio);
 
