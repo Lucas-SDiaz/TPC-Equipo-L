@@ -76,7 +76,7 @@
                 <div class="mb-3">
                     <asp:DropDownList CssClass="btn btn-secondary dropdown-toggle" BackColor="#99bbc2" ID="ddlDireccion" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddDireccion_SelectedIndexChanged" />
                 </div>
-                <div class="delivery-form2" id="deliveryForm2" style="display: none;">
+               
                     <div class="mb-3">
                         <asp:Label ID="lblCalle" CssClass="fs-5" Text="Calle" runat="server" />
                         <asp:TextBox ID="txtCalle" CssClass="form-control" placeholder="Calle" runat="server" />
@@ -97,9 +97,11 @@
                         <asp:Label ID="lblDepto" CssClass="fs-5" Text="Depto" runat="server" />
                         <asp:TextBox CssClass="form-control" ID="txtDepto" placeholder="Depto" runat="server" />
                     </div>
-                </div>
+                <asp:Label ID="lblMensajeError" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
             </div>
         </div>
+   
+
 
         <br />
         <a href="carritoCompra.aspx" class="btn btn-outline-dark">Volver</a>

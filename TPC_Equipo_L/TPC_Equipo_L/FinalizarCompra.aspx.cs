@@ -16,24 +16,32 @@ namespace TPC_Equipo_L
         {
             if (!IsPostBack)
             {
-
                 Usuario usuario = (Usuario)Session["usuario"];
                 DireccionNegocio direccionNegocio = new DireccionNegocio();
+
                 if (usuario != null)
                 {
                     direccionNegocio.cargarDDLDireccionesCompra(ddlDireccion, usuario);
-
                 }
-
 
                 CargarCarrito();
                 ActualizarPrecioTotal();
+
+                if (ddlDireccion.SelectedIndex > 0)
+                {
+                    CargarDatosDireccionSeleccionada();
+                    BloquearCamposDireccion(true);
+                }
+                else
+                {
+                    LimpiarCamposDireccion();
+                    BloquearCamposDireccion(false);
+                }
             }
         }
 
         protected void btnFinalizarCompra_Click(object sender, EventArgs e)
         {
-            // Lógica para finalizar la compra y guardar en la base de datos
             EmailService emailService = new EmailService();
             Usuario usuario = (Usuario)Session["usuario"];
             VentaNegocio negocio = new VentaNegocio();
@@ -55,37 +63,53 @@ namespace TPC_Equipo_L
             }
             emailService.enviarMail();
 
-            // Crear objeto Venta y guardar en la base de datos
             Venta venta = new Venta();
             Direccion direccion = new Direccion();
-
-            if (metodoEntrega != "Retiro en el local")
+            if (metodoEntrega == "Envio a domicilio." && CamposDireccionVacios())
             {
-                direccion.Calle = txtCalle.Text;
-                direccion.Nro = int.Parse(txtNro.Text);
-                direccion.CP = int.Parse(txtCP.Text);
-                if (txtPiso.Text != "")
-                {
-                    direccion.Piso = int.Parse(txtPiso.Text);
-                }
-                if (txtDepto.Text != "")
-                {
-                    direccion.Depto = txtDepto.Text;
-                }
-                else
-                {
-                    direccion.Depto = "";
-                }
+                lblMensajeError.Text = "Debe completar la calle, número y código postal.";
+                lblMensajeError.Visible = true;
+                return;
             }
             else
             {
-                direccion.Calle = "Calle Falsa";
-                direccion.Nro = 123;
-                direccion.CP = 12345;
-                direccion.Piso = 0;
-                direccion.Depto = "";
+                if (ddlDireccion.SelectedIndex == 0 && !CamposDireccionVacios())
+                {
+                    direccion.Calle = txtCalle.Text;
+                    direccion.Nro = int.Parse(txtNro.Text);
+                    direccion.CP = int.Parse(txtCP.Text);
+                    if (!string.IsNullOrEmpty(txtPiso.Text))
+                    {
+                        direccion.Piso = int.Parse(txtPiso.Text);
+                    }
+                    else
+                    {
+                        direccion.Piso = 0;
+                    }
+                    if (!string.IsNullOrEmpty(txtDepto.Text))
+                    {
+                        direccion.Depto = txtDepto.Text;
+                    }
+                    else
+                    {
+                        direccion.Depto = "";
+                    }
+
+                    venta.IdDireccion = direccionNegocio.Agregar(direccion, usuario);
+                }
+                else if(metodoEntrega == "Envio a domicilio.")
+                {
+                    direccion = ObtenerDireccionSeleccionada();
+                    venta.IdDireccion = direccion.ID;
+                }
+                else
+                {
+                    venta.IdDireccion = 0;
+                }
             }
-            venta.IdDireccion = direccionNegocio.Agregar(direccion, usuario);
+
+            
+
             venta.FechaVenta = DateTime.Now;
             venta.Usuario = usuario;
             venta.MetodoPago = metodoPago;
@@ -99,12 +123,12 @@ namespace TPC_Equipo_L
             {
                 venta.NumSeguimiento = "-";
             }
+
             SqlMoney precioTotal = (SqlMoney)Session["precioTotal"];
             venta.MontoFinal = precioTotal;
 
             venta.Cod_Venta = int.Parse(negocio.agregarScalar(venta, usuario));
 
-            // Guardar detalles de la venta en la base de datos
             List<Producto> carrito = (List<Producto>)Session["carrito"];
             ProductoNegocio productoNegocio = new ProductoNegocio();
             DetalleVentaNegocio detalleVentaNegocio = new DetalleVentaNegocio();
@@ -115,7 +139,6 @@ namespace TPC_Equipo_L
 
                 detalleVenta.Cod_Prod = producto.CodigoProducto;
                 detalleVenta.Cod_Venta = venta.Cod_Venta;
-                // detalleVenta.Nombre = producto.Nombre;
                 detalleVenta.Cantidad = producto.Cantidad;
                 detalleVenta.PrecioUni = producto.Precio;
 
@@ -123,7 +146,6 @@ namespace TPC_Equipo_L
                 productoNegocio.ModificarStock(producto);
             }
 
-            // Redirigir a la página de compra exitosa
             Response.Redirect("CompraExitosa.aspx");
         }
 
@@ -173,13 +195,13 @@ namespace TPC_Equipo_L
             Session["precioTotal"] = precioTotal;
         }
 
-        protected void ddDireccion_SelectedIndexChanged(object sender, EventArgs e)
+        private void CargarDatosDireccionSeleccionada()
         {
             DireccionNegocio direccionNegocio = new DireccionNegocio();
-            Usuario usuario = (Usuario)Session["Usuario"];
-            List<Direccion> direccions = direccionNegocio.listarDirecciones(usuario);
+            Usuario usuario = (Usuario)Session["usuario"];
+            List<Direccion> direcciones = direccionNegocio.listarDirecciones(usuario);
             int ID = int.Parse(ddlDireccion.SelectedItem.Value);
-            Direccion direccion = direccions.Find(x => x.ID == ID);
+            Direccion direccion = direcciones.Find(x => x.ID == ID);
 
             Session["IDDireccion"] = direccion.ID;
             txtCalle.Text = direccion.Calle;
@@ -188,13 +210,62 @@ namespace TPC_Equipo_L
             txtPiso.Text = Convert.ToString(direccion.Piso);
             txtDepto.Text = direccion.Depto;
         }
-        protected bool IsDireccionCero()
+
+        private void LimpiarCamposDireccion()
         {
-            if (ddlDireccion.SelectedItem != null && ddlDireccion.SelectedItem.Value == "0")
-            {
-                return true;
-            }
-            return false;
+            txtCalle.Text = string.Empty;
+            txtNro.Text = string.Empty;
+            txtCP.Text = string.Empty;
+            txtPiso.Text = string.Empty;
+            txtDepto.Text = string.Empty;
         }
+
+        private void BloquearCamposDireccion(bool bloquear)
+        {
+            txtCalle.Enabled = !bloquear;
+            txtNro.Enabled = !bloquear;
+            txtCP.Enabled = !bloquear;
+            txtPiso.Enabled = !bloquear;
+            txtDepto.Enabled = !bloquear;
+        }
+
+        protected void ddDireccion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlDireccion.SelectedIndex > 0)
+            {
+                CargarDatosDireccionSeleccionada();
+                BloquearCamposDireccion(true);
+            }
+            else
+            {
+                LimpiarCamposDireccion();
+                BloquearCamposDireccion(false);
+            }
+        }
+        private bool CamposDireccionVacios()
+        {
+            return string.IsNullOrEmpty(txtCalle.Text)
+                && string.IsNullOrEmpty(txtNro.Text)
+                && string.IsNullOrEmpty(txtCP.Text)
+                && string.IsNullOrEmpty(txtPiso.Text)
+                && string.IsNullOrEmpty(txtDepto.Text);
+        }
+        private bool CamposDireccionValidos()
+        {
+            // Validar que calle, número y código postal no estén vacíos
+            return !string.IsNullOrEmpty(txtCalle.Text.Trim())
+                && !string.IsNullOrEmpty(txtNro.Text.Trim())
+                && !string.IsNullOrEmpty(txtCP.Text.Trim());
+        }
+
+        private Direccion ObtenerDireccionSeleccionada()
+        {
+            DireccionNegocio direccionNegocio = new DireccionNegocio();
+            Usuario usuario = (Usuario)Session["usuario"];
+            List<Direccion> direcciones = direccionNegocio.listarDirecciones(usuario);
+            int ID = int.Parse(ddlDireccion.SelectedItem.Value);
+            return direcciones.Find(x => x.ID == ID);
+        }
+
     }
 }

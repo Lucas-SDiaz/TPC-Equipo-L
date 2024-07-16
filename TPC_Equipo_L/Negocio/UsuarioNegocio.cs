@@ -215,7 +215,7 @@ namespace negocio
                     aux.Usuario.Nombre = (string)datos.Lector["Nombre_U"];
                     aux.Usuario.Apellido = (string)datos.Lector["Apellido_U"];
                     aux.Usuario.Correo = (string)datos.Lector["Email"];
-                    aux.Usuario.Telefono = (int)datos.Lector["Telefono_U"]; //AGREGAMOS TELEFONO? Sí
+                   // aux.Usuario.Telefono = (int)datos.Lector["Telefono_U"]; //AGREGAMOS TELEFONO? Sí
                     aux.Cod_Venta = (int)(datos.Lector["Cantidad de compras"]);
                     lista.Add(aux);
                 }
