@@ -175,7 +175,18 @@ namespace TPC_Equipo_L
 
         protected void ddDireccion_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DireccionNegocio direccionNegocio = new DireccionNegocio();
+            Usuario usuario = (Usuario)Session["Usuario"];
+            List<Direccion> direccions = direccionNegocio.listarDirecciones(usuario);
+            int ID = int.Parse(ddlDireccion.SelectedItem.Value);
+            Direccion direccion = direccions.Find(x => x.ID == ID);
 
+            Session["IDDireccion"] = direccion.ID;
+            txtCalle.Text = direccion.Calle;
+            txtNro.Text = Convert.ToString(direccion.Nro);
+            txtCP.Text = Convert.ToString(direccion.CP);
+            txtPiso.Text = Convert.ToString(direccion.Piso);
+            txtDepto.Text = direccion.Depto;
         }
         protected bool IsDireccionCero()
         {

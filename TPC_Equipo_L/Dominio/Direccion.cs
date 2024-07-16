@@ -38,10 +38,16 @@ namespace dominio
         //    this.Piso = piso;
         //}
         //+ "Cod_Usuario: " + Cod_Usuario + " Numero: " + Nro + " Cod_Postal: " + CP + " Piso: " + Piso + " Depto: " + Depto
+        //public override string ToString()
+        //{
+        //    return "Calle: " + Calle + " " + Nro;
+        //}
+
         public override string ToString()
         {
-            return "Calle: " + Calle + " " + Nro; 
+            return Convert.ToString(ID);
         }
+
     }
 
 }

@@ -177,7 +177,10 @@ namespace TPC_Equipo_L
         protected void ddlDirecciones_SelectedIndexChanged(object sender, EventArgs e)
         {
             DireccionNegocio direccionNegocio = new DireccionNegocio();
-            Direccion direccion = direccionNegocio.GetDireccion( (string)Session["Cod_Usuario"]);
+            Usuario usuario = (Usuario)Session["Usuario"];
+            List <Direccion> direccions = direccionNegocio.listarDirecciones(usuario);
+            int ID = int.Parse(ddlDirecciones.SelectedItem.Value);
+            Direccion direccion = direccions.Find(x => x.ID == ID);
 
             Session["IDDireccion"] = direccion.ID;
             txtCalleMod.Text = direccion.Calle;
